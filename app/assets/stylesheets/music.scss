@@ -1,3 +1,68 @@
 // Place all the styles related to the Music controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+html, body, div, ul, ol, li{
+  margin: 0;
+  padding: 0;
+}
+*, :after, :before {
+  box-sizing: border-box;
+}
+article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
+  display: block;
+}
+ul, ol{
+  list-style-type: disc;
+}
+body{
+  color: #222326;
+  background: #0f0f0f;
+  font-family: 'Noto Sans JP', sans-serif;
+}
+.single-container {
+  background-color: #0f0f0f;
+  border-top: 1px solid #616467;
+  padding: 35px 2.5em 35px 50px;
+}
+.navbar{
+  padding: 0 10px;
+  min-height: 70px;
+  width: 100%;
+  background-color: #000;
+  z-index: 1000;
+  font-size: 14px;
+  font-weight: 100;
+  letter-spacing: 0.5px;
+}
+.btn{
+  border-color: #1aa34a;
+  font-size: 12px;
+  line-height: 1;
+  border-radius: 500px;
+  padding: 11px 32px 9px;
+  color: #fff;
+  background-color: #1aa34a;
+  box-shadow: 0 0 0 2px rgba(0,0,0,.1)inset;
+  display: inline-block;
+  margin-bottom: 0;
+  font-weight: 700;
+  text-align: center;
+  vertical-align: middle;
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+  cursor: pointer;
+  background-image: none;
+  border: 1px solid transparent;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.text-white {
+  color: #fff;
+}
+.btn-light{
+  color: #fff;
+  box-shadow: 0 0 0 2px #fff inset;
+  background-color: transparent;
+}
