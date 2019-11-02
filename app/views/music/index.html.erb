@@ -29,6 +29,8 @@
 <h1><%= @artist.name %></h1>
 </div>
 <main class="single-container">
+<video controls="" autoplay="" name="media" data-vscid="mipqfx065"><source src="<%= @track.preview_url %>" type="audio/mpeg"></video>
+
   <%
 =begin%>
  <div>
@@ -69,5 +71,6 @@
 <a class="btn">button</a>
 <a class="btn btn-light">btn-light</a>
 </main>
+
 
 <footer></footer>

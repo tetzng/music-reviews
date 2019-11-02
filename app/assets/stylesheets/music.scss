@@ -106,7 +106,8 @@ body{
 }
 .album-image{
   width: 260px;
-  height: 260px;
+  max-width: 100%;
+  height: auto;
 }
 .album-container{
   padding: 24px 8px 0 8px;
