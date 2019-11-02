@@ -108,3 +108,60 @@ body{
   width: 260px;
   height: 260px;
 }
+.album-container{
+  padding: 24px 8px 0 8px;
+  margin: 0 auto;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+}
+.album-left{
+  width: 25%;
+  float: left;
+  position: relative;
+  min-height: 1px;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+.album-right{
+  width: 75%;
+  float: left;
+  position: relative;
+  min-height: 1px;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+.tracklist{
+  width: 100%;
+  margin-bottom: 1.5em;
+}
+.tracklist-row {
+  outline: none;
+  transition-property: background-color;
+  transition-duration: .2s;
+  transition-timing-function: linear;
+  outline: none;
+  display: flex;
+  height: 2.5em;
+  list-style-type: none;
+  user-select: none;
+  position: relative;
+}
+.tracklist-col-left{
+  flex: 1 1 0;
+  width: 0;
+  overflow: hidden;
+  padding-right: 1px;
+  margin-right: -1px;
+  display: block;
+  height: 2em;
+}
+.tracklist-col-right{
+  text-align: right;
+  padding-right: 1em;
+  font-feature-settings: "tnum";
+  letter-spacing: 0;
+  width: 4em;
+  display: block;
+  height: 2em;
+}
