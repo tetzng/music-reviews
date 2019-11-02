@@ -29,31 +29,43 @@
 <h1><%= @artist.name %></h1>
 </div>
 <main class="single-container">
-<p>
-アーティスト名: <%= @artist.name %><br>
-<%= image_tag "#{@artist.images[0]["url"]}", class: "artist-image" %><br>
-</p>
-<% @albums.each do |album| %>
-  <div class="album-wrap">
-    <p>
-    <h2><%= album.name %></h2>
-    リリース日: <%= album.release_date %><br>
-    <%= image_tag "#{album.images[0]["url"]}", class: "album-image" %><br>
-    </p>
-    <div class="track-lists">
-      <% album.tracks.each do |track| %>
-        <p class="track-list">
-          <div class="track-list-left">
-            <%= "#{track.track_number}. #{track.name}" %>
-          </div>
-          <div class="track-list-right">
-            <%= Time.at(track.duration_ms / 1000).strftime("%M:%S") %>
-          </div>
-        </p>
-      <% end %>
-    </div>
+  <%
+=begin%>
+ <div>
+    <%= image_tag "#{@artist.images[0]["url"]}", class: "artist-image" %>
   </div>
-<% end %>
+  <div>
+    <%= @artist.name %>
+  </div> 
+<%
+=end%>
+  <% @albums.each do |album| %>
+    <section class="album-container">
+      <div class="album-left">
+        <div>
+          <%=  image_tag "#{album.images[0]["url"]}", class: "album-image" %>
+        </div>
+        <h2><%= album.name %></h2>
+        <p>
+          <%= album.release_date %>
+        </p>
+      </div>
+      <div class="album-right">
+        <ol class="tracklist">
+          <% album.tracks.each do |track| %>
+            <li class="tracklist-row">
+              <div class="tracklist-col-left">
+                <%= "#{track.track_number}. #{track.name}" %>
+              </div>
+              <div class="tracklist-col-right">
+                <%= Time.at(track.duration_ms / 1000).strftime("%M:%S") %>
+              </div>
+            </li>
+          <% end %>
+        </ol>
+      </div>
+    </section>
+  <% end %>
 <a class="btn">button</a>
 <a class="btn btn-light">btn-light</a>
 </main>
