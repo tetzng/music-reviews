@@ -3,7 +3,7 @@ class MusicController < ApplicationController
     require 'rspotify'
 
     RSpotify.authenticate(Rails.application.credentials.spotify[:client_id], Rails.application.credentials.spotify[:client_secret])
-    @artists = RSpotify::Artist.search('fromis_9')
+    @artists = RSpotify::Artist.search('sakanaction')
     @artist = @artists.first
     @albums = @artist.albums
     @album = @albums.first
