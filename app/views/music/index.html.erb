@@ -1,4 +1,6 @@
-<header class="header">
+<%
+=begin%>
+ <header class="header">
 <nav class="navbar">
 <ul>
 <li></li>
@@ -19,18 +21,39 @@
   一曲一曲を深く聴いて、あなただけのレビューを共有しませんか？
 </p>
 <p>
-<%= @artist.name %><br>
-<%= @artist.popularity %><br>
-
-<%= @album.name %><br>
-<%= @album.release_date %><br>
-<%= @album.images %><br>
-
-<%= @track.name %><br>
-<%= @track.duration_ms %><br>
-<%= @track.track_number %><br>
-<%= @track.preview_url %><br>
+<%= @artist.inspect %>
+</p> 
+<%
+=end%>
+<div class="artist-header" style="background-image: url(<%= "#{@artist.images[0]["url"]}" %>);" >
+<h1><%= @artist.name %></h1>
+</div>
+<main class="single-container">
+<p>
+アーティスト名: <%= @artist.name %><br>
+<%= image_tag "#{@artist.images[0]["url"]}", class: "artist-image" %><br>
 </p>
+<% @albums.each do |album| %>
+  <div class="album-wrap">
+    <p>
+    <h2><%= album.name %></h2>
+    リリース日: <%= album.release_date %><br>
+    <%= image_tag "#{album.images[0]["url"]}", class: "album-image" %><br>
+    </p>
+    <div class="track-lists">
+      <% album.tracks.each do |track| %>
+        <p class="track-list">
+          <div class="track-list-left">
+            <%= "#{track.track_number}. #{track.name}" %>
+          </div>
+          <div class="track-list-right">
+            <%= Time.at(track.duration_ms / 1000).strftime("%M:%S") %>
+          </div>
+        </p>
+      <% end %>
+    </div>
+  </div>
+<% end %>
 <a class="btn">button</a>
 <a class="btn btn-light">btn-light</a>
 </main>
