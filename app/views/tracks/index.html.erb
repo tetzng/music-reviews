@@ -6,18 +6,16 @@
   <section class="album-container">
     <div class="album-left">
       <div>
-        <%=  image_tag "#{track.album.images[0]["url"]}", class: "album-image" %>
+        <%=  image_tag "#{track.album.images[0]["url"]}", class: "album-image track-image" %>
       </div>
-      <h2><%= track.album.name %></h2>
-      <p>
-        <%= track.album.release_date %>
-      </p>
     </div>
     <div class="album-right">
-      <ol class="tracklist">
+      <ol class="tracklist tracklist-large">
         <li class="tracklist-row">
           <div class="tracklist-col-left">
-            <%= "#{track.name} / #{track.artists[0].name}" %>
+            <div><span><%= track.name %></span> <%= "/ #{track.artists[0].name}" %></div>
+            <div><%= track.album.name %></div>
+            <div><%= track.album.release_date %></div>
           </div>
           <div class="tracklist-col-right">
             <%= Time.at(track.duration_ms / 1000).strftime("%M:%S") %>
