@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources :music do
-  end
+  resources :music
   resources :tracks do
     resources :reviews
     collection do
