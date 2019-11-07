@@ -4,6 +4,7 @@ ENV LANG C.UTF-8
 RUN apt-get update -qq && apt-get install -y \
     build-essential \
     nodejs \
+    vim \
  && rm -rf /var/lib/apt/lists/*
 
 RUN gem install bundler
