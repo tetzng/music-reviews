@@ -72,6 +72,11 @@ body{
   height: 200px;
   border-radius: 50%;
 }
+.artist-wrap{
+  width: 250px;
+  height: 250px;
+  text-align: center;
+}
 
 .artist-header{
   height: 400px;
@@ -106,6 +111,11 @@ body{
 }
 .album-image{
   width: 260px;
+  max-width: 100%;
+  height: auto;
+}
+.track-image{
+  width: 100px;
   max-width: 100%;
   height: auto;
 }
@@ -165,4 +175,17 @@ body{
   width: 4em;
   display: block;
   height: 2em;
+}
+.tracklist-large{
+  margin: 0;
+  span{
+    font-weight: 600;
+    font-size: 1.2rem;
+  }
+  .tracklist-row {
+    height: auto;
+  }
+  .tracklist-col-left{
+    height: auto;
+  }
 }
