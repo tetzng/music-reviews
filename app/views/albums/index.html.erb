@@ -1,0 +1,27 @@
+<main class="single-container">
+<h1><%= "\"#{@keyword}\"の検索結果" %></h1>
+<h2><%= "#{@albums.length}件" %></h2>
+
+<% @albums.each do |album| %>
+  <section class="album-container">
+    <div class="album-left">
+      <div>
+        <%=  image_tag "#{album.images[0]["url"]}", class: "album-image track-image" %>
+      </div>
+    </div>
+    <div class="album-right">
+      <ol class="tracklist tracklist-large">
+        <li class="tracklist-row">
+          <div class="tracklist-col-left">
+            <div><span><%= album.name %></span></div>
+            <div><%= album.artists[0].name %></div>
+            <div><%= album.release_date %></div>
+          </div>
+          <div class="tracklist-col-right">
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+<% end %>
+</main>
