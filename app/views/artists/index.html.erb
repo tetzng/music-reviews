@@ -1,0 +1,13 @@
+<main class="single-container">
+<h1><%= "\"#{@keyword}\"の検索結果" %></h1>
+<h2><%= "#{@artists.length}件" %></h2>
+
+  <section class="album-container">
+    <% @artists.each do |artist| %>
+      <div class="artist-wrap">
+        <%= image_tag "#{artist.images[0]["url"]}", class: "artist-image" %><br>
+        <%= artist.name %>
+      </div>
+    <% end %>
+  </section>
+</main>
