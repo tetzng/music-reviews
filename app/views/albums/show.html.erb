@@ -1,0 +1,29 @@
+<main class="single-container">
+    <section class="album-container">
+      <div class="album-left">
+        <div>
+          <%=  image_tag "#{@album.images[0]["url"]}", class: "album-image" %>
+        </div>
+        <h2><%= @album.name %></h2>
+        <p>
+          <%= @album.release_date %>
+        </p>
+      </div>
+      <div class="album-right">
+        <ol class="tracklist">
+          <% @album.tracks.each do |track| %>
+            <li class="tracklist-row">
+              <div class="tracklist-col-left">
+                <%= link_to track_path(track.id) do %>
+                  <%= "#{track.track_number}. #{track.name}" %>
+                <% end %>
+              </div>
+              <div class="tracklist-col-right">
+                <%= Time.at(track.duration_ms / 1000).strftime("%M:%S") %>
+              </div>
+            </li>
+          <% end %>
+        </ol>
+      </div>
+    </section>
+</main>
