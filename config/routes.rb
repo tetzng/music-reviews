@@ -3,7 +3,9 @@ Rails.application.routes.draw do
   get 'albums/index'
   devise_for :users
   resources :music
-  resources :tracks do
+  resources :artists, param: :spotify_id
+  resources :albums, param: :spotify_id
+  resources :tracks, param: :spotify_id do
     resources :reviews
     collection do
       get :search
