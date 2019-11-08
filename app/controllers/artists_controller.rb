@@ -1,6 +1,6 @@
 class ArtistsController < ApplicationController
   def index
-    @keyword = "DIR EN GREY"
+    @keyword = params[:keyword]
     @artists = RSpotify::Artist.search(@keyword)
   end
 
