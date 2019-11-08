@@ -1,6 +1,6 @@
 class TracksController < ApplicationController
   def index
-    @keyword = "Numb"
+    @keyword = params[:keyword]
     @tracks = RSpotify::Track.search(@keyword)
   end
 
