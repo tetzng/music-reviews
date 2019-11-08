@@ -20,10 +20,10 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   display: block;
 }
 ul, ol{
-  list-style-type: disc;
+  list-style-type: none;
 }
 body{
-  color: #222326;
+  color: #eee;
   background: #0f0f0f;
   font-family: 'Noto Sans JP', sans-serif;
 }
@@ -42,6 +42,11 @@ body{
   font-size: 14px;
   font-weight: 100;
   letter-spacing: 0.5px;
+  li{
+    float: right;
+    color: #eee;
+    margin-left: 16px;
+  }
 }
 .btn{
   border-color: #1aa34a;
