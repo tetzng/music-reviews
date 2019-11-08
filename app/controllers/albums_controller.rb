@@ -1,6 +1,6 @@
 class AlbumsController < ApplicationController
   def index
-    @keyword = "Rubber"
+    @keyword = params[:keyword]
     @albums = RSpotify::Album.search(@keyword)
   end
   def show
