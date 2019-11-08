@@ -1,0 +1,35 @@
+<main class="single-container">
+  <section class="album-container">
+    <div class="album-left">
+      <div>
+        <%=  image_tag "#{@album.images[0]["url"]}", class: "album-image track-image" %>
+      </div>
+    </div>
+    <div class="album-right">
+      <ol class="tracklist tracklist-large">
+        <li class="tracklist-row">
+          <div class="tracklist-col-left">
+            <div>
+              <%= link_to track_path(@track.spotify_id) do %>
+                <span><%= @track.name %></span>
+              <% end %>
+              &nbsp;/&nbsp;
+              <%= link_to artist_path(@artist.id) do %>
+                <%= @artist.name %>
+              <% end %>
+            </div>
+            <div><%= @album.name %></div>
+            <div><%= @album.release_date %></div>
+          </div>
+          <video controls="" autoplay="" name="media" data-vscid="mipqfx065"><source src="<%= @track.preview_url %>" type="audio/mpeg"></video>
+
+          <div class="tracklist-col-right">
+            <%= Time.at(@track.duration_ms / 1000).strftime("%M:%S") %>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+</main>
+
+<%= @track.preview_url %>
