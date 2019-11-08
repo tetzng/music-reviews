@@ -4,10 +4,12 @@
 
   <section class="album-container">
     <% @artists.each do |artist| %>
+    <%= link_to artist_path(artist.id) do %>
       <div class="artist-wrap">
         <%= image_tag "#{artist.images[0]["url"]}", class: "artist-image" %><br>
         <%= artist.name %>
       </div>
+    <% end %>
     <% end %>
   </section>
 </main>
