@@ -8,6 +8,14 @@ html, body, div, p, ul, ol, li{
 *, :after, :before {
   box-sizing: border-box;
 }
+a{
+  text-decoration: none;
+  color: inherit;
+  &:hover{
+    opacity: .7;
+  }
+}
+
 article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
   display: block;
 }
