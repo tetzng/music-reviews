@@ -21,8 +21,9 @@
             <div><%= @album.name %></div>
             <div><%= @album.release_date %></div>
           </div>
-          <video controls="" autoplay="" name="media" data-vscid="mipqfx065"><source src="<%= @track.preview_url %>" type="audio/mpeg"></video>
-
+          <% unless @track.preview_url.nil? %>
+            <video controls="" name="media" data-vscid="mipqfx065"><source src="<%= @track.preview_url %>" type="audio/mpeg"></video>
+          <% end %>
           <div class="tracklist-col-right">
             <%= Time.at(@track.duration_ms / 1000).strftime("%M:%S") %>
           </div>
@@ -31,5 +32,3 @@
     </div>
   </section>
 </main>
-
-<%= @track.preview_url %>
