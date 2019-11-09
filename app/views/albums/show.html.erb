@@ -2,9 +2,15 @@
     <section class="album-container">
       <div class="album-left">
         <div>
-          <%=  image_tag "#{@album.images[0]["url"]}", class: "album-image" %>
+          <%= link_to album_path(@album.id) do %>
+            <%=  image_tag "#{@album.images[0]["url"]}", class: "album-image" %>
+          <% end %>
         </div>
-        <h2><%= @album.name %></h2>
+        <h2>
+          <%= link_to album_path(@album.id) do %>
+            <%= @album.name %>
+          <% end %>
+        </h2>
         <p>
           <%= @album.release_date %>
         </p>
