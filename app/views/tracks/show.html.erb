@@ -31,4 +31,13 @@
       </ol>
     </div>
   </section>
+  <section class="review-container">
+    <div class="">
+      <%= form_with url: track_reviews_path(@track, @review), method: :post, local: true do |f| %>
+        <%= f.label :review, "Review" %>
+        <%= f.text_area :review %>
+        <%= f.submit 'Search' %>
+      <% end %>
+    </div>
+  </section>
 </main>
