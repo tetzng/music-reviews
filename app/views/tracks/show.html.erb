@@ -34,9 +34,11 @@
   <section class="review-container">
     <div class="">
       <%= form_with url: track_reviews_path(@track, @review), method: :post, local: true do |f| %>
+        <%= f.label :rate, "Rate" %>
+        <%= f.number_field :rate, in: 1..10, step: 1 %>
         <%= f.label :review, "Review" %>
         <%= f.text_area :review %>
-        <%= f.submit 'Search' %>
+        <%= f.submit '投稿' %>
       <% end %>
     </div>
   </section>
