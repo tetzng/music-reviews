@@ -10,6 +10,27 @@
   </head>
 
   <body>
+    <header class="header">
+      <nav class="navbar">
+      <ul>
+      <li>
+        <%= form_with url: tracks_path, method: :get, local: true do |f| %>
+          <%= f.label :keyword, "Track" %>
+          <%= f.text_field :keyword %>
+          <%= f.submit 'Search' %>
+        <% end %>
+      </li>
+      <% if user_signed_in? %>
+      <li><%= link_to  "Sign out", destroy_user_session_path, method: :delete %></li>
+      <% else %>
+      <li><%= link_to  "Sign in", new_user_session_path %></li>
+      <li><%= link_to  "Sign up", new_user_registration_path %></li>
+      <% end %>
+      <li></li>
+      </ul>
+      </nav>
+    </header>
     <%= yield %>
+    <footer></footer>
   </body>
 </html>
