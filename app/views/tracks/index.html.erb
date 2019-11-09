@@ -6,7 +6,9 @@
   <section class="album-container">
     <div class="album-left">
       <div>
-        <%=  image_tag "#{track.album.images[0]["url"]}", class: "album-image track-image" %>
+        <%= link_to album_path(track.album.id) do %>
+          <%= image_tag "#{track.album.images[0]["url"]}", class: "album-image track-image" %>
+        <% end %>
       </div>
     </div>
     <div class="album-right">
@@ -17,9 +19,12 @@
               <%= link_to track_path(track.id) do %>
                 <span><%= track.name %></span>
               <% end %>
-              <%= "/ #{track.artists[0].name}" %>
+              &nbsp;/&nbsp;
+              <%= link_to artist_path(track.artists[0].id) do %>
+                <%= track.artists[0].name %>
+              <% end %>
             </div>
-            <div><%= track.album.name %></div>
+            <div><%= link_to album_path(track.album.id) do %><%= track.album.name %><% end %></div>
             <div><%= track.album.release_date %></div>
           </div>
           <div class="tracklist-col-right">
