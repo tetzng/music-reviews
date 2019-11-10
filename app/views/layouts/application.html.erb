@@ -5,19 +5,31 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/b0496766e2.js" crossorigin="anonymous"></script>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
     <header class="header">
+      <div class="header-inner">
+      <div class="header-left">
+      <h1>
+      <%= link_to root_path do %>
+        MusicReviews
+      <% end %>
+      </h1>
+      </div>
       <nav class="navbar">
       <ul>
       <li>
-        <%= form_with url: tracks_path, method: :get, local: true do |f| %>
+        <%= form_with url: tracks_path, method: :get, local: true, class: "search-form" do |f| %>
           <%= f.label :keyword, "Track" %>
-          <%= f.text_field :keyword %>
-          <%= f.submit 'Search' %>
+          <%= f.text_field :keyword, class: "search-field", placeholder: "曲名で検索" %>
+          <%= f.label :submit do %>
+            <i class="fas fa-search"></i>
+          <% end %>
+          <%= f.submit 'Search', id: "submit" %>
         <% end %>
       </li>
       <% if user_signed_in? %>
@@ -29,6 +41,7 @@
       <li></li>
       </ul>
       </nav>
+      </div>
     </header>
     <%= yield %>
     <footer></footer>
