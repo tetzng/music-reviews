@@ -1,4 +1,5 @@
 <main class="single-container">
+<div class="single-inner">
   <section class="album-container">
     <div class="album-left">
       <div>
@@ -22,7 +23,7 @@
             <div><%= @album.release_date %></div>
           </div>
           <% unless @track.preview_url.nil? %>
-            <video controls="" name="media" data-vscid="mipqfx065"><source src="<%= @track.preview_url %>" type="audio/mpeg"></video>
+            <audio controls="" name="media" data-vscid="mipqfx065"><source src="<%= @track.preview_url %>" type="audio/mpeg"></audio>
           <% end %>
           <div class="tracklist-col-right">
             <%= Time.at(@track.duration_ms / 1000).strftime("%M:%S") %>
@@ -42,4 +43,6 @@
       <% end %>
     </div>
   </section>
+  </div>
+  <%= @track.id %>
 </main>
