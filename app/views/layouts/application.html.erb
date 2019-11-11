@@ -25,7 +25,7 @@
       <li>
         <%= form_with url: tracks_path, method: :get, local: true, class: "search-form" do |f| %>
           <%= f.label :keyword, "Track" %>
-          <%= f.text_field :keyword, class: "search-field", placeholder: "曲名で検索" %>
+          <%= f.text_field :keyword, class: "search-field", placeholder: "曲名で検索", value: (@keyword if @keyword.present?) %>
           <%= f.label :submit do %>
             <i class="fas fa-search"></i>
           <% end %>
