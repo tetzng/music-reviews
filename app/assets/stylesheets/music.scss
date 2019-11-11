@@ -70,6 +70,12 @@ body{
   border-top: 1px solid #616467;
   padding: 35px 0;
   color: #eee;
+  min-height: 100vh;
+}
+.top-container{
+  background: #111111;
+  opacity: 0.7;
+  color: rgb(216, 216, 216);
 }
 .single-inner{
   width: 1000px;
@@ -125,6 +131,7 @@ body{
 .artist-wrap{
   width: 250px;
   height: 250px;
+  margin-bottom: 20px;
   text-align: center;
 }
 
@@ -178,6 +185,11 @@ body{
   display: flex;
   flex-flow: row wrap;
   justify-content: flex-start;
+}
+.album-container-half{
+  width: 50%;
+  float: left;
+  padding-right: 16px;
 }
 .album-left{
   width: 120px;
@@ -325,4 +337,21 @@ body{
 .no-review{
   padding-top: 10px;
   color: #ccc;
+}
+.truncate{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.clearfix::after{
+  clear: both;
+  content: "";
+  display: block;
+}
+.footer-copyright{
+  height: 64px;
+  line-height: 64px;
+  background-color: #1f1f1f;
+  color: #1a3fa3;
+  text-align: center;
 }
