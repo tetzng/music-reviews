@@ -7,7 +7,7 @@
   <% @artist.albums.each do |album| %>
   <% i += 1 %>
     <section class="album-container">
-      <div class="album-left">
+      <div class="album-left album-show-left">
         <div>
           <%= link_to album_path(album.id) do %>
             <%= image_tag "#{album.images[0]["url"]}", class: "album-image" %>
@@ -18,7 +18,7 @@
           <%= album.release_date %>
         </p>
       </div>
-      <div class="album-right">
+      <div class="album-right album-show-right">
         <ol class="tracklist">
           <% album.tracks.each do |track| %>
             <li class="tracklist-row">
