@@ -21,6 +21,9 @@
 <%= form_with url: artists_path, method: :get, local: true do |f| %>
   <%= f.label :keyword, "Artist" %>
   <%= f.text_field :keyword %>
+  <%= f.label :submit do %>
+    <i class="fas fa-search"></i>
+  <% end %>
   <%= f.submit 'Search' %>
 <% end %>
 
@@ -29,6 +32,9 @@
 <%= form_with url: albums_path, method: :get, local: true do |f| %>
   <%= f.label :keyword, "Album" %>
   <%= f.text_field :keyword %>
+  <%= f.label :submit do %>
+    <i class="fas fa-search"></i>
+  <% end %>
   <%= f.submit 'Search' %>
 <% end %>
 </div>
@@ -36,21 +42,20 @@
 <%= form_with url: tracks_path, method: :get, local: true do |f| %>
   <%= f.label :keyword, "Track" %>
   <%= f.text_field :keyword %>
+  <%= f.label :submit do %>
+    <i class="fas fa-search"></i>
+  <% end %>
   <%= f.submit 'Search' %>
 <% end %>
 </div>
-
-<% @tracks.each do |track| %>
-<div class="album-container">
-  <%= track.name %>
-  </div>
+<ul>
+<% if user_signed_in? %>
+<li><%= link_to  "Sign out", destroy_user_session_path, method: :delete %></li>
+<% else %>
+<li><%= link_to  "Sign in", new_user_session_path %></li>
+<li><%= link_to  "Sign up", new_user_registration_path %></li>
 <% end %>
-<%
-=begin%>
- <a class="btn">button</a>
-<a class="btn btn-light">btn-light</a> 
-<%
-=end%>
+</ul>
 </div>
 </main>
 
