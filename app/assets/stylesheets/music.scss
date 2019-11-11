@@ -271,6 +271,9 @@ body{
   width: 5em;
   font-size: 24px;
 }
+.star-rating-small{
+  font-size: 16px;
+}
 .star-rating-front {
   position: absolute;
   top: 0;
@@ -287,4 +290,7 @@ body{
   left: 130px;
   color: #ffcc33;
   font-weight: 700;
+}
+.rating-score-small{
+  left: 90px;
 }
