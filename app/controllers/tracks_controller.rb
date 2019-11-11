@@ -21,5 +21,6 @@ class TracksController < ApplicationController
     @album = track.album
     @artist = track.artists[0]
     @review = Review.new
+    @reviews = @track.reviews
   end
 end
