@@ -1,12 +1,14 @@
 <main class="single-container">
 <div class="single-inner">
   <section class="album-container">
-    <div class="album-left">
+    <div class="album-left track-left">
       <div>
-        <%=  image_tag "#{@album.images[0]["url"]}", class: "album-image track-image" %>
+        <%= link_to album_path(@album.id) do %>
+          <%=  image_tag "#{@album.images[0]["url"]}", class: "album-image track-image track-show-image" %>
+        <% end %>
       </div>
     </div>
-    <div class="album-right">
+    <div class="album-right track-right">
       <ol class="tracklist tracklist-large">
         <li class="tracklist-row">
           <div class="tracklist-col-left">
@@ -19,17 +21,25 @@
                 <%= @artist.name %>
               <% end %>
             </div>
-            <div><%= @album.name %></div>
+            <div><%= link_to album_path(@album.id) do %><%= @album.name %><% end %> - <%= @album.album_type %></div>
             <div><%= @album.release_date %></div>
           </div>
-          <% unless @track.preview_url.nil? %>
-            <audio controls="" name="media" data-vscid="mipqfx065"><source src="<%= @track.preview_url %>" type="audio/mpeg"></audio>
-          <% end %>
           <div class="tracklist-col-right">
             <%= Time.at(@track.duration_ms / 1000).strftime("%M:%S") %>
           </div>
         </li>
       </ol>
+      <div class="star-rating">
+        <div class="star-rating-front" style="width: 50%">★★★★★</div>
+        <div class="star-rating-back">★★★★★</div>
+        <div class="rating-score">3.0</div>
+      </div>
+      <% unless @track.preview_url.nil? %>
+        <div class="track-preview">
+          <audio controls="" name="media" data-vscid="mipqfx065"><source src="<%= @track.preview_url %>" type="audio/mpeg"></audio>
+        </div>
+      <% end %>
+
     </div>
   </section>
   <section class="review-container">
@@ -44,10 +54,10 @@
     </div>
   </section>
   <section class="review-container">
-    <% if @track.reviews.present? %>
-      <% @track.reviews.each do |review| %>
+    <% if @reviews.present? %>
+      <% @reviews.each do |review| %>
         <div class="">
-          <%= review.user.id if review.user.present? %>
+          <%= review.user.name if review.user.present? %>
           <%= review.review %>
         </div>
       <% end %>
