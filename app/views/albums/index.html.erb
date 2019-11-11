@@ -1,10 +1,10 @@
 <main class="single-container">
-<div class="single-inner">
-<h1><%= "\"#{@keyword}\"の検索結果" %></h1>
-<h2><%= "#{@albums.length}件" %></h2>
+<div class="single-inner clearfix">
+<h2><%= "\"#{@keyword}\"の検索結果" %></h2>
+<h3><%= "#{@albums.length}件" %></h3>
 
 <% @albums.each do |album| %>
-  <section class="album-container">
+  <section class="album-container album-container-half">
     <div class="album-left">
       <div><%= link_to album_path(album.id) do %>
         <%=  image_tag "#{album.images[0]["url"]}", class: "album-image track-image" %>
@@ -14,7 +14,7 @@
       <ol class="tracklist tracklist-large">
         <li class="tracklist-row">
           <div class="tracklist-col-left">
-            <div>
+            <div class="truncate">
               <%= link_to album_path(album.id) do %>
                 <span><%= album.name %></span> - <%= album.album_type %>
               <% end %>
@@ -28,8 +28,6 @@
               <% end %>
             </div>
             <div><%= album.release_date %></div>
-          </div>
-          <div class="tracklist-col-right">
           </div>
         </li>
       </ol>
