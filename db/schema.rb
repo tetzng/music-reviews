@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_10_194939) do
+ActiveRecord::Schema.define(version: 2019_11_10_214121) do
 
   create_table "albums", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
@@ -39,19 +39,17 @@ ActiveRecord::Schema.define(version: 2019_11_10_194939) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "track_spotify_id"
-    t.index ["track_spotify_id"], name: "fk_rails_9bab864a44"
     t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
-  create_table "tracks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "tracks", primary_key: "spotify_id", id: :string, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.integer "track_number"
     t.integer "duration_ms"
     t.string "preview_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "spotify_id"
+    t.index ["spotify_id"], name: "index_tracks_on_spotify_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -67,6 +65,5 @@ ActiveRecord::Schema.define(version: 2019_11_10_194939) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "reviews", "tracks", column: "track_spotify_id"
   add_foreign_key "reviews", "users"
 end
