@@ -12,6 +12,10 @@ class ReviewsController < ApplicationController
 
   private
   def create_params
-    params.permit(:rate, :review).merge(track_spotify_id: params[:track_spotify_id], user_id: current_user.id)
+    if user_signed_in?
+      params.permit(:rate, :review).merge(track_spotify_id: params[:track_spotify_id], user_id: current_user.id)
+    else
+      params.permit(:rate, :review).merge(track_spotify_id: params[:track_spotify_id])
+    end
   end
 end
