@@ -1,7 +1,11 @@
 class TracksController < ApplicationController
   def index
     @keyword = params[:keyword]
-    @tracks = RSpotify::Track.search(@keyword)
+    if @keyword.blank?
+      redirect_to root_path
+    else
+      @tracks = RSpotify::Track.search(@keyword)
+    end
   end
 
   def show
