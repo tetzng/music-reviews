@@ -64,23 +64,29 @@
   <section class="review-container">
     <% if @reviews.present? %>
       <% @reviews.each do |review| %>
-        <div class="">
-          <div><%= review.user.name if review.user.present? %></div>
-          <div class="star-rating star-rating-small">
-            <% if review.rate.present? %>
-              <div class="star-rating-front" style="width: <%= review.rate * 20 %>%">★★★★★</div>
-            <% end %>
-            <div class="star-rating-back">★★★★★</div>
-            <div class="rating-score rating-score-small">
-            <% if review.rate.present? %>
-              <%= review.rate %>
-            <% else %>
-              -
-            <% end %>
+        <div class="review-content">
+          <div class="review-content-left">
+            <%= image_tag "no_image.png", class: "review-user-image" %>
+          </div>
+          <div class="review-content-right">
+            <div class="review-user-name"><%= review.user.name if review.user.present? %></div>
+            <div class="review-date"><%= review.created_at.strftime("%Y-%m-%d %H:%M") %></div>
+            <div class="star-rating star-rating-small">
+              <% if review.rate.present? %>
+                <div class="star-rating-front" style="width: <%= review.rate * 20 %>%">★★★★★</div>
+              <% end %>
+              <div class="star-rating-back">★★★★★</div>
+              <div class="rating-score rating-score-small">
+                <% if review.rate.present? %>
+                  <%= review.rate %>
+                <% else %>
+                  -
+                <% end %>
+              </div>
             </div>
           </div>
-          <div>
-            <% if review.rate.present? %>
+          <div class="review-main-content">
+            <% if review.review.present? %>
               <%= review.review %>
             <% else %>
               -
@@ -89,7 +95,7 @@
         </div>
       <% end %>
     <% else %>
-      <div class="">
+      <div class="no-review">
         まだレビューは投稿されていません。
       </div>
     <% end %>
