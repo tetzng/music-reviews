@@ -87,7 +87,7 @@
           </div>
           <div class="review-main-content">
             <% if review.review.present? %>
-              <%= review.review %>
+              <%= simple_format(h(review.review)) %>
             <% else %>
               -
             <% end %>
