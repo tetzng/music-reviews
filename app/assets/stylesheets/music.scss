@@ -22,6 +22,10 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 ul, ol{
   list-style-type: none;
 }
+audio{
+  height: 32px;
+  margin: 8px 0;
+}
 body{
   color: #eee;
   background: #0f0f0f;
@@ -169,28 +173,43 @@ body{
   max-width: 100%;
   height: auto;
 }
+.track-show-image{
+  width: 160px;
+}
 .album-container{
-  padding: 24px 0;
+  padding: 16px 0;
   margin: 0 auto;
   display: flex;
   flex-flow: row wrap;
   justify-content: flex-start;
 }
 .album-left{
-  width: 25%;
+  width: 120px;
   float: left;
   position: relative;
   min-height: 1px;
   padding-left: 8px;
   padding-right: 8px;
 }
+.album-show-left{
+  width: 300px;
+}
+.track-left{
+  width: 200px;
+}
 .album-right{
-  width: 75%;
+  width: calc(100% - 120px);
   float: left;
   position: relative;
   min-height: 1px;
   padding-left: 8px;
   padding-right: 8px;
+}
+.album-show-right{
+  width: calc(100% - 300px);
+}
+.track-right{
+  width: calc(100% - 200px);
 }
 .tracklist{
   width: 100%;
@@ -241,4 +260,31 @@ body{
   .tracklist-col-left{
     height: auto;
   }
+}
+.track-rate{
+  font-size: 20px;
+  color: #ffcc33;
+  margin: 5px 0;
+}
+.star-rating {
+  position: relative;
+  width: 5em;
+  font-size: 24px;
+}
+.star-rating-front {
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  color: #ffcc33;
+}
+.star-rating-back {
+  color: #ccc;
+}
+.rating-score{
+  position: absolute;
+  top: 0;
+  left: 130px;
+  color: #ffcc33;
+  font-weight: 700;
 }
