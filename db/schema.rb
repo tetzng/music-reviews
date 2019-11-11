@@ -12,18 +12,16 @@
 
 ActiveRecord::Schema.define(version: 2019_11_10_214121) do
 
-  create_table "albums", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "albums", primary_key: "spotify_id", id: :string, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
-    t.string "spotify_id"
     t.string "album_type"
     t.string "release_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "artists", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "artists", primary_key: "spotify_id", id: :string, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
-    t.string "spotify_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -39,6 +37,8 @@ ActiveRecord::Schema.define(version: 2019_11_10_214121) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "track_spotify_id", limit: 32
+    t.index ["track_spotify_id"], name: "index_reviews_on_track_spotify_id"
     t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
@@ -65,5 +65,6 @@ ActiveRecord::Schema.define(version: 2019_11_10_214121) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "reviews", "tracks", column: "track_spotify_id", primary_key: "spotify_id"
   add_foreign_key "reviews", "users"
 end
