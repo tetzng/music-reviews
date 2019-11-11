@@ -103,14 +103,10 @@ body{
   font-weight: 700;
   text-align: center;
   vertical-align: middle;
-  -ms-touch-action: manipulation;
   touch-action: manipulation;
   cursor: pointer;
   background-image: none;
   border: 1px solid transparent;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
 }
 .text-white {
@@ -293,4 +289,40 @@ body{
 }
 .rating-score-small{
   left: 90px;
+}
+.review-content{
+  margin: 20px 0px;
+  padding: 10px;
+  border-radius: 5px;
+  clear: both;
+  content: "";
+  display: block;
+  background-color: #222;
+}
+.review-content-left{
+  float: left;
+}
+.review-content-right{
+  width: 900px;
+  float: right;
+  padding-left: 8px;
+}
+.review-user-image{
+  width: 70px;
+  height: 70px;
+  border-radius: 3px;
+}
+.review-user-name{
+  font-size: 16px;
+}
+.review-date{
+  font-size: 14px;
+  color: #ccc;
+}
+.review-main-content{
+  padding-top: 80px;
+}
+.no-review{
+  padding-top: 10px;
+  color: #ccc;
 }
