@@ -5,5 +5,4 @@ class TracksControllerTest < ActionDispatch::IntegrationTest
     get tracks_index_url
     assert_response :success
   end
-
 end
