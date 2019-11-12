@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ChangeReviews < ActiveRecord::Migration[5.2]
   def change
     add_reference :reviews, :track_spotify, type: :string, limit: 32
