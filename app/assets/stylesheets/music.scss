@@ -75,8 +75,11 @@ body{
     border-style: none;
     margin: 10px auto;
     display: block;
+    &:focus{
+      outline-style: none;
+    }
   }
-  label[for=submit]{
+  label{
     color: #0f0f0f;
     font-size: 18px;
     left: 665px;
@@ -100,6 +103,7 @@ body{
   color: #0f0f0f;
   min-height: 350px;
   background-image: image-url("top_banner_light.jpg");
+  background-size: cover;
   h1{
     font-size: 32px;
     line-height: 56px;
@@ -400,4 +404,12 @@ body{
   background-color: #1f1f1f;
   color: #1a3fa3;
   text-align: center;
+}
+.related-content{
+  width: 100%;
+  font-size: 24px;
+  margin-bottom: 16px;
+  span{
+    font-weight: 900;
+  }
 }
