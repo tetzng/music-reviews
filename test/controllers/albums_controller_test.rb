@@ -5,5 +5,4 @@ class AlbumsControllerTest < ActionDispatch::IntegrationTest
     get albums_index_url
     assert_response :success
   end
-
 end
