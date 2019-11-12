@@ -5,5 +5,4 @@ class MusicControllerTest < ActionDispatch::IntegrationTest
     get music_index_url
     assert_response :success
   end
-
 end
