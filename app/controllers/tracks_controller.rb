@@ -15,8 +15,7 @@ class TracksController < ApplicationController
       @track.update_attributes!(name: track.name,
                                 track_number: track.track_number,
                                 duration_ms: track.duration_ms,
-                                preview_url: track.preview_url
-                               )
+                                preview_url: track.preview_url)
     end
     @album = track.album
     @artist = track.artists[0]
