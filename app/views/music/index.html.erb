@@ -19,29 +19,29 @@
 <div>
 <%= form_with url: artists_path, method: :get, local: true, class: "top-search-form" do |f| %>
   <%= f.text_field :keyword, placeholder: "アーティスト名で検索" %>
-  <%= f.label :submit do %>
+  <%= f.label :submit_artist do %>
     <i class="fas fa-search"></i>
   <% end %>
-  <%= f.submit 'Search' %>
+  <%= f.submit 'Search', id: "submit_artist" %>
 <% end %>
 
 </div>
 <div>
 <%= form_with url: albums_path, method: :get, local: true, class: "top-search-form" do |f| %>
   <%= f.text_field :keyword, placeholder: "アルバム名で検索" %>
-  <%= f.label :submit do %>
+  <%= f.label :submit_album do %>
     <i class="fas fa-search"></i>
   <% end %>
-  <%= f.submit 'Search' %>
+  <%= f.submit 'Search', id: "submit_album" %>
 <% end %>
 </div>
 <div>
 <%= form_with url: tracks_path, method: :get, local: true, class: "top-search-form" do |f| %>
   <%= f.text_field :keyword, placeholder: "曲名で検索" %>
-  <%= f.label :submit do %>
+  <%= f.label :submit_track do %>
     <i class="fas fa-search"></i>
   <% end %>
-  <%= f.submit 'Search' %>
+  <%= f.submit 'Search', id: "submit_track" %>
 <% end %>
 </div>
 <%
