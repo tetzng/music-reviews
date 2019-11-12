@@ -6,9 +6,15 @@
 <% @albums.each do |album| %>
   <section class="album-container album-container-half">
     <div class="album-left">
-      <div><%= link_to album_path(album.id) do %>
-        <%=  image_tag "#{album.images[0]["url"]}", class: "album-image track-image" %>
-        <% end %></div>
+      <div>
+        <%= link_to album_path(album.id) do %>
+          <% if album.images.blank? %>
+            <%= image_tag "no_image.png", class: "album-image track-image" %>
+          <% else %>
+            <%=  image_tag "#{album.images[0]["url"]}", class: "album-image track-image" %>
+          <% end %>
+        <% end %>
+      </div>
     </div>
     <div class="album-right">
       <ol class="tracklist tracklist-large">
