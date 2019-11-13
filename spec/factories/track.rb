@@ -1,9 +1,10 @@
 FactoryBot.define do
   factory :track do
-    spotify_id {"04p5vze2S7VA5YVDa5ELhY"}
-    name {"Hello - Remastered"}
-    track_number {1}
-    duration_ms {202345}
-    preview_url {"https://p.scdn.co/mp3-preview/a193dbe38ab2df343a4fc7174e6fb9f8aae205c0?cid=56a11c58b86746c19d320e65724680b7"}
+    spotify_id { Faker::Internet.password }
+    name { Faker::Music::GratefulDead.song }
+    track_number { Faker::Number.within(range: 1..15) }
+    duration_ms { Faker::Number.number(digits: 6) }
+    preview_url { Faker::Internet.url }
+    created_at { Faker::Time.between(from: DateTime.now - 2, to: DateTime.now) }
   end
 end
