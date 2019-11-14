@@ -6,17 +6,17 @@
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
         <%= render "devise/shared/error_messages", resource: resource %>
         <div class="field">
-          <%= f.text_field :name, autofocus: true %>
-          <%= f.label :name, "ニックネーム" %>
+          <%= f.text_field :name, autofocus: true, placeholder: " " %>
+          <%= f.label :name, "ニックネーム（必須）" %>
         </div>
         <div class="field file-field">
-          <div id="btn">ファイルを選択</div>
+          <div id="btn"><i class="far fa-images"></i></div>
           <%= f.file_field :avatar %>
-          <input type="text" id="user_avatar_name" placeholder="選択されていません" readonly />
+          <input type="text" id="user_avatar_name" placeholder="画像をアップロードする（任意）" readonly />
         </div>
         <div class="field">
           <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: " " %>
-          <%= f.label :email, "メールアドレス" %>
+          <%= f.label :email, "メールアドレス（必須）" %>
         </div>
 
         <div class="field">
