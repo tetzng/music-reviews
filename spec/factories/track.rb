@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
   factory :track do
     spotify_id { Faker::Internet.password }
