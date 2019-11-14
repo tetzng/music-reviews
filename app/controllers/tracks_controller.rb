@@ -23,5 +23,10 @@ class TracksController < ApplicationController
     @artist = track.artists[0]
     @review = Review.new
     @reviews = @track.reviews
+    begin
+      @average_score = @reviews.average(:rate).round(1)
+    rescue => exception
+      @average_score = 0
+    end
   end
 end
