@@ -71,4 +71,5 @@ end
 
 gem 'devise'
 gem 'jquery-rails'
+gem "omniauth-rails_csrf_protection"
 gem 'rspotify'
