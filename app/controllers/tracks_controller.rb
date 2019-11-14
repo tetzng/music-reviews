@@ -23,7 +23,7 @@ class TracksController < ApplicationController
     @artist = track.artists[0]
     @review = Review.new
     @reviews = @track.reviews
-    @average_score = if @reviews.find { |arr| arr.rate != nil }.present?
+    @average_score = if @reviews.find { |arr| !arr.rate.nil? }.present?
                        @reviews.average(:rate).round(1)
                      else
                        "-"
