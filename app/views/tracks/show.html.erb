@@ -30,19 +30,19 @@
         </li>
       </ol>
       <div class="star-rating">
-        <% if @reviews.present? %>
-          <div class="star-rating-front" style="width: <%= @reviews.average(:rate).round(1) * 20 %>%">★★★★★</div>
-        <% end %>
+        
+          <div class="star-rating-front" style="width: <%= @average_score * 20 %>%">★★★★★</div>
+
         <div class="star-rating-back">★★★★★</div>
         <div class="rating-score">
-        <% if @reviews.present? %>
-          <%= @reviews.average(:rate).round(1) %>
+        <% if @average_score != 0 %>
+          <%= @average_score %>
         <% else %>
           -
         <% end %>
         </div>
       </div>
-      <% unless @track.preview_url.nil? %>
+      <% if @track.preview_url.present? %>
         <div class="track-preview">
           <audio controls="" name="media" data-vscid="mipqfx065"><source src="<%= @track.preview_url %>" type="audio/mpeg"></audio>
         </div>
@@ -73,7 +73,13 @@
             <% end %>
           </div>
           <div class="review-content-right">
-            <div class="review-user-name"><%= review.user.name if review.user.present? %></div>
+            <div class="review-user-name">
+              <% if review.user.present? %>
+                <%= review.user.name %>
+              <% else %>
+                ゲストさん
+              <% end %>
+            </div>
             <div class="review-date"><%= review.created_at.strftime("%Y-%m-%d %H:%M") %></div>
             <div class="star-rating star-rating-small">
               <% if review.rate.present? %>
