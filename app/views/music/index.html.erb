@@ -15,48 +15,58 @@
   </div>
 </main>
 <main class="single-container top-search-container">
-<div class="single-inner">
-<div>
-<%= form_with url: artists_path, method: :get, local: true, class: "top-search-form" do |f| %>
-  <%= f.text_field :keyword, placeholder: "アーティスト名で検索" %>
-  <%= f.label :submit_artist do %>
-    <i class="fas fa-search"></i>
-  <% end %>
-  <%= f.submit 'Search', id: "submit_artist" %>
-<% end %>
+  <div class="single-inner">
+    <div>
+      <%= form_with url: artists_path, method: :get, local: true, class: "top-search-form" do |f| %>
+        <div class="form-group">
+          <%= f.label :keyword, "アーティスト名", class: "name-label" %>
+          <%= f.text_field :keyword, placeholder: "アーティスト名で検索" %>
+          <%= f.label :submit_artist do %>
+            <i class="fas fa-search"></i>
+          <% end %>
+          <%= f.submit 'Search', id: "submit_artist" %>
+        </div>
+      <% end %>
+    </div>
 
-</div>
-<div>
-<%= form_with url: albums_path, method: :get, local: true, class: "top-search-form" do |f| %>
-  <%= f.text_field :keyword, placeholder: "アルバム名で検索" %>
-  <%= f.label :submit_album do %>
-    <i class="fas fa-search"></i>
-  <% end %>
-  <%= f.submit 'Search', id: "submit_album" %>
-<% end %>
-</div>
-<div>
-<%= form_with url: tracks_path, method: :get, local: true, class: "top-search-form" do |f| %>
-  <%= f.text_field :keyword, placeholder: "曲名で検索" %>
-  <%= f.label :submit_track do %>
-    <i class="fas fa-search"></i>
-  <% end %>
-  <%= f.submit 'Search', id: "submit_track" %>
-<% end %>
-</div>
-<%
+    <div>
+      <%= form_with url: albums_path, method: :get, local: true, class: "top-search-form" do |f| %>
+        <div class="form-group">
+          <%= f.label :keyword, "アルバム名", class: "name-label" %>
+          <%= f.text_field :keyword, placeholder: "アルバム名で検索" %>
+          <%= f.label :submit_album do %>
+            <i class="fas fa-search"></i>
+          <% end %>
+          <%= f.submit 'Search', id: "submit_album" %>
+        </div>
+      <% end %>
+    </div>
+
+    <div>
+      <%= form_with url: tracks_path, method: :get, local: true, class: "top-search-form" do |f| %>
+        <div class="form-group">
+          <%= f.label :keyword, "曲名", class: "name-label" %>
+          <%= f.text_field :keyword, placeholder: "曲名で検索" %>
+          <%= f.label :submit_track do %>
+            <i class="fas fa-search"></i>
+          <% end %>
+          <%= f.submit 'Search', id: "submit_track" %>
+        </div>
+      <% end %>
+    </div>
+  <%
 =begin%>
  <ul>
-<% if user_signed_in? %>
-<li><%= link_to  "Sign out", destroy_user_session_path, method: :delete %></li>
-<% else %>
-<li><%= link_to  "Sign in", new_user_session_path %></li>
-<li><%= link_to  "Sign up", new_user_registration_path %></li>
-<% end %>
-</ul>
+  <% if user_signed_in? %>
+  <li><%= link_to  "Sign out", destroy_user_session_path, method: :delete %></li>
+  <% else %>
+  <li><%= link_to  "Sign in", new_user_session_path %></li>
+  <li><%= link_to  "Sign up", new_user_registration_path %></li>
+  <% end %>
+  </ul> 
 <%
 =end%>
-</div>
+  </div>
 </main>
 
 
