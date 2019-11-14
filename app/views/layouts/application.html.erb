@@ -17,10 +17,16 @@
           <h1 class="header-heading"></h1>
           <ul class="header-top-nav">
             <% if user_signed_in? %>
-              <li><a href="">Sign out</a></li>
+              <li>
+                <%= link_to "Sign out", destroy_user_session_path, method: :DELETE %>
+              </li>
             <% else %>
-              <li><a href="">Sign up</a></li>
-              <li><a href="">Sign in</a></li>
+              <li>
+                <%= link_to "Sign up", new_user_registration_path %>
+              </li>
+              <li>
+                <%= link_to "Sign in", new_user_session_path %>
+              </li>
             <% end %>
           </ul>
         </div>
