@@ -31,6 +31,18 @@ body{
   background: #0f0f0f;
   font-family: 'Noto Sans JP', sans-serif;
 }
+input[type="text"],
+input[type="number"],
+textarea {
+  outline: none;
+  border: 1px solid #aaa;
+  -webkit-transition: all .2s;
+  transition: all .2s;
+  &:focus {
+    box-shadow: 0 0 7px 2px #1e60d7;
+    border: 1px solid #1e60d7;
+  }
+}
 .header-inner{
   display: flex;
   position: relative;
@@ -66,26 +78,44 @@ body{
   }
 }
 .top-search-form{
-  height: 40px;
+  .form-group{
+    width: 400px;
+    margin: 0 auto;
+    height: 64px;
+  }
   input[type=text]{
     width: 400px;
     border-radius: 20px;
     font-size: 18px;
     padding: 6px 45px 6px 20px;
     border-style: none;
-    margin: 10px auto;
+    margin: 5px auto;
     display: block;
-    &:focus{
-      outline-style: none;
-    }
+    // &:focus{
+    //   outline-style: none;
+    // }
   }
   label{
     color: #0f0f0f;
     font-size: 18px;
-    left: 665px;
     line-height: 33px;
     position: relative;
-    bottom: 42px;
+    left: 366px;
+    bottom: 38px;
+    // left: 665px;
+    // bottom: 42px;
+  }
+  .name-label{
+    bottom: 0;
+    left: 16px;
+    font-size: 8px;
+    line-height: 1;
+    color: #1e90dd;
+    display: block;
+    visibility: hidden;
+  }
+  &:focus-within .name-label{
+    visibility: visible;
   }
   input[type=submit]{
     display: none;
