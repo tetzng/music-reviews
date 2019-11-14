@@ -51,6 +51,10 @@ textarea {
   h1{
     font-size: 24px;
     line-height: 70px;
+    a:hover{
+      opacity: 1;
+      color: #1e60d7;
+    }
   }
 }
 .search-form{
@@ -451,5 +455,62 @@ background-color: rgb(34, 34, 34);
   margin-bottom: 16px;
   span{
     font-weight: 900;
+  }
+}
+.review-form{
+  margin: 24px 36px 36px;
+}
+.review-form-rate{
+  margin: 8px 0;
+  label{
+    display: inline-block;
+    width: 80px;
+    font-weight: 800;
+  }
+  input{
+    font-size: 16px;
+    color: #ffcc33;
+    font-weight: 700;
+    background-color: #222;
+    border-radius: 5px;
+    line-height: 24px;
+    text-align: right;
+  }
+}
+.review-form-review{
+  margin: 8px 0;
+  label{
+    display: block;
+    font-weight: 800;
+  }
+  textarea{
+    margin: 4px 0px;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #222;
+    color: white;
+    width: 100%;
+    height: 100px;
+    font-size: 16px;
+  }
+}
+.review-submit-btn{
+  float: right;
+  background-color: #1d54b9;
+  font-size: 12px;
+  line-height: 1;
+  border-radius: 500px;
+  padding: 12px 24px 8px;
+  display: inline-block;
+  font-weight: 700;
+  text-align: center;
+  vertical-align: middle;
+  touch-action: manipulation;
+  cursor: pointer;
+  border: 2px solid #1d54b9;
+  color: #eee;
+  &:hover{
+    background-color: #1e70e7;
+    border: 2px solid #1d70e7;
   }
 }
