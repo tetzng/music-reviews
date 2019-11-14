@@ -663,17 +663,40 @@ textarea {
     margin-bottom: 8px;
   }
   .file-field{
+    height: 50px;
     #btn {
-      background: #000;
-      color: #fff;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 86px;
+      background: #1e60d7;
+      color: #ddd;
       cursor: pointer;
-      padding: 15px 30px;
+      padding: 0 8px;
+      font-size: 8px;
       display: inline-block;
-  }
-  input {
-      background: none;
-      box-shadow: none;
-      border: none;
-  }
+      height: 50px;
+      line-height: 50px;
+      border-top-left-radius: 4px;
+      border-bottom-left-radius: 4px;
+      border-radius: 4px;
+      z-index: 2;
+      display: none;
+    }
+    #user_avatar_name {
+      display: inline-block;
+      padding: 8px 20px 8px;
+      width: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      cursor: pointer;
+      &:hover{
+        background: #454545;
+      }
+      &::placeholder {
+        color:  #8c8c8c;
+      }
+    }
   }
 }
