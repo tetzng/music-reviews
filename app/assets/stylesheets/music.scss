@@ -43,6 +43,38 @@ textarea {
     border: 1px solid #1e60d7;
   }
 }
+.header-top{
+  background-color: #1e70e7;
+  font-size: 0.8rem;
+  color: #eee;
+}
+.header-top-inner{
+  display: flex;
+  align-items: center;
+  width: 1000px;
+  height: 34px;
+  margin: 0 auto;
+}
+.header-heading{
+  font-size: 1.0rem;
+  font-weight: 300;
+}
+.header-top-nav{
+  display: flex;
+  margin-right: 0;
+  margin-left: auto;
+  line-height: 1.2;
+  li{
+    padding: 0 20px;
+    border-left: 1px solid #ccc;
+    &:first-child{
+      border-left: 0;
+    }
+    &:last-child{
+      padding-right: 2px;
+    }
+  }
+}
 .header-inner{
   display: flex;
   position: relative;
