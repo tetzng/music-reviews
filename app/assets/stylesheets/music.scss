@@ -30,6 +30,7 @@ body{
   color: #eee;
   background: #0f0f0f;
   font-family: 'Noto Sans JP', sans-serif;
+  -webkit-font-smoothing: antialiased;
 }
 input[type="text"],
 input[type="number"],
@@ -543,5 +544,136 @@ textarea {
   &:hover{
     background-color: #1e70e7;
     border: 2px solid #1d70e7;
+  }
+}
+.user-container{
+  background-image: image-url("top_banner.png");
+  background-size: contain;
+}
+
+
+.user-wrapper{
+  min-height: calc(100vh - 468px);
+  background-color: transparent;
+  max-width: 450px;
+  color: #333;
+  margin: 0 auto;
+}
+.user-inner{
+  min-height: 660px;
+  padding: 60px 68px 40px;
+  margin-bottom: 90px;
+  background-color: rgba(0, 0, 0, 0.75);
+  border-radius: 4px;
+  box-sizing: border-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  flex-direction: column;
+  margin: 0;
+  width: 100%;
+  min-width: 380px;
+  h2{
+      color: #fff;
+      font-size: 32px;
+      font-weight: bold;
+      margin-bottom: 28px;
+
+  }
+  form{
+    margin-bottom: 32px;
+    .field{
+      position: relative;
+      border-radius: 4px;
+      border: 0;
+      margin-bottom: 16px;
+      input{
+        background: #333;
+        border-radius: 4px;
+        border: 0;
+        color: #fff;
+        height: 50px;
+        line-height: 50px;
+        padding: 16px 20px 0;
+        width: 100%;
+        box-shadow: none;
+        box-sizing: border-box;
+        font-size: 16px;
+        display: block;
+        &:focus{
+          outline: none;
+          background: #454545;
+        }
+      }
+      label{
+        left: 20px;
+        font-size: 16px;
+        position: absolute;
+        top: 50%;
+        color: #8c8c8c;
+        transition: font 0.1s ease,
+                    top 0.1s ease,
+                    transform 0.1s ease;
+        transform: translateY(-50%);
+      }
+      input:focus + label, input:not(:placeholder-shown) + label{
+        top: 7px;
+        font-size: 11px;
+        transform: translateY(0);
+      }
+      input[type=checkbox]{
+        line-height: 24px;
+        height: 24px;
+        & + label{
+          left: 30px;
+          top: 0;
+          font-size: 12px;
+          line-height: 24px;
+          color: #ddd;
+        }
+      }
+    }
+    .actions{
+      input{
+        border-radius: 4px;
+        font-size: 16px;
+        font-weight: bold;
+        margin: 24px 0 12px;
+        width: 100%;
+        max-width: 100%;
+        vertical-align: middle;
+        padding: 16px;
+        background: #1e70e7;
+        display: inline-block;
+        min-width: 98px;
+        min-height: 37px;
+        line-height: 1em;
+        box-shadow: 0 1px 0 rgba(0, 0, 0, 0.55);
+        cursor: pointer;
+        border: 0;
+        color: #eee;
+      }
+    }
+  }
+  a{
+    color: #eee;
+    font-size: 16px;
+  }
+  .signup-now{
+    margin-bottom: 8px;
+  }
+  .file-field{
+    #btn {
+      background: #000;
+      color: #fff;
+      cursor: pointer;
+      padding: 15px 30px;
+      display: inline-block;
+  }
+  input {
+      background: none;
+      box-shadow: none;
+      border: none;
+  }
   }
 }
