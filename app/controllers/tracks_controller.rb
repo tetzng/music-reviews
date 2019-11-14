@@ -26,7 +26,7 @@ class TracksController < ApplicationController
     @average_score = if @reviews.find { |arr| !arr.rate.nil? }.present?
                        @reviews.average(:rate).round(1)
                      else
-                       "-"
+                       '-'
                      end
   end
 end
