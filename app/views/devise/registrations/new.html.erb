@@ -1,40 +1,41 @@
-<main class="single-container">
-<div class="single-inner">
-<h2>Sign up</h2>
+<main class="single-container user-container">
+  <div class="user-wrapper">
+    <div class="single-inner user-inner">
+      <h2>新規登録</h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name, autofocus: true, placeholder: "ニックネームを入力" %>
-  </div>
-  <div class="field">
-    <%= f.file_field :avatar %>
-  </div>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "メールアドレスを入力" %>
-  </div>
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= render "devise/shared/error_messages", resource: resource %>
+        <div class="field">
+          <%= f.text_field :name, autofocus: true %>
+          <%= f.label :name, "ニックネーム" %>
+        </div>
+        <div class="field file-field">
+          <div id="btn">ファイルを選択</div>
+          <%= f.file_field :avatar %>
+          <input type="text" id="user_avatar_name" placeholder="選択されていません" readonly />
+        </div>
+        <div class="field">
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: " " %>
+          <%= f.label :email, "メールアドレス" %>
+        </div>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %>文字以上)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password", placeholder: "パスワードを入力（6文字以上）" %>
+        <div class="field">
+          <%= f.password_field :password, autocomplete: "new-password", placeholder: " "%>
+          <%= f.label :password, "パスワード（6文字以上）" %>
+        </div>
+
+        <div class="field">
+          <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: " " %>
+          <%= f.label :password_confirmation, "パスワード（確認用）" %>
+        </div>
+
+        <div class="actions">
+          <%= f.submit "登録する" %>
+        </div>
+      <% end %>
+
+      <%= render "devise/shared/links" %>
+
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "パスワードを入力（確認）" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
-
-</div>
 </main>
