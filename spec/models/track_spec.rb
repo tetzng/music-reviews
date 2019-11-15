@@ -36,6 +36,13 @@ RSpec.describe Track, type: :model do
         track.valid?
         expect(track.errors[:duration_ms]).to include("can't be blank")
       end
+
+      it 'is invalid with a duplicate spotify_id' do
+        track = create(:track)
+        another_track = build(:track, spotify_id: track.spotify_id)
+        another_track.valid?
+        expect(another_track.errors[:spotify_id]).to include('has already been taken')
+      end
     end
   end
 end
