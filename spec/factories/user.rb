@@ -7,6 +7,6 @@ FactoryBot.define do
     email                 { Faker::Internet.free_email }
     password              { password }
     password_confirmation { password }
-    avatar {File.open("#{Rails.root}/public/images/test_image.png")}
+    avatar { File.open("#{Rails.root}/public/images/test_image.png") }
   end
 end
