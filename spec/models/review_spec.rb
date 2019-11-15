@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe Review, type: :model do
@@ -46,7 +48,7 @@ RSpec.describe Review, type: :model do
       it 'is invalid without track_spotify_id' do
         review = build(:review, track_spotify_id: nil)
         review.valid?
-        expect(review.errors[:track]).to include("must exist")
+        expect(review.errors[:track]).to include('must exist')
       end
 
       it 'is invalid without rate, review, user_id' do
