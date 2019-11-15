@@ -10,19 +10,19 @@ describe User do
     end
     # nameが空では登録不可
     it 'is invalid without name' do
-      user = build(:user, name: '')
+      user = build(:user, name: nil)
       user.valid?
       expect(user.errors[:name]).to include("can't be blank")
     end
     # emailが空では登録不可
     it 'is invalid without email' do
-      user = build(:user, email: '')
+      user = build(:user, email: nil)
       user.valid?
       expect(user.errors[:email]).to include("can't be blank")
     end
     # passwordが空では登録不可
     it 'is invalid without password' do
-      user = build(:user, password: '')
+      user = build(:user, password: nil)
       user.valid?
       expect(user.errors[:password]).to include("can't be blank")
     end
@@ -60,6 +60,11 @@ describe User do
     it 'is valid with password that has more than 6 characters' do
       user = build(:user, password: '000000', password_confirmation: '000000')
       user.valid?
+      expect(user).to be_valid
+    end
+    # avatarが空でも登録可能
+    it 'is valid without avatar' do
+      user = build(:user, avatar: nil)
       expect(user).to be_valid
     end
   end
