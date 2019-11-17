@@ -24,6 +24,9 @@ RSpec.describe AlbumsController, type: :controller do
   end
 
   describe '#show' do
-    
+    it 'renders the :show template' do
+      get :show, params: { spotify_id: "6W6pGKjcVJVwbGHy2YRoeO" }
+      expect(response).to render_template :show
+    end
   end
 end
