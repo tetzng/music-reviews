@@ -68,6 +68,8 @@ group :test do
   gem 'webdrivers', '~> 3.0'
 end
 
+gem 'aws-sdk-s3', require: false
 gem 'devise'
 gem 'jquery-rails'
+gem 'mini_magick'
 gem 'rspotify'
