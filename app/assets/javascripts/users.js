@@ -1,4 +1,4 @@
- $(function() {
+$(document).on('turbolinks:load', function(){
   $('#user_avatar').css({
       'display': 'none'
   }).change(function() {
