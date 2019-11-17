@@ -1,11 +1,11 @@
-FROM ruby:2.6.5
+FROM ruby:2.6.5-alpine3.10
 ENV LANG C.UTF-8
 
-RUN apt-get update -qq && apt-get install -y \
-    build-essential \
-    nodejs \
-    vim \
- && rm -rf /var/lib/apt/lists/*
+RUN apk update && \
+    apk add --no-cache yarn tzdata build-base libxml2-dev libxslt-dev curl-dev make gcc libc-dev g++ mariadb-dev imagemagick6-dev && \
+    yarn install && \
+    rm -rf /usr/local/bundle/cache/* /usr/local/share/.cache/* /var/cache/* /tmp/* && \
+    apk del libxml2-dev curl-dev make gcc libc-dev g++
 
 RUN gem install bundler
 
