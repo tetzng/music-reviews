@@ -13,6 +13,6 @@ class ArtistsController < ApplicationController
   def show
     @artist = RSpotify::Artist.find(params[:spotify_id])
     recommendations = RSpotify::Recommendations.generate(seed_artists: [@artist.id])
-    @tracks = recommendations.tracks
+    # @tracks = recommendations.tracks
   end
 end
