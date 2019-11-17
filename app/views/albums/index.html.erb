@@ -1,7 +1,7 @@
 <main class="single-container">
 <div class="single-inner clearfix">
 <h2><%= "\"#{@keyword}\"の検索結果" %></h2>
-<h3><%= "#{@albums.length}件" %></h3>
+<h3><%= "#{@albums.total}件" %></h3>
 
 <% @albums.each do |album| %>
   <section class="album-container album-container-half">

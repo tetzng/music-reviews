@@ -44,6 +44,7 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'factory_bot_rails'
+  gem 'faker'
   gem 'pry-rails'
   gem 'rails-controller-testing'
   gem 'rspec-rails'
@@ -63,13 +64,10 @@ end
 group :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 2.15'
-  # Easy installation and use of chromedriver to run system tests with Chrome
-  gem 'chromedriver-helper'
-  gem 'faker'
   gem 'selenium-webdriver'
+  gem 'webdrivers', '~> 3.0'
 end
 
 gem 'devise'
 gem 'jquery-rails'
-gem "omniauth-rails_csrf_protection"
 gem 'rspotify'
