@@ -22,4 +22,11 @@ RSpec.describe ArtistsController, type: :controller do
       end
     end
   end
+
+  describe '#show' do
+    it 'renders the :show template' do
+      get :show, params: { spotify_id: "0KDuKk6YdEu3hR56HtXmxt" }
+      expect(response).to render_template :show
+    end
+  end
 end
