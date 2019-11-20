@@ -1,7 +1,7 @@
 #!/bin/bash
 
-echo "docker pull ruby:2.5.3"
-docker pull ruby:2.5.3
+echo "docker pull ruby:2.6.5-alpine3.10"
+docker pull ruby:2.6.5-alpine3.10
 
 echo "docker pull mysql:5.7"
 docker pull mysql:5.7
@@ -11,7 +11,7 @@ docker images
 
 # make Dockerfile
 cat <<'EOF' > Dockerfile
-FROM ruby:2.5.3
+FROM ruby:2.6.5-alpine3.10
 ENV LANG C.UTF-8
 RUN apt-get update -qq && apt-get install -y build-essential libpq-dev nodejs && rm -rf /var/lib/apt/lists/*
 RUN gem install bundler
