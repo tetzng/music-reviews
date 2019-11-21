@@ -13,7 +13,11 @@ docker images
 cat <<'EOF' > Dockerfile
 FROM ruby:2.6.5-alpine3.10
 ENV LANG C.UTF-8
-RUN apt-get update -qq && apt-get install -y build-essential libpq-dev nodejs && rm -rf /var/lib/apt/lists/*
+RUN apk update && \
+    apk add --no-cache yarn tzdata build-base libxml2-dev libxslt-dev curl-dev make gcc libc-dev g++ mariadb-dev imagemagick6-dev && \
+    yarn install && \
+    rm -rf /usr/local/bundle/cache/* /usr/local/share/.cache/* /var/cache/* /tmp/* && \
+    apk del libxml2-dev curl-dev make gcc libc-dev g++
 RUN gem install bundler
 WORKDIR /tmp
 COPY src/Gemfile Gemfile
@@ -24,6 +28,7 @@ RUN mkdir -p $APP_HOME
 WORKDIR $APP_HOME
 COPY . $APP_HOME
 EOF
+# RUN apt-get update -qq && apt-get install -y build-essential libpq-dev nodejs && rm -rf /var/lib/apt/lists/*
 
 
 # make 'src' directory and cd 'src' directory
@@ -33,7 +38,7 @@ mkdir src && cd src
 # make Gemfile
 cat <<'EOF' > Gemfile
 source 'https://rubygems.org'
-gem 'rails'
+gem 'rails', '~> 5.2.3'
 EOF
 
 # make Gemfile.lock()
