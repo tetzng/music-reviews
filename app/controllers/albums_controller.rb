@@ -8,7 +8,7 @@ class AlbumsController < ApplicationController
                 0
               else
                 (params[:page].to_i - 1) * limit
-            end
+              end
     # "#{@offset + 1}-#{@offset + @limit}件"
     if @keyword.blank?
       redirect_to root_path
