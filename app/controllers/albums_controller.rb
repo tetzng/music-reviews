@@ -4,10 +4,10 @@ class AlbumsController < ApplicationController
   def index
     @keyword = params[:keyword]
     @limit = 20
-    @offset = if params[:page] == nil
-              0
-            else
-              (params[:page].to_i - 1) * limit
+    @offset = if params[:page].nil?
+                0
+              else
+                (params[:page].to_i - 1) * limit
             end
     # "#{@offset + 1}-#{@offset + @limit}件"
     if @keyword.blank?
