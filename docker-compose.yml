@@ -13,14 +13,22 @@ services:
       - db
     tty: true
     stdin_open: true
+    environment:
+      RAILS_ENV:           development
+      MYSQL_USER:          root
+      MYSQL_PASSWORD:      password
+      MYSQL_HOST:          db
+      MYSQL_DATABASE:      app_development
+      RAILS_SERVE_STATIC_FILES: "true"
   db:
-    image: mysql:5.7
+    image: mariadb
     environment:
       MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: app_development
     ports:
       - '4306:3306'
     volumes:
-      - mysql_data:/var/lib/mysql
+      - ./db:/var/lib/mysql
 volumes:
   bundle:
   mysql_data:
