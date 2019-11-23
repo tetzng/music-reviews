@@ -37,4 +37,5 @@ ADD . $APP_HOME
 EXPOSE 3000
 
 ARG RAILS_ENV
+RUN chmod +x app/script/entrypoint_production.sh
 ENTRYPOINT ["/bin/sh", "-c","app/script/entrypoint_${RAILS_ENV}.sh" ]
