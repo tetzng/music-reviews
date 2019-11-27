@@ -1,24 +1,45 @@
-# README
+# MusicReviews
+音楽を聴いてレビューするサイト
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Description
+SpotifyAPIを使用した音楽レビューサイト。
+環境構築にDockerを使用し、AWS ECS / Fargateでデプロイ
 
-Things you may want to cover:
+***DEMO:***
 
-* Ruby version
 
-* System dependencies
+## Features
+- Dockerを使用した環境構築
+- AWS ECS / Fargateデプロイ
+- データベースにRDSを使用
+- ActiveStorageを使用しAWS S3への画像アップロード
+- SpotifyAPIを使用
+- RSpecを使った単体テスト
 
-* Configuration
+## Docker images
 
-* Database creation
+- ruby:2.6.5-alpine3.10
+- mariadb
 
-* Database initialization
+## Version
 
-* How to run the test suite
+- Ruby 2.6.5
+- Rails 5.2.3
 
-* Services (job queues, cache servers, search engines, etc.)
+## Installation
 
-* Deployment instructions
+    $ git clone https://github.com/tetzng/music-reviews.git
+    $ cd music-reviews
+    $ docker-compose build
+    $ docker-compose up
 
-* ...
+
+## Author
+
+[@tetzng](https://twitter.com/tp_237)
+
+
+## License
+
+[MIT](http://b4b4r07.mit-license.org)
+
