@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>MusicReviews | 音楽レビューサイト</title>
+    <title><%= page_title %></title>
     <meta name="description" content="音楽を聴いてレビューするサイト。みんなが評価してる曲を試聴して、レビューしてみよう！新しい音楽と出会えるかも！" />
     <meta property="og:url" content="http://tg-music-reviews1-214759366.ap-northeast-1.elb.amazonaws.com/" />
     <meta property="og:title" content="MusicReviews | 音楽レビューサイト" />
@@ -20,6 +20,7 @@
     <script src="https://kit.fontawesome.com/b0496766e2.js" crossorigin="anonymous"></script>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= yield :head %>
   </head>
 
   <body>
@@ -68,13 +69,8 @@
       </div>
     </header>
     <%= yield %>
+    <%= yield :cover %>
     <footer>
-    <%
-=begin%>
- <div class="footer-nav">
-    </div> 
-<%
-=end%>
       <div class="footer-copyright">
         <p>TEPPEI TAGUCHI ALL RIGHTS RESERVED.</p>
       </div>
