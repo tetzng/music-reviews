@@ -1,43 +1,45 @@
-<main class="single-container user-container">
-  <div class="user-wrapper">
-    <div class="single-inner user-inner">
-      <h2>新規登録</h2>
+<% content_for :cover do %>
+  <main class="single-container user-container">
+    <div class="user-wrapper">
+      <div class="single-inner user-inner">
+        <h2>新規登録</h2>
 
-      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-        <%= render "devise/shared/error_messages", resource: resource %>
-        <div class="field">
-          <%= f.text_field :name, autofocus: true, placeholder: " " %>
-          <%= f.label :name, "ニックネーム（必須）" %>
-        </div>
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+          <%= render "devise/shared/error_messages", resource: resource %>
+          <div class="field">
+            <%= f.text_field :name, autofocus: true, placeholder: " " %>
+            <%= f.label :name, "ニックネーム（必須）" %>
+          </div>
 
-        <div class="field file-field">
-          <div id="btn"><i class="far fa-images"></i></div>
-          <%= f.file_field :avatar %>
-          <input type="text" id="user_avatar_name" placeholder="画像をアップロードする（任意）" readonly />
-        </div>
+          <div class="field file-field">
+            <div id="btn"><i class="far fa-images"></i></div>
+            <%= f.file_field :avatar %>
+            <input type="text" id="user_avatar_name" placeholder="画像をアップロードする（任意）" readonly />
+          </div>
 
-        <div class="field">
-          <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: " " %>
-          <%= f.label :email, "メールアドレス（必須）" %>
-        </div>
+          <div class="field">
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: " " %>
+            <%= f.label :email, "メールアドレス（必須）" %>
+          </div>
 
-        <div class="field">
-          <%= f.password_field :password, autocomplete: "new-password", placeholder: " "%>
-          <%= f.label :password, "パスワード（6文字以上）" %>
-        </div>
+          <div class="field">
+            <%= f.password_field :password, autocomplete: "new-password", placeholder: " "%>
+            <%= f.label :password, "パスワード（6文字以上）" %>
+          </div>
 
-        <div class="field">
-          <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: " " %>
-          <%= f.label :password_confirmation, "パスワード（確認用）" %>
-        </div>
+          <div class="field">
+            <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: " " %>
+            <%= f.label :password_confirmation, "パスワード（確認用）" %>
+          </div>
 
-        <div class="actions">
-          <%= f.submit "登録する" %>
-        </div>
-      <% end %>
+          <div class="actions">
+            <%= f.submit "登録する" %>
+          </div>
+        <% end %>
 
-      <%= render "devise/shared/links" %>
+        <%= render "devise/shared/links" %>
 
+      </div>
     </div>
-  </div>
-</main>
+  </main>
+<% end %>
