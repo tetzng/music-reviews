@@ -1,22 +1,32 @@
-<main class="single-container">
-<div class="single-inner">
-<h2><%= "\"#{@keyword}\"の検索結果" %></h2>
-<h3><%= "#{@artists.length}件" %></h3>
+<% @page_title = "\"#{@keyword}\"のアーティスト名での検索結果" %>
 
-  <section class="album-container">
-    <% @artists.each do |artist| %>
-      <%= link_to artist_path(artist.id) do %>
-        <div class="artist-wrap">
-          <% if artist.images.blank? %>
-            <%= image_tag "no_image.png", class: "artist-image" %>
-          <% else %>
-            <%= image_tag "#{artist.images[0]["url"]}", class: "artist-image" %>
+<% content_for :head do %>
+  <meta property="og:title" content=<%= @page_title %> />
+  <meta property="og:type" content="article">
+  <meta property="og:description" content=<%= @page_title %> />
+<% end %>
+
+<% content_for :cover do %>
+  <main class="single-container">
+    <div class="single-inner">
+      <h2><%= "\"#{@keyword}\"の検索結果" %></h2>
+      <h3><%= "#{@artists.length}件" %></h3>
+
+      <section class="album-container">
+        <% @artists.each do |artist| %>
+          <%= link_to artist_path(artist.id) do %>
+            <div class="artist-wrap">
+              <% if artist.images.blank? %>
+                <%= image_tag "no_image.png", class: "artist-image" %>
+              <% else %>
+                <%= image_tag "#{artist.images[0]["url"]}", class: "artist-image" %>
+              <% end %>
+              <br>
+              <%= artist.name %>
+            </div>
           <% end %>
-          <br>
-          <%= artist.name %>
-        </div>
-      <% end %>
-    <% end %>
-  </section>
-  </div>
-</main>
+        <% end %>
+      </section>
+    </div>
+  </main>
+<% end %>

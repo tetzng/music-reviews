@@ -1,40 +1,50 @@
-<main class="single-container">
-<div class="single-inner">
-<h1><%= "\"#{@keyword}\"の検索結果" %></h1>
-<h2><%= "#{@tracks.length}件" %></h2>
+<% @page_title = "\"#{@keyword}\"の楽曲名での検索結果" %>
 
-<% @tracks.each do |track| %>
-  <section class="album-container">
-    <div class="album-left">
-      <div>
-        <%= link_to album_path(track.album.id) do %>
-          <%= image_tag "#{track.album.images[0]["url"]}", class: "album-image track-image" %>
-        <% end %>
-      </div>
-    </div>
-    <div class="album-right">
-      <ol class="tracklist tracklist-large">
-        <li class="tracklist-row">
-          <div class="tracklist-col-left">
+<% content_for :head do %>
+  <meta property="og:title" content=<%= @page_title %> />
+  <meta property="og:type" content="article">
+  <meta property="og:description" content=<%= @page_title %> />
+<% end %>
+
+<% content_for :cover do %>
+  <main class="single-container">
+    <div class="single-inner">
+      <h1><%= "\"#{@keyword}\"の検索結果" %></h1>
+      <h2><%= "#{@tracks.length}件" %></h2>
+
+      <% @tracks.each do |track| %>
+        <section class="album-container">
+          <div class="album-left">
             <div>
-              <%= link_to track_path(track.id) do %>
-                <span><%= track.name %></span>
-              <% end %>
-              &nbsp;/&nbsp;
-              <%= link_to artist_path(track.artists[0].id) do %>
-                <%= track.artists[0].name %>
+              <%= link_to album_path(track.album.id) do %>
+                <%= image_tag "#{track.album.images[0]["url"]}", class: "album-image track-image" %>
               <% end %>
             </div>
-            <div><%= link_to album_path(track.album.id) do %><%= track.album.name %><% end %></div>
-            <div><%= track.album.release_date %></div>
           </div>
-          <div class="tracklist-col-right">
-            <%= Time.at(track.duration_ms / 1000).strftime("%M:%S") %>
+          <div class="album-right">
+            <ol class="tracklist tracklist-large">
+              <li class="tracklist-row">
+                <div class="tracklist-col-left">
+                  <div>
+                    <%= link_to track_path(track.id) do %>
+                      <span><%= track.name %></span>
+                    <% end %>
+                    &nbsp;/&nbsp;
+                    <%= link_to artist_path(track.artists[0].id) do %>
+                      <%= track.artists[0].name %>
+                    <% end %>
+                  </div>
+                  <div><%= link_to album_path(track.album.id) do %><%= track.album.name %><% end %></div>
+                  <div><%= track.album.release_date %></div>
+                </div>
+                <div class="tracklist-col-right">
+                  <%= Time.at(track.duration_ms / 1000).strftime("%M:%S") %>
+                </div>
+              </li>
+            </ol>
           </div>
-        </li>
-      </ol>
+        </section>
+      <% end %>
     </div>
-  </section>
+  </main>
 <% end %>
-</div>
-</main>

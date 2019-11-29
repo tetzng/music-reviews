@@ -1,60 +1,71 @@
-<div class="artist-header" style="background-image: url(<%= "#{@artist.images[0]["url"]}" %>);" >
-<h2><%= link_to artist_path(@artist.id) do %><%= @artist.name %><% end %></h2>
-</div>
-<main class="single-container">
-<div class="single-inner">
-<% i = 0 %>
-  <% @artist.albums.each do |album| %>
-  <% i += 1 %>
-    <section class="album-container">
-      <div class="album-left album-show-left">
-        <div>
-          <%= link_to album_path(album.id) do %>
-            <%= image_tag "#{album.images[0]["url"]}", class: "album-image" %>
-          <% end %>
-        </div>
-        <h2><%= link_to album_path(album.id) do %><%= album.name %><% end %></h2>
-        <p>
-          <%= album.release_date %>
-        </p>
-      </div>
-      <div class="album-right album-show-right">
-        <ol class="tracklist">
-          <% album.tracks.each do |track| %>
-            <li class="tracklist-row">
-              <div class="tracklist-col-left">
-                <%= link_to track_path(track.id) do %>
-                  <%= "#{track.track_number}. #{track.name}" %>
-                <% end %>
-              </div>
-              <div class="tracklist-col-right">
-                <%= Time.at(track.duration_ms / 1000).strftime("%M:%S") %>
-              </div>
-            </li>
-          <% end %>
-        </ol>
-      </div>
-    </section>
-  <% break if i >= 3 %>
-  <% end %>
-  <section class="album-container">
-  <h3 class="related-content"><span><%= @artist.name %></span>に関連するアーティスト</h3>
-  <% i_2 = 0 %>
-  <% @artist.related_artists.each do |artist| %>
-  <% i_2 += 1 %>
-    <%= link_to artist_path(artist.id) do %>
-      <div class="artist-wrap">
-        <% if artist.images.blank? %>
-          <%= image_tag "no_image.png", class: "artist-image" %>
-        <% else %>
-          <%= image_tag "#{artist.images[0]["url"]}", class: "artist-image" %>
-        <% end %>
-        <br>
-        <%= artist.name %>
-      </div>
-    <% end %>
-    <% break if i_2 >= 12 %>
-  <% end %>
-  </section>
+<% @page_title = "\"#{@artist.name}\"の作品一覧" %>
+
+<% content_for :head do %>
+  <meta property="og:title" content=<%= @page_title %> />
+  <meta property="og:type" content="article">
+  <meta property="og:description" content=<%= @page_title %> />
+<% end %>
+
+<% content_for :cover do %>
+  <div class="artist-header" style="background-image: url(<%= "#{@artist.images[0]["url"]}" %>);" >
+    <h2><%= link_to artist_path(@artist.id) do %><%= @artist.name %><% end %></h2>
   </div>
-</main>
+  <main class="single-container">
+    <div class="single-inner">
+      <% i = 0 %>
+      <% @artist.albums.each do |album| %>
+        <% i += 1 %>
+        <section class="album-container">
+          <div class="album-left album-show-left">
+            <div>
+              <%= link_to album_path(album.id) do %>
+                <%= image_tag "#{album.images[0]["url"]}", class: "album-image" %>
+              <% end %>
+            </div>
+            <h2><%= link_to album_path(album.id) do %><%= album.name %><% end %></h2>
+            <p>
+              <%= album.release_date %>
+            </p>
+          </div>
+          <div class="album-right album-show-right">
+            <ol class="tracklist">
+              <% album.tracks.each do |track| %>
+                <li class="tracklist-row">
+                  <div class="tracklist-col-left">
+                    <%= link_to track_path(track.id) do %>
+                      <%= "#{track.track_number}. #{track.name}" %>
+                    <% end %>
+                  </div>
+                  <div class="tracklist-col-right">
+                    <%= Time.at(track.duration_ms / 1000).strftime("%M:%S") %>
+                  </div>
+                </li>
+              <% end %>
+            </ol>
+          </div>
+        </section>
+        <% break if i >= 3 %>
+      <% end %>
+
+      <section class="album-container">
+        <h3 class="related-content"><span><%= @artist.name %></span>に関連するアーティスト</h3>
+        <% i_2 = 0 %>
+        <% @artist.related_artists.each do |artist| %>
+          <% i_2 += 1 %>
+          <%= link_to artist_path(artist.id) do %>
+            <div class="artist-wrap">
+              <% if artist.images.blank? %>
+                <%= image_tag "no_image.png", class: "artist-image" %>
+              <% else %>
+                <%= image_tag "#{artist.images[0]["url"]}", class: "artist-image" %>
+              <% end %>
+              <br>
+              <%= artist.name %>
+            </div>
+          <% end %>
+          <% break if i_2 >= 12 %>
+        <% end %>
+      </section>
+    </div>
+  </main>
+<% end %>

@@ -1,14 +1,23 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
   <head>
-    <title>MusicReviews | 音楽レビューサイト</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title><%= page_title %></title>
     <meta name="description" content="音楽を聴いてレビューするサイト。みんなが評価してる曲を試聴して、レビューしてみよう！新しい音楽と出会えるかも！" />
+    <meta property="og:url" content="http://tg-music-reviews1-214759366.ap-northeast-1.elb.amazonaws.com/" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="tp_237" />
+    <meta property="og:site_name" content="MusicReviews" />
+    <meta property="og:locale" content="ja_JP" />
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/b0496766e2.js" crossorigin="anonymous"></script>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= yield :head %>
   </head>
 
   <body>
@@ -33,37 +42,34 @@
         </div>
       </div>
       <div class="header-inner">
-      <div class="header-left">
-        <h1>
-          <%= link_to root_path do %>
-            MusicReviews
-          <% end %>
-        </h1>
-      </div>
-      <nav class="navbar">
-        <ul>
-          <li>
-            <%= form_with url: tracks_path, method: :get, local: true, class: "search-form" do |f| %>
-              <%= f.text_field :keyword, class: "search-field", placeholder: "曲名で検索", value: (@keyword if @keyword.present?) %>
-              <%= f.label :submit do %>
-                <i class="fas fa-search"></i>
-              <% end %>
-              <%= f.submit 'Search', id: "submit" %>
+        <div class="header-left">
+          <h1>
+            <%= link_to root_path do %>
+              MusicReviews
             <% end %>
-          </li>
-          <li></li>
+          </h1>
+        </div>
+        <nav class="navbar">
+          <ul>
+            <li>
+              <%= form_with url: tracks_path, method: :get, local: true, class: "search-form" do |f| %>
+                <%= f.text_field :keyword, class: "search-field", placeholder: "曲名で検索", value: (@keyword if @keyword.present?) %>
+                <%= f.label :submit do %>
+                  <i class="fas fa-search"></i>
+                <% end %>
+                <%= f.submit 'Search', id: "submit" %>
+              <% end %>
+            </li>
+            <li></li>
           </ul>
         </nav>
       </div>
     </header>
+
     <%= yield %>
+    <%= yield :cover %>
+
     <footer>
-    <%
-=begin%>
- <div class="footer-nav">
-    </div> 
-<%
-=end%>
       <div class="footer-copyright">
         <p>TEPPEI TAGUCHI ALL RIGHTS RESERVED.</p>
       </div>
