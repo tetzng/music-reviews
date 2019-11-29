@@ -1,6 +1,12 @@
 <% @page_title = "\"#{@track.name}\"の詳細とレビュー" %>
 
 <% content_for :head do %>
+  <meta property="og:title" content=<%= @page_title %> />
+  <meta property="og:type" content="article">
+  <meta property="og:description" content=<%= @page_title %> />
+<% end %>
+
+<% content_for :head do %>
   <meta property="og:audio" content="<%= @track.preview_url %>" />
   <meta property="og:audio:title" content="<%= @track.name %>" />
   <meta property="og:audio:artist" content="<%= @artist.name %>" />
