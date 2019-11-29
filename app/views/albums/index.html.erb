@@ -1,46 +1,48 @@
 <% @page_title = "\"#{@keyword}\"のアルバム名での検索結果" %>
 
-<main class="single-container">
-  <div class="single-inner clearfix">
-    <h2><%= "\"#{@keyword}\"の検索結果" %></h2>
-    <h3><%= "#{@albums.total}件" %></h3>
+<% content_for :cover do %>
+  <main class="single-container">
+    <div class="single-inner clearfix">
+      <h2><%= "\"#{@keyword}\"の検索結果" %></h2>
+      <h3><%= "#{@albums.total}件" %></h3>
 
-    <% @albums.each do |album| %>
-      <section class="album-container album-container-half">
-        <div class="album-left">
-          <div>
-            <%= link_to album_path(album.id) do %>
-              <% if album.images.blank? %>
-                <%= image_tag "no_image.png", class: "album-image track-image" %>
-              <% else %>
-                <%= image_tag "#{album.images[0]["url"]}", class: "album-image track-image" %>
+      <% @albums.each do |album| %>
+        <section class="album-container album-container-half">
+          <div class="album-left">
+            <div>
+              <%= link_to album_path(album.id) do %>
+                <% if album.images.blank? %>
+                  <%= image_tag "no_image.png", class: "album-image track-image" %>
+                <% else %>
+                  <%= image_tag "#{album.images[0]["url"]}", class: "album-image track-image" %>
+                <% end %>
               <% end %>
-            <% end %>
+            </div>
           </div>
-        </div>
-        <div class="album-right">
-          <ol class="tracklist tracklist-large">
-            <li class="tracklist-row">
-              <div class="tracklist-col-left">
-                <div class="truncate">
-                  <%= link_to album_path(album.id) do %>
-                    <span><%= album.name %></span> - <%= album.album_type %>
-                  <% end %>
-                </div>
-                <div>
-                  <% album.artists.each_with_index do |artist, index| %>
-                    <% if index != 0 %>&nbsp;/&nbsp;<% end %>
-                    <%= link_to artist_path(artist.id) do %>
-                      <%= artist.name %>
+          <div class="album-right">
+            <ol class="tracklist tracklist-large">
+              <li class="tracklist-row">
+                <div class="tracklist-col-left">
+                  <div class="truncate">
+                    <%= link_to album_path(album.id) do %>
+                      <span><%= album.name %></span> - <%= album.album_type %>
                     <% end %>
-                  <% end %>
+                  </div>
+                  <div>
+                    <% album.artists.each_with_index do |artist, index| %>
+                      <% if index != 0 %>&nbsp;/&nbsp;<% end %>
+                      <%= link_to artist_path(artist.id) do %>
+                        <%= artist.name %>
+                      <% end %>
+                    <% end %>
+                  </div>
+                  <div><%= album.release_date %></div>
                 </div>
-                <div><%= album.release_date %></div>
-              </div>
-            </li>
-          </ol>
-        </div>
-      </section>
-    <% end %>
-  </div>
-</main>
+              </li>
+            </ol>
+          </div>
+        </section>
+      <% end %>
+    </div>
+  </main>
+<% end %>
