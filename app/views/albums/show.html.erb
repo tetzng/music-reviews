@@ -1,10 +1,10 @@
 <main class="single-container">
-<div class="single-inner">
+  <div class="single-inner">
     <section class="album-container">
       <div class="album-left album-show-left">
         <div>
           <%= link_to album_path(@album.id) do %>
-            <%=  image_tag "#{@album.images[0]["url"]}", class: "album-image" %>
+            <%= image_tag "#{@album.images[0]["url"]}", class: "album-image" %>
           <% end %>
         </div>
         <h2>
@@ -33,5 +33,5 @@
         </ol>
       </div>
     </section>
-    </div>
+  </div>
 </main>
