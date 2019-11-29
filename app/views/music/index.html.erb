@@ -4,60 +4,62 @@
   <meta property="og:description" content="音楽を聴いてレビューするサイト。みんなが評価してる曲を試聴して、レビューしてみよう！新しい音楽と出会えるかも！" />
 <% end %>
 
-<main class="single-container top-container">
-  <div class="top-bg-mask">
+<% content_for :cover do %>
+  <main class="single-container top-container">
+    <div class="top-bg-mask">
+      <div class="single-inner">
+        <h1>MusicReviews</h1>
+        <h2>音楽を聴いてレビューするサイト</h2>
+        <p>
+          音楽が一度に持ち歩けるようになって、同じ曲を何度も繰り返し聴く機会が減ってしまいました。<br>
+          一曲ごとの想いを共有しよう！<br>
+          みんなが評価してる曲を試聴して、レビューしてみよう！<br>
+          新しい音楽と出会えるかも！
+        </p>
+      </div>
+    </div>
+  </main>
+
+  <main class="single-container top-search-container">
     <div class="single-inner">
-      <h1>MusicReviews</h1>
-      <h2>音楽を聴いてレビューするサイト</h2>
-      <p>
-        音楽が一度に持ち歩けるようになって、同じ曲を何度も繰り返し聴く機会が減ってしまいました。<br>
-        一曲ごとの想いを共有しよう！<br>
-        みんなが評価してる曲を試聴して、レビューしてみよう！<br>
-        新しい音楽と出会えるかも！
-      </p>
-    </div>
-  </div>
-</main>
+      <div>
+        <%= form_with url: artists_path, method: :get, local: true, class: "top-search-form" do |f| %>
+          <div class="form-group">
+            <%= f.label :keyword, "アーティスト名", class: "name-label" %>
+            <%= f.text_field :keyword, placeholder: "アーティスト名で検索" %>
+            <%= f.label :submit_artist do %>
+              <i class="fas fa-search"></i>
+            <% end %>
+            <%= f.submit 'Search', id: "submit_artist" %>
+          </div>
+        <% end %>
+      </div>
 
-<main class="single-container top-search-container">
-  <div class="single-inner">
-    <div>
-      <%= form_with url: artists_path, method: :get, local: true, class: "top-search-form" do |f| %>
-        <div class="form-group">
-          <%= f.label :keyword, "アーティスト名", class: "name-label" %>
-          <%= f.text_field :keyword, placeholder: "アーティスト名で検索" %>
-          <%= f.label :submit_artist do %>
-            <i class="fas fa-search"></i>
-          <% end %>
-          <%= f.submit 'Search', id: "submit_artist" %>
-        </div>
-      <% end %>
-    </div>
+      <div>
+        <%= form_with url: albums_path, method: :get, local: true, class: "top-search-form" do |f| %>
+          <div class="form-group">
+            <%= f.label :keyword, "アルバム名", class: "name-label" %>
+            <%= f.text_field :keyword, placeholder: "アルバム名で検索" %>
+            <%= f.label :submit_album do %>
+              <i class="fas fa-search"></i>
+            <% end %>
+            <%= f.submit 'Search', id: "submit_album" %>
+          </div>
+        <% end %>
+      </div>
 
-    <div>
-      <%= form_with url: albums_path, method: :get, local: true, class: "top-search-form" do |f| %>
-        <div class="form-group">
-          <%= f.label :keyword, "アルバム名", class: "name-label" %>
-          <%= f.text_field :keyword, placeholder: "アルバム名で検索" %>
-          <%= f.label :submit_album do %>
-            <i class="fas fa-search"></i>
-          <% end %>
-          <%= f.submit 'Search', id: "submit_album" %>
-        </div>
-      <% end %>
+      <div>
+        <%= form_with url: tracks_path, method: :get, local: true, class: "top-search-form" do |f| %>
+          <div class="form-group">
+            <%= f.label :keyword, "曲名", class: "name-label" %>
+            <%= f.text_field :keyword, placeholder: "曲名で検索" %>
+            <%= f.label :submit_track do %>
+              <i class="fas fa-search"></i>
+            <% end %>
+            <%= f.submit 'Search', id: "submit_track" %>
+          </div>
+        <% end %>
+      </div>
     </div>
-
-    <div>
-      <%= form_with url: tracks_path, method: :get, local: true, class: "top-search-form" do |f| %>
-        <div class="form-group">
-          <%= f.label :keyword, "曲名", class: "name-label" %>
-          <%= f.text_field :keyword, placeholder: "曲名で検索" %>
-          <%= f.label :submit_track do %>
-            <i class="fas fa-search"></i>
-          <% end %>
-          <%= f.submit 'Search', id: "submit_track" %>
-        </div>
-      <% end %>
-    </div>
-  </div>
-</main>
+  </main>
+<% end %>
