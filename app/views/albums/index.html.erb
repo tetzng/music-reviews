@@ -1,4 +1,10 @@
-<% @page_title = "\"#{@keyword}\"のアルバム名での検索結果" %>
+<% @page_title = "アルバム名\"#{@keyword}\"の検索結果" %>
+
+<% content_for :head do %>
+  <meta property="og:title" content=<%= @page_title %> />
+  <meta property="og:type" content="article">
+  <meta property="og:description" content=<%= @page_title %> />
+<% end %>
 
 <% content_for :cover do %>
   <main class="single-container">
