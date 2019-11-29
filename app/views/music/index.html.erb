@@ -1,19 +1,18 @@
-
-
 <main class="single-container top-container">
-<div class="top-bg-mask">
-  <div class="single-inner">
-    <h1>MusicReviews</h1>
-    <h2>音楽を聴いてレビューするサイト</h2>
-    <p>
-      音楽が一度に持ち歩けるようになって、同じ曲を何度も繰り返し聴く機会が減ってしまいました。<br>
-      一曲ごとの想いを共有しよう！<br>
-      みんなが評価してる曲を試聴して、レビューしてみよう！<br>
-      新しい音楽と出会えるかも！
-    </p>
-  </div>
+  <div class="top-bg-mask">
+    <div class="single-inner">
+      <h1>MusicReviews</h1>
+      <h2>音楽を聴いてレビューするサイト</h2>
+      <p>
+        音楽が一度に持ち歩けるようになって、同じ曲を何度も繰り返し聴く機会が減ってしまいました。<br>
+        一曲ごとの想いを共有しよう！<br>
+        みんなが評価してる曲を試聴して、レビューしてみよう！<br>
+        新しい音楽と出会えるかも！
+      </p>
+    </div>
   </div>
 </main>
+
 <main class="single-container top-search-container">
   <div class="single-inner">
     <div>
@@ -54,20 +53,5 @@
         </div>
       <% end %>
     </div>
-  <%
-=begin%>
- <ul>
-  <% if user_signed_in? %>
-  <li><%= link_to  "Sign out", destroy_user_session_path, method: :delete %></li>
-  <% else %>
-  <li><%= link_to  "Sign in", new_user_session_path %></li>
-  <li><%= link_to  "Sign up", new_user_registration_path %></li>
-  <% end %>
-  </ul> 
-<%
-=end%>
   </div>
 </main>
-
-
-
