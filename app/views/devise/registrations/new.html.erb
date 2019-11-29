@@ -9,11 +9,13 @@
           <%= f.text_field :name, autofocus: true, placeholder: " " %>
           <%= f.label :name, "ニックネーム（必須）" %>
         </div>
+
         <div class="field file-field">
           <div id="btn"><i class="far fa-images"></i></div>
           <%= f.file_field :avatar %>
           <input type="text" id="user_avatar_name" placeholder="画像をアップロードする（任意）" readonly />
         </div>
+
         <div class="field">
           <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: " " %>
           <%= f.label :email, "メールアドレス（必須）" %>
