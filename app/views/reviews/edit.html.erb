@@ -1,0 +1,133 @@
+<% @page_title = "\"#{@track.name}\"のレビュー編集" %>
+
+<% content_for :head do %>
+  <meta property="og:title" content=<%= @page_title %> />
+  <meta property="og:type" content="article">
+  <meta property="og:description" content=<%= @page_title %> />
+<% end %>
+
+<% content_for :head do %>
+  <meta property="og:audio" content="<%= @track.preview_url %>" />
+  <meta property="og:audio:title" content="<%= @track.name %>" />
+  <meta property="og:audio:artist" content="<%= @artist.name %>" />
+  <meta property="og:audio:album" content="<%= @album.name %>" />
+  <meta property="og:audio:type" content="mp3" />
+<% end %>
+
+<% content_for :cover do %>
+  <main class="single-container">
+    <div class="single-inner">
+      <section class="album-container">
+        <div class="album-left track-left">
+          <div>
+            <%= link_to album_path(@album.id) do %>
+              <%= image_tag "#{@album.images[0]["url"]}", class: "album-image track-image track-show-image" %>
+            <% end %>
+          </div>
+        </div>
+        <div class="album-right track-right">
+          <ol class="tracklist tracklist-large">
+            <li class="tracklist-row">
+              <div class="tracklist-col-left">
+                <div>
+                  <%= link_to track_path(@track.spotify_id) do %>
+                    <span><%= @track.name %></span>
+                  <% end %>
+                  &nbsp;/&nbsp;
+                  <%= link_to artist_path(@artist.id) do %>
+                    <%= @artist.name %>
+                  <% end %>
+                </div>
+                <div><%= link_to album_path(@album.id) do %><%= @album.name %><% end %> - <%= @album.album_type %></div>
+                <div><%= @album.release_date %></div>
+              </div>
+              <div class="tracklist-col-right">
+                <%= Time.at(@track.duration_ms / 1000).strftime("%M:%S") %>
+              </div>
+            </li>
+          </ol>
+          <div class="star-rating">
+            <% if @average_score != "-" %>
+              <div class="star-rating-front" style="width: <%= @average_score * 20 %>%">★★★★★</div>
+            <% end %>
+            <div class="star-rating-back">★★★★★</div>
+            <div class="rating-score">
+              <%= @average_score %>
+            </div>
+          </div>
+          <% if @track.preview_url.present? %>
+            <div class="track-preview">
+              <audio controls="" name="media" data-vscid="mipqfx065"><source src="<%= @track.preview_url %>" type="audio/mpeg"></audio>
+            </div>
+          <% end %>
+
+        </div>
+      </section>
+      <section class="review-container">
+        <div class="review-form-wrap">
+          <%= form_with model: @review, url: track_review_path(@track), method: :patch, local: true, class: "review-form" do |f| %>
+            <div class="review-form-rate">
+            <%= f.label :rate, "評価：" %>
+            <%= f.number_field :rate, in: 0.0..5.0, step: 0.5, value: @review.rate %>
+            </div>
+            <div class="review-form-review">
+            <%= f.label :review, "レビュー：" %>
+            <%= f.text_area :review, placeholder: "この曲の好きなところを書いてみよう！ （レビュー無記入でも投稿できます）", value: @review.review %>
+            </div>
+            <div class="clearfix">
+            <%= f.submit '更新する', class: "review-submit-btn" %>
+            </div>
+          <% end %>
+        </div>
+      </section>
+      <section class="review-container your-review-container">
+        <h3>あなたのレビュー</h3>
+        <div class="review-content">
+          <div class="review-content-left">
+            <% if current_user.avatar.attached? %>
+              <%= image_tag current_user.avatar, class: "review-user-image" %>
+            <% else %>
+              <%= image_tag "no_image.png", class: "review-user-image" %>
+            <% end %>
+          </div>
+          <div class="review-content-right">
+            <div class="review-user-name">
+              <%= current_user.name %>
+            </div>
+            <div class="review-edit">
+              <%= link_to edit_track_review_path(@review.track_spotify_id, @review.id) do %>
+                <i class="far fa-edit"></i>
+              <% end %>
+            </div>
+            <div class="review-delete">
+              <%= link_to track_review_path(@review.track_spotify_id, @review.id), method: :delete do %>
+                <i class="far fa-trash-alt"></i>
+              <% end %>
+            </div>
+            <div class="review-date"><%= @review.created_at.strftime("%Y-%m-%d %H:%M") %></div>
+            <div class="star-rating star-rating-small">
+              <% if @review.rate.present? %>
+                <div class="star-rating-front" style="width: <%= @review.rate * 20 %>%">★★★★★</div>
+              <% end %>
+              <div class="star-rating-back">★★★★★</div>
+              <div class="rating-score rating-score-small">
+                <% if @review.rate.present? %>
+                  <%= @review.rate %>
+                <% else %>
+                  -
+                <% end %>
+              </div>
+            </div>
+          </div>
+          <div class="review-main-content">
+            <% if @review.review.present? %>
+              <%= simple_format(h(@review.review)) %>
+            <% else %>
+              -
+            <% end %>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+<% end %>
