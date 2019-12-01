@@ -715,7 +715,11 @@ textarea {
   background-image: image-url("top_banner.png");
   background-size: contain;
 }
-
+@media (max-width: 767px) {
+  .user-container {
+    padding: 5%;
+  }
+}
 
 .user-wrapper{
   min-height: calc(100vh - 468px);
@@ -739,11 +743,10 @@ textarea {
   width: 100%;
   min-width: 380px;
   h2{
-      color: #fff;
-      font-size: 32px;
-      font-weight: bold;
-      margin-bottom: 28px;
-
+    color: #fff;
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 28px;
   }
   form{
     margin-bottom: 32px;
@@ -789,6 +792,7 @@ textarea {
       input[type=checkbox]{
         line-height: 24px;
         height: 24px;
+        margin: 4px 0;
         & + label{
           left: 30px;
           top: 0;
@@ -865,13 +869,50 @@ textarea {
     }
   }
 }
+@media (max-width: 767px) {
+  .user-inner{
+    padding: 40px 5% 40px;
+    min-width: 280px;
+    h2{
+      text-align: center;
+    }
+    form{
+      margin-bottom: 32px;
+      .field{
+        margin-bottom: 24px;
+        input[type=checkbox]{
+          margin: 8px 0;
+        }
+      }
+      .actions{
+        input{
+          margin: 16px 0 8px;
+        }
+      }
+    }
+    .file-field{
+      #user_avatar_name{
+        font-size: smaller;
+      }
+    }
+    .signin-now{
+      text-align: center;
+    }
+    .signup-now{
+      text-align: center;
+    }
+    .forgot-password{
+      text-align: center;
+    }
+  }
+}
 
 #nav-toggle {
   display: none;
 }
 #gloval-nav {
-  background: #333;
-  color: #fff;
+  background: #0f0f0f;
+  color: #eee;
   position: fixed;
   top: 0;
   left: 0;
@@ -891,9 +932,9 @@ textarea {
 @media (max-width: 767px) {
   #nav-toggle {
     display: block;
-    position: fixed;
-    top: 25px;
-    right: 5%;
+    position: relative;
+    top: 0;
+    left: calc(100% - 200px);
     height: 32px;
     cursor: pointer;
     > div {
