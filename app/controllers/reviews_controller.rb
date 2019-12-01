@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class ReviewsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_review, only: %i[edit update destroy]
 
   def create
