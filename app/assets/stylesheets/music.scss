@@ -465,18 +465,16 @@ textarea {
   flex-flow: row wrap;
   justify-content: flex-start;
 }
-// @media (max-width: 767px){
-//   .album-container{
-//     padding: 0;
-//     display: grid;
-//     grid-template-columns: 1fr 1fr;
-//   }
-// }
-@media (min-width: 768px) {
+.album-container-half {
+  width: 50%;
+  float: left;
+  padding-right: 16px;
+}
+@media (max-width: 767px) {
   .album-container-half {
-    width: 50%;
-    float: left;
-    padding-right: 16px;
+    width: 100%;
+    float: none;
+    padding-right: 0px;
   }
 }
 .album-left {
@@ -624,8 +622,11 @@ textarea {
 .rating-score-small {
   left: 90px;
 }
+.your-review-container {
+  margin-bottom: 48px;
+}
 .review-content {
-  margin: 20px 0px;
+  margin: 8px 0px 24px;
   padding: 10px;
   border-radius: 5px;
   clear: both;
@@ -640,6 +641,11 @@ textarea {
   width: 900px;
   float: right;
   padding-left: 8px;
+}
+@media (max-width: 1067px) {
+  .review-content-right {
+    width: calc(100% - 70px);
+  }
 }
 .review-user-image {
   width: 70px;
@@ -783,7 +789,6 @@ textarea {
     padding: 5%;
   }
 }
-
 .user-wrapper {
   min-height: calc(100vh - 468px);
   background-color: transparent;
@@ -968,7 +973,6 @@ textarea {
     }
   }
 }
-
 #nav-toggle {
   display: none;
 }
@@ -1088,7 +1092,6 @@ textarea {
       }
     }
   }
-
   /* open */
   .open {
     overflow: hidden;
@@ -1103,9 +1106,6 @@ textarea {
     }
   }
 }
-.artist-container {
-}
-
 @media (max-width: 767px) {
   .artist-container {
     padding: 0;
@@ -1114,8 +1114,6 @@ textarea {
     grid-column-start: 1;
     grid-column-end: 3;
   }
-}
-.album-inner {
 }
 @media (max-width: 767px) {
   .album-inner {
