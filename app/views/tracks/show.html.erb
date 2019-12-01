@@ -80,9 +80,50 @@
           <% end %>
         </div>
       </section>
+      <section class="review-container your-review-container">
+        <% if @your_review.present? %>
+          <h3>あなたのレビュー</h3>
+          <div class="review-content">
+            <div class="review-content-left">
+              <% if current_user.avatar.attached? %>
+                <%= image_tag current_user.avatar, class: "review-user-image" %>
+              <% else %>
+                <%= image_tag "no_image.png", class: "review-user-image" %>
+              <% end %>
+            </div>
+            <div class="review-content-right">
+              <div class="review-user-name">
+                <%= current_user.name %>
+              </div>
+              <div class="review-date"><%= @your_review.created_at.strftime("%Y-%m-%d %H:%M") %></div>
+              <div class="star-rating star-rating-small">
+                <% if @your_review.rate.present? %>
+                  <div class="star-rating-front" style="width: <%= @your_review.rate * 20 %>%">★★★★★</div>
+                <% end %>
+                <div class="star-rating-back">★★★★★</div>
+                <div class="rating-score rating-score-small">
+                  <% if @your_review.rate.present? %>
+                    <%= @your_review.rate %>
+                  <% else %>
+                    -
+                  <% end %>
+                </div>
+              </div>
+            </div>
+            <div class="review-main-content">
+              <% if @your_review.review.present? %>
+                <%= simple_format(h(@your_review.review)) %>
+              <% else %>
+                -
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      </section>
       <section class="review-container">
-        <% if @reviews.present? %>
-          <% @reviews.each do |review| %>
+        <h3>みんなのレビュー</h3>
+        <% if @everyones_reviews.present? %>
+          <% @everyones_reviews.each do |review| %>
             <div class="review-content">
               <div class="review-content-left">
                 <% if review.user.present? && review.user.avatar.attached? %>
