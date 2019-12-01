@@ -14,9 +14,7 @@ class TracksController < ApplicationController
 
   def show
     @track = Track.find_or_initialize_by(spotify_id: params[:spotify_id])
-    if @track.new_record?
-      track_update_attr
-    end
+    track_update_attr if @track.new_record?
     @album = @spotify_track.album
     @artist = @spotify_track.artists[0]
     @reviews = @track.reviews
@@ -40,9 +38,9 @@ class TracksController < ApplicationController
   end
 
   def track_update_attr
-      @track.update_attributes!(name: @spotify_track.name,
-                                track_number: @spotify_track.track_number,
-                                duration_ms: @spotify_track.duration_ms,
-                                preview_url: @spotify_track.preview_url)
+    @track.update_attributes!(name: @spotify_track.name,
+                              track_number: @spotify_track.track_number,
+                              duration_ms: @spotify_track.duration_ms,
+                              preview_url: @spotify_track.preview_url)
   end
 end
