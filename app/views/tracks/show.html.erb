@@ -95,6 +95,16 @@
               <div class="review-user-name">
                 <%= current_user.name %>
               </div>
+              <div class="review-edit">
+                <%= link_to edit_track_review_path(@your_review.track_spotify_id, @your_review.id) do %>
+                  <i class="far fa-edit"></i>
+                <% end %>
+              </div>
+              <div class="review-delete">
+                <%= link_to track_review_path(@your_review.track_spotify_id, @your_review.id), method: :delete do %>
+                  <i class="far fa-trash-alt"></i>
+                <% end %>
+              </div>
               <div class="review-date"><%= @your_review.created_at.strftime("%Y-%m-%d %H:%M") %></div>
               <div class="star-rating star-rating-small">
                 <% if @your_review.rate.present? %>
