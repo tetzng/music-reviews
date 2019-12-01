@@ -23,6 +23,12 @@ class TracksController < ApplicationController
     @artist = track.artists[0]
     # @review = Review.new
     @reviews = @track.reviews
+    @your_review = @reviews.find_by(user_id: current_user.id) if user_signed_in?
+    @everyones_reviews = if user_signed_in?
+                           @reviews.where.not(user_id: current_user.id)
+                         else
+                           @reviews
+                         end
     @average_score = if @reviews.find { |arr| !arr.rate.nil? }.present?
                        @reviews.average(:rate).round(1)
                      else
