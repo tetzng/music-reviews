@@ -644,7 +644,7 @@ textarea {
 }
 @media (max-width: 1067px) {
   .review-content-right {
-    width: calc(100% - 70px);
+    width: calc(100% - 72px);
   }
 }
 .review-user-image {
@@ -654,6 +654,37 @@ textarea {
 }
 .review-user-name {
   font-size: 16px;
+  display: inline-block;
+}
+.review-edit{
+  position: absolute;
+  right: calc(50% - 448px);
+  display: inline;
+}
+@media (max-width: 1067px) {
+  .review-edit{
+    right: calc(50% - 304px);
+  }
+}
+@media (max-width: 767px) {
+  .review-edit{
+    right: calc(5% + 40px);
+  }
+}
+.review-delete{
+  position: absolute;
+  right: calc(50% - 480px);
+  display: inline;
+}
+@media (max-width: 1067px) {
+  .review-delete{
+    right: calc(50% - 336px);
+  }
+}
+@media (max-width: 767px) {
+  .review-delete{
+    right: calc(5% + 16px);
+  }
 }
 .review-date {
   font-size: 14px;
