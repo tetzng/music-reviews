@@ -35,7 +35,7 @@ class ReviewsController < ApplicationController
       @review.destroy
       redirect_to track_path(params[:track_spotify_id])
     else
-      redirect_to track_path(params[:track_spotify_id])
+      root_path
     end
   end
 
