@@ -11,7 +11,7 @@
     <h2><%= link_to artist_path(@artist.id) do %><%= @artist.name %><% end %></h2>
   </div>
   <main class="single-container">
-    <div class="single-inner">
+    <div class="single-inner album-inner">
       <% i = 0 %>
       <% @artist.albums.each do |album| %>
         <% i += 1 %>
@@ -27,7 +27,7 @@
               <%= album.release_date %>
             </p>
           </div>
-          <div class="album-right album-show-right">
+          <div class="album-right album-show-right album-artist-right">
             <ol class="tracklist">
               <% album.tracks.each do |track| %>
                 <li class="tracklist-row">
@@ -44,10 +44,10 @@
             </ol>
           </div>
         </section>
-        <% break if i >= 3 %>
+        <% break if i >= 6 %>
       <% end %>
 
-      <section class="album-container">
+      <section class="album-container artist-container">
         <h3 class="related-content"><span><%= @artist.name %></span>に関連するアーティスト</h3>
         <% i_2 = 0 %>
         <% @artist.related_artists.each do |artist| %>

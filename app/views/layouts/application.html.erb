@@ -24,7 +24,37 @@
     <header class="header">
       <div class="header-top">
         <div class="header-top-inner">
-          <h1 class="header-heading"></h1>
+          <h1 class="header-heading-sp">
+            <%= link_to root_path do %>
+              MusicReviews
+            <% end %>
+          </h1>
+          <h1 class="header-heading-pc"></h1>
+          <div id="nav-toggle">
+            <div>
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </div>
+          <div id="gloval-nav">
+            <nav>
+              <ul>
+                <% if user_signed_in? %>
+                  <li>
+                    <%= link_to "ログアウト", destroy_user_session_path, method: :DELETE %>
+                  </li>
+                <% else %>
+                  <li>
+                    <%= link_to "新規登録", new_user_registration_path %>
+                  </li>
+                  <li>
+                    <%= link_to "ログイン", new_user_session_path %>
+                  </li>
+                <% end %>
+              </ul>
+            </nav>
+          </div>
           <ul class="header-top-nav">
             <% if user_signed_in? %>
               <li>
