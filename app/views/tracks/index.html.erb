@@ -25,7 +25,7 @@
             <ol class="tracklist tracklist-large">
               <li class="tracklist-row">
                 <div class="tracklist-col-left">
-                  <div>
+                  <div class="track-name-wrap">
                     <%= link_to track_path(track.id) do %>
                       <span><%= track.name %></span>
                     <% end %>
@@ -34,7 +34,7 @@
                       <%= track.artists[0].name %>
                     <% end %>
                   </div>
-                  <div><%= link_to album_path(track.album.id) do %><%= track.album.name %><% end %></div>
+                  <div class="album-name-wrap"><%= link_to album_path(track.album.id) do %><%= track.album.name %><% end %></div>
                   <div><%= track.album.release_date %></div>
                 </div>
                 <div class="tracklist-col-right">

@@ -1,43 +1,60 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<% @page_title = "プロフィール編集" %>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
-    <% end %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "current-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Update" %>
-  </div>
+<% content_for :head do %>
+  <meta property="og:title" content=<%= @page_title %> />
+  <meta property="og:type" content="article">
+  <meta property="og:description" content=<%= @page_title %> />
 <% end %>
 
-<h3>Cancel my account</h3>
+<% content_for :cover do %>
+  <main class="single-container user-container">
+    <div class="user-wrapper">
+      <div class="single-inner user-inner">
+        <h2>プロフィール編集</h2>
 
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+          <%= render "devise/shared/error_messages", resource: resource %>
+          <div class="field">
+            <%= f.text_field :name, autofocus: true, placeholder: " " %>
+            <%= f.label :name, "ニックネーム（必須）" %>
+          </div>
+          <div class="field file-field">
+            <div id="btn"><i class="far fa-images"></i></div>
+            <%= f.file_field :avatar %>
+            <input type="text" id="user_avatar_name" placeholder="画像をアップロードする（任意）" readonly />
+          </div>
+          <div class="field">
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: " " %>
+            <%= f.label :email, "メールアドレス（必須）" %>
+          </div>
 
-<%= link_to "Back", :back %>
+          <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+            <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+          <% end %>
+
+          <div class="field">
+            <%= f.password_field :password, autocomplete: "new-password" %>
+            <%= f.label :password,"新しいパスワード（6文字以上）" %> <i>(変更する場合のみ入力してください)</i><br />
+          </div>
+
+          <div class="field">
+            <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+            <%= f.label :password_confirmation, "新しいパスワード（確認）" %><br />
+          </div>
+
+          <div class="field">
+            <%= f.password_field :current_password, autocomplete: "current-password" %>
+            <%= f.label :current_password, "現在のパスワード" %> <i>(確認のため現在のパスワードが必要です)</i><br />
+          </div>
+
+          <div class="actions">
+            <%= f.submit "変更する" %>
+          </div>
+        <% end %>
+        <h3 class="account-cancel-head">アカウントの削除</h3>
+        <p><%= button_to "アカウントを削除する", registration_path(resource_name), data: { confirm: "本当に削除しますか？" }, method: :delete, class: "account-cancel-btn" %></p>
+        <%= link_to "前のページに戻る", :back %>
+      </div>
+    </div>
+  </main>
+<% end %>

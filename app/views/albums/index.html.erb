@@ -34,7 +34,7 @@
                       <span><%= album.name %></span> - <%= album.album_type %>
                     <% end %>
                   </div>
-                  <div>
+                  <div class="truncate">
                     <% album.artists.each_with_index do |artist, index| %>
                       <% if index != 0 %>&nbsp;/&nbsp;<% end %>
                       <%= link_to artist_path(artist.id) do %>

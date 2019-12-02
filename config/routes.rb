@@ -1,14 +1,13 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  get 'artists/index'
-  get 'albums/index'
   devise_for :users
-  resources :music
-  resources :artists, param: :spotify_id
-  resources :albums, param: :spotify_id
-  resources :tracks, param: :spotify_id do
-    resources :reviews
+  resources :users, only: :show
+  resources :music, only: :index
+  resources :artists, param: :spotify_id, only: [:index,:show]
+  resources :albums, param: :spotify_id, only: [:index,:show]
+  resources :tracks, param: :spotify_id, only: [:index,:show] do
+    resources :reviews, only: [:create,:edit, :update, :destroy]
     collection do
       get :search
     end

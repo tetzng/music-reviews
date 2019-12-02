@@ -59,6 +59,10 @@ body {
   background: #0f0f0f;
   font-family: "Noto Sans JP", sans-serif;
   -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+}
+input{
+  -webkit-appearance: none;
 }
 input[type="text"],
 input[type="number"],
@@ -375,28 +379,32 @@ textarea {
 }
 @media (max-width: 767px) {
   .artist-image {
-    width: 80%;
-    height: 80%;
+    width: 120px;
+    height: 120px;
     border-radius: 50%;
   }
 }
 .artist-wrap {
   width: 250px;
-  height: 250px;
+  height: 256px;
   margin-bottom: 20px;
   text-align: center;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 @media (max-width: 1067px) {
   .artist-wrap {
     width: 228px;
-    height: 250px;
   }
 }
 @media (max-width: 767px) {
   .artist-wrap {
-    width: 100%;
-    height: 100%;
+    width: 144px;
+    height: 176px;
   }
+}
+.artist-name-wrap{
+  padding: 0 8px;
 }
 .artist-header {
   height: 400px;
@@ -576,6 +584,18 @@ textarea {
     display: none;
   }
 }
+.track-name-wrap{
+  width: 100%;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.album-name-wrap{
+  width: 100%;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
 .tracklist-large {
   margin: 0;
   span {
@@ -655,6 +675,10 @@ textarea {
 .review-user-name {
   font-size: 16px;
   display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: calc(100% - 56px);
 }
 .review-edit{
   position: absolute;
@@ -891,6 +915,7 @@ textarea {
         line-height: 24px;
         height: 24px;
         margin: 4px 0;
+        -webkit-appearance: checkbox;
         & + label {
           left: 30px;
           top: 0;
@@ -898,6 +923,12 @@ textarea {
           line-height: 24px;
           color: #ddd;
         }
+      }
+      i{
+        color: #ccc;
+        display: inline-block;
+        width: 100%;
+        text-align: center;
       }
     }
     .actions {
@@ -1140,15 +1171,79 @@ textarea {
 @media (max-width: 767px) {
   .artist-container {
     padding: 0;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
     grid-column-start: 1;
     grid-column-end: 3;
+    justify-content: center;
   }
 }
 @media (max-width: 767px) {
   .album-inner {
     display: grid;
     grid-template-columns: 1fr 1fr;
+  }
+}
+.account-cancel-head{
+  color: #ddd;
+}
+.account-cancel-btn{
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: bold;
+  margin: 8px 0 12px;
+  width: 100%;
+  max-width: 100%;
+  vertical-align: middle;
+  padding: 16px;
+  background: #e71e1e;
+  display: inline-block;
+  min-width: 98px;
+  min-height: 37px;
+  line-height: 1em;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.55);
+  cursor: pointer;
+  border: 0;
+  color: #eee;
+  opacity: .9;
+}
+.mypage-container{
+  padding-bottom: 56px;
+}
+.mypage-image{
+  border-radius: 20px;
+}
+.mypage-edit{
+  a{
+    display: inline-block;
+    position: absolute;
+    background: #333;
+    padding: 8px;
+    border-radius: 16px;
+    top: 0;
+    right: 0;
+  }
+  span{
+    font-weight: normal;
+    font-size: 16px;
+  }
+}
+.mypage-edit-text{
+  font-weight: normal;
+  font-size: 16px;
+}
+.mypage-edit-icon{
+  display: none;
+}
+@media (max-width: 767px) {
+  .mypage-edit{
+    a{
+      padding: 8px 12px;
+      border-radius: 100%;
+    }
+  }
+  .mypage-edit-text{
+    display: none;
+  }
+  .mypage-edit-icon{
+    display: inline;
   }
 }
