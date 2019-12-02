@@ -1,2 +1,98 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<% @page_title = "\"#{@user.name}\"のレビュー・評価" %>
+
+<% content_for :head do %>
+  <meta property="og:title" content=<%= @page_title %> />
+  <meta property="og:type" content="article">
+  <meta property="og:description" content=<%= @page_title %> />
+<% end %>
+
+<% content_for :cover do %>
+  <main class="single-container">
+    <div class="single-inner">
+      <section class="album-container mypage-container">
+        <div class="album-left track-left">
+          <div>
+            <%= link_to user_path(@user.id) do %>
+              <%= image_tag @user.avatar, class: "track-image track-show-image mypage-image" %>
+            <% end %>
+          </div>
+        </div>
+        <div class="album-right track-right">
+          <ol class="tracklist tracklist-large">
+            <li class="tracklist-row">
+              <div class="tracklist-col-left">
+                <div>
+                  <%= link_to user_path(@user.id) do %>
+                    <span><%= @user.name %></span>
+                  <% end %>
+                </div>
+                <div>総レビュー : <%= @user.reviews.length %>件</div>
+              </div>
+            </li>
+          </ol>
+        </div>
+      </section>
+      <section class="review-container your-review-container">
+        <% if @user.reviews.present? %>
+          <h3><%= @user.name %>さんのレビュー一覧</h3>
+          <% @user.reviews.each do |review| %>
+            <div class="review-content">
+              <div class="review-content-left">
+                <% track = RSpotify::Track.find(review.track.spotify_id) %>
+                <%= link_to album_path(track.album.id) do %>
+                  <%= image_tag "#{track.album.images[0]["url"]}", class: "review-user-image" %>
+                <% end %>
+              </div>
+              <div class="review-content-right">
+                <div class="review-user-name">
+                  <%= link_to track_path(track.id) do %>
+                    <span><%= track.name %></span>
+                  <% end %>
+                  &nbsp;/&nbsp;
+                  <%= link_to artist_path(track.artists[0].id) do %>
+                    <%= track.artists[0].name %>
+                  <% end %>
+                </div>
+                <div class="review-edit">
+                  <%= link_to edit_track_review_path(track.id, review.id) do %>
+                    <i class="far fa-edit"></i>
+                  <% end %>
+                </div>
+                <div class="review-delete">
+                  <%= link_to track_review_path(track.id, review.id), method: :delete do %>
+                    <i class="far fa-trash-alt"></i>
+                  <% end %>
+                </div>
+                <div class="review-date"><%= review.created_at.strftime("%Y-%m-%d %H:%M") %></div>
+                <div class="star-rating star-rating-small">
+                  <% if review.rate.present? %>
+                    <div class="star-rating-front" style="width: <%= review.rate * 20 %>%">★★★★★</div>
+                  <% end %>
+                  <div class="star-rating-back">★★★★★</div>
+                  <div class="rating-score rating-score-small">
+                    <% if review.rate.present? %>
+                      <%= review.rate %>
+                    <% else %>
+                      -
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+              <div class="review-main-content">
+                <% if review.review.present? %>
+                  <%= simple_format(h(review.review)) %>
+                <% else %>
+                  -
+                <% end %>
+              </div>
+            </div>
+          <% end %>
+        <% else %>
+          <div class="no-review">
+            まだレビューは投稿されていません。
+          </div>
+        <% end %>
+      </section>
+    </div>
+  </main>
+<% end %>
