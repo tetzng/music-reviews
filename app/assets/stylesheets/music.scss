@@ -903,6 +903,12 @@ textarea {
           color: #ddd;
         }
       }
+      i{
+        color: #ccc;
+        display: inline-block;
+        width: 100%;
+        text-align: center;
+      }
     }
     .actions {
       input {
@@ -1155,4 +1161,33 @@ textarea {
     display: grid;
     grid-template-columns: 1fr 1fr;
   }
+}
+.account-cancel-head{
+  color: #ddd;
+}
+.account-cancel-btn{
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: bold;
+  margin: 8px 0 12px;
+  width: 100%;
+  max-width: 100%;
+  vertical-align: middle;
+  padding: 16px;
+  background: #e71e1e;
+  display: inline-block;
+  min-width: 98px;
+  min-height: 37px;
+  line-height: 1em;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.55);
+  cursor: pointer;
+  border: 0;
+  color: #eee;
+  opacity: .9;
+}
+.mypage-container{
+  padding-bottom: 56px;
+}
+.mypage-image{
+  border-radius: 20px;
 }
