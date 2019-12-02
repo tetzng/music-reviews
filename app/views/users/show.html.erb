@@ -44,6 +44,7 @@
         <% if @user.reviews.present? %>
           <h3><%= @user.name %>さんのレビュー・評価</h3>
           <% @user.reviews.each do |review| %>
+            <% next if review.track.spotify_id.blank? %>
             <div class="review-content">
               <div class="review-content-left">
                 <% track = RSpotify::Track.find(review.track.spotify_id) %>
