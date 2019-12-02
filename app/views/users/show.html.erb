@@ -1,4 +1,4 @@
-<% @page_title = "\"#{@user.name}\"のレビュー・評価" %>
+<% @page_title = "\"#{@user.name}\"さんのレビュー・評価" %>
 
 <% content_for :head do %>
   <meta property="og:title" content=<%= @page_title %> />
@@ -27,6 +27,14 @@
                   <% end %>
                 </div>
                 <div>総レビュー : <%= @user.reviews.length %>件</div>
+                <% if user_signed_in? && @user.id == current_user.id %>
+                  <div class="mypage-edit">
+                    <%= link_to edit_user_registration_path do %>
+                      <span class="mypage-edit-text">プロフィール編集</span>
+                      <i class="fas fa-cog mypage-edit-icon"></i>
+                    <% end %>
+                  </div>
+                <% end %>
               </div>
             </li>
           </ol>
@@ -34,7 +42,7 @@
       </section>
       <section class="review-container your-review-container">
         <% if @user.reviews.present? %>
-          <h3><%= @user.name %>さんのレビュー一覧</h3>
+          <h3><%= @user.name %>さんのレビュー・評価</h3>
           <% @user.reviews.each do |review| %>
             <div class="review-content">
               <div class="review-content-left">
@@ -53,16 +61,18 @@
                     <%= track.artists[0].name %>
                   <% end %>
                 </div>
-                <div class="review-edit">
-                  <%= link_to edit_track_review_path(track.id, review.id) do %>
-                    <i class="far fa-edit"></i>
-                  <% end %>
-                </div>
-                <div class="review-delete">
-                  <%= link_to track_review_path(track.id, review.id), method: :delete do %>
-                    <i class="far fa-trash-alt"></i>
-                  <% end %>
-                </div>
+                <% if user_signed_in? && @user.id == current_user.id %>
+                  <div class="review-edit">
+                    <%= link_to edit_track_review_path(track.id, review.id) do %>
+                      <i class="far fa-edit"></i>
+                    <% end %>
+                  </div>
+                  <div class="review-delete">
+                    <%= link_to track_review_path(track.id, review.id), method: :delete do %>
+                      <i class="far fa-trash-alt"></i>
+                    <% end %>
+                  </div>
+                <% end %>
                 <div class="review-date"><%= review.created_at.strftime("%Y-%m-%d %H:%M") %></div>
                 <div class="star-rating star-rating-small">
                   <% if review.rate.present? %>
