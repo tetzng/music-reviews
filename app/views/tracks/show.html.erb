@@ -29,7 +29,7 @@
           <ol class="tracklist tracklist-large">
             <li class="tracklist-row">
               <div class="tracklist-col-left">
-                <div>
+                <div class="track-name-wrap">
                   <%= link_to track_path(@track.spotify_id) do %>
                     <span><%= @track.name %></span>
                   <% end %>
@@ -38,7 +38,7 @@
                     <%= @artist.name %>
                   <% end %>
                 </div>
-                <div><%= link_to album_path(@album.id) do %><%= @album.name %><% end %> - <%= @album.album_type %></div>
+                <div class="album-name-wrap"><%= link_to album_path(@album.id) do %><%= @album.name %><% end %> - <%= @album.album_type %></div>
                 <div><%= @album.release_date %></div>
               </div>
               <div class="tracklist-col-right">
@@ -85,15 +85,19 @@
           <h3>あなたのレビュー</h3>
           <div class="review-content">
             <div class="review-content-left">
-              <% if current_user.avatar.attached? %>
-                <%= image_tag current_user.avatar, class: "review-user-image" %>
-              <% else %>
-                <%= image_tag "no_image.png", class: "review-user-image" %>
+              <%= link_to user_path(current_user.id) do %>
+                <% if current_user.avatar.attached? %>
+                  <%= image_tag current_user.avatar, class: "review-user-image" %>
+                <% else %>
+                  <%= image_tag "no_image.png", class: "review-user-image" %>
+                <% end %>
               <% end %>
             </div>
             <div class="review-content-right">
               <div class="review-user-name">
-                <%= current_user.name %>
+                <%= link_to user_path(current_user.id) do %>
+                  <%= current_user.name %>
+                <% end %>
               </div>
               <div class="review-edit">
                 <%= link_to edit_track_review_path(@your_review.track_spotify_id, @your_review.id) do %>
@@ -137,7 +141,13 @@
             <div class="review-content">
               <div class="review-content-left">
                 <% if review.user.present? && review.user.avatar.attached? %>
-                  <%= image_tag review.user.avatar, class: "review-user-image" %>
+                  <%= link_to user_path(review.user.id) do %>
+                    <% if review.user.avatar.attached? %>
+                      <%= image_tag review.user.avatar, class: "review-user-image" %>
+                    <% else %>
+                      <%= image_tag "no_image.png", class: "review-user-image" %>
+                    <% end %>
+                  <% end %>
                 <% else %>
                   <%= image_tag "no_image.png", class: "review-user-image" %>
                 <% end %>
@@ -145,7 +155,9 @@
               <div class="review-content-right">
                 <div class="review-user-name">
                   <% if review.user.present? %>
-                    <%= review.user.name %>
+                    <%= link_to user_path(review.user.id) do %>
+                      <%= review.user.name %>
+                    <% end %>
                   <% else %>
                     ゲストさん
                   <% end %>
