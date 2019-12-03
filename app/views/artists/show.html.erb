@@ -7,19 +7,29 @@
 <% end %>
 
 <% content_for :cover do %>
-  <div class="artist-header" style="background-image: url(<%= "#{@artist.images[0]["url"]}" %>);" >
-    <h2><%= link_to artist_path(@artist.id) do %><%= @artist.name %><% end %></h2>
-  </div>
+  <% if @artist.images.blank? %>
+    <div class="artist-header">
+      <h2><%= link_to artist_path(@artist.id) do %><%= @artist.name %><% end %></h2>
+    </div>
+  <% else %>
+    <div class="artist-header" style="background-image: url(<%= "#{@artist.images[0]["url"]}" %>);" >
+      <h2><%= link_to artist_path(@artist.id) do %><%= @artist.name %><% end %></h2>
+    </div>
+  <% end %>
   <main class="single-container">
     <div class="single-inner album-inner">
-      <% i = 0 %>
+      <% album_count = 0 %>
       <% @artist.albums.each do |album| %>
-        <% i += 1 %>
+        <% album_count += 1 %>
         <section class="album-container">
           <div class="album-left album-show-left">
             <div>
               <%= link_to album_path(album.id) do %>
-                <%= image_tag "#{album.images[0]["url"]}", class: "album-image" %>
+                <% if album.images.blank? %>
+                  <%= image_tag "no_image.png", class: "album-image" %>
+                <% else %>
+                  <%= image_tag "#{album.images[0]["url"]}", class: "album-image" %>
+                <% end %>
               <% end %>
             </div>
             <h2><%= link_to album_path(album.id) do %><%= album.name %><% end %></h2>
@@ -44,14 +54,14 @@
             </ol>
           </div>
         </section>
-        <% break if i >= 6 %>
+        <% break if album_count >= 6 %>
       <% end %>
 
       <section class="album-container artist-container">
         <h3 class="related-content"><span><%= @artist.name %></span>に関連するアーティスト</h3>
-        <% i_2 = 0 %>
+        <% artist_count = 0 %>
         <% @artist.related_artists.each do |artist| %>
-          <% i_2 += 1 %>
+          <% artist_count += 1 %>
           <%= link_to artist_path(artist.id) do %>
             <div class="artist-wrap">
               <% if artist.images.blank? %>
@@ -63,7 +73,7 @@
               <%= artist.name %>
             </div>
           <% end %>
-          <% break if i_2 >= 12 %>
+          <% break if artist_count >= 12 %>
         <% end %>
       </section>
     </div>
