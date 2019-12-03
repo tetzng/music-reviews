@@ -1,0 +1,48 @@
+<section class="review-container your-review-container">
+  <h3>あなたのレビュー</h3>
+  <div class="review-content">
+    <div class="review-content-left">
+      <% if current_user.avatar.attached? %>
+        <%= image_tag current_user.avatar, class: "review-user-image" %>
+      <% else %>
+        <%= image_tag "no_image.png", class: "review-user-image" %>
+      <% end %>
+    </div>
+    <div class="review-content-right">
+      <div class="review-user-name">
+        <%= current_user.name %>
+      </div>
+      <div class="review-edit">
+        <%= link_to edit_track_review_path(@review.track_spotify_id, @review.id) do %>
+          <i class="far fa-edit"></i>
+        <% end %>
+      </div>
+      <div class="review-delete">
+        <%= link_to track_review_path(@review.track_spotify_id, @review.id), method: :delete do %>
+          <i class="far fa-trash-alt"></i>
+        <% end %>
+      </div>
+      <div class="review-date"><%= @review.created_at.strftime("%Y-%m-%d %H:%M") %></div>
+      <div class="star-rating star-rating-small">
+        <% if @review.rate.present? %>
+          <div class="star-rating-front" style="width: <%= @review.rate * 20 %>%">★★★★★</div>
+        <% end %>
+        <div class="star-rating-back">★★★★★</div>
+        <div class="rating-score rating-score-small">
+          <% if @review.rate.present? %>
+            <%= @review.rate %>
+          <% else %>
+            -
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="review-main-content">
+      <% if @review.review.present? %>
+        <%= simple_format(h(@review.review)) %>
+      <% else %>
+        -
+      <% end %>
+    </div>
+  </div>
+</section>
