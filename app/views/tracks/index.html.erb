@@ -17,7 +17,11 @@
           <div class="album-left">
             <div>
               <%= link_to album_path(track.album.id) do %>
-                <%= image_tag "#{track.album.images[0]["url"]}", class: "album-image track-image" %>
+                <% if track.album.images.blank? %>
+                  <%= image_tag "no_image.png", class: "album-image track-image" %>
+                <% else %>
+                  <%= image_tag "#{track.album.images[0]["url"]}", class: "album-image track-image" %>
+                <% end %>
               <% end %>
             </div>
           </div>
