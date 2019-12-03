@@ -51,8 +51,6 @@
             <%= f.submit "変更する" %>
           </div>
         <% end %>
-        <h3 class="account-cancel-head">アカウントの削除</h3>
-        <p><%= button_to "アカウントを削除する", registration_path(resource_name), data: { confirm: "本当に削除しますか？" }, method: :delete, class: "account-cancel-btn" %></p>
         <%= link_to "前のページに戻る", :back %>
       </div>
     </div>
