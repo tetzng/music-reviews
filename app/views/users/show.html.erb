@@ -9,103 +9,11 @@
 <% content_for :cover do %>
   <main class="single-container">
     <div class="single-inner">
-      <section class="album-container mypage-container">
-        <div class="album-left track-left">
-          <div>
-            <%= link_to user_path(@user.id) do %>
-              <% if @user.avatar.attached? %>
-                <%= image_tag @user.avatar, class: "track-image track-show-image mypage-image" %>
-              <% else %>
-                <%= image_tag "no_image.png", class: "track-image track-show-image mypage-image" %>
-              <% end %>
-            <% end %>
-          </div>
-        </div>
-        <div class="album-right track-right">
-          <ol class="tracklist tracklist-large">
-            <li class="tracklist-row">
-              <div class="tracklist-col-left">
-                <div>
-                  <%= link_to user_path(@user.id) do %>
-                    <span><%= @user.name %></span>
-                  <% end %>
-                </div>
-                <div>総レビュー : <%= @user.reviews.length %>件</div>
-                <% if user_signed_in? && @user.id == current_user.id %>
-                  <div class="mypage-edit">
-                    <%= link_to edit_user_registration_path do %>
-                      <span class="mypage-edit-text">プロフィール編集</span>
-                      <i class="fas fa-cog mypage-edit-icon"></i>
-                    <% end %>
-                  </div>
-                <% end %>
-              </div>
-            </li>
-          </ol>
-        </div>
-      </section>
+      <%= render "user_info" %>
       <section class="review-container your-review-container">
         <% if @user.reviews.present? %>
           <h3><%= @user.name %>さんのレビュー・評価</h3>
-          <% @user.reviews.each do |review| %>
-            <% next if review.track.spotify_id.blank? %>
-            <div class="review-content">
-              <div class="review-content-left">
-                <% track = RSpotify::Track.find(review.track.spotify_id) %>
-                <%= link_to album_path(track.album.id) do %>
-                  <% if track.album.images.blank? %>
-                    <%= image_tag "no_image.png", class: "review-user-image" %>
-                  <% else %>
-                    <%= image_tag "#{track.album.images[0]["url"]}", class: "review-user-image" %>
-                  <% end %>
-                <% end %>
-              </div>
-              <div class="review-content-right">
-                <div class="review-user-name">
-                  <%= link_to track_path(track.id) do %>
-                    <span><%= track.name %></span>
-                  <% end %>
-                  &nbsp;/&nbsp;
-                  <%= link_to artist_path(track.artists[0].id) do %>
-                    <%= track.artists[0].name %>
-                  <% end %>
-                </div>
-                <% if user_signed_in? && @user.id == current_user.id %>
-                  <div class="review-edit">
-                    <%= link_to edit_track_review_path(track.id, review.id) do %>
-                      <i class="far fa-edit"></i>
-                    <% end %>
-                  </div>
-                  <div class="review-delete">
-                    <%= link_to track_review_path(track.id, review.id), method: :delete do %>
-                      <i class="far fa-trash-alt"></i>
-                    <% end %>
-                  </div>
-                <% end %>
-                <div class="review-date"><%= review.created_at.strftime("%Y-%m-%d %H:%M") %></div>
-                <div class="star-rating star-rating-small">
-                  <% if review.rate.present? %>
-                    <div class="star-rating-front" style="width: <%= review.rate * 20 %>%">★★★★★</div>
-                  <% end %>
-                  <div class="star-rating-back">★★★★★</div>
-                  <div class="rating-score rating-score-small">
-                    <% if review.rate.present? %>
-                      <%= review.rate %>
-                    <% else %>
-                      -
-                    <% end %>
-                  </div>
-                </div>
-              </div>
-              <div class="review-main-content">
-                <% if review.review.present? %>
-                  <%= simple_format(h(review.review)) %>
-                <% else %>
-                  -
-                <% end %>
-              </div>
-            </div>
-          <% end %>
+          <%= render partial: 'user_reviews', collection: @user.reviews, as: "review" %>
         <% else %>
           <div class="no-review">
             まだレビューは投稿されていません。
