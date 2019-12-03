@@ -21,7 +21,11 @@
         <div class="album-left track-left">
           <div>
             <%= link_to album_path(@album.id) do %>
-              <%= image_tag "#{@album.images[0]["url"]}", class: "album-image track-image track-show-image" %>
+              <% if @album.images.blank? %>
+                <%= image_tag "no_image.png", class: "album-image track-image track-show-image" %>
+              <% else %>
+                <%= image_tag "#{@album.images[0]["url"]}", class: "album-image track-image track-show-image" %>
+              <% end %>
             <% end %>
           </div>
         </div>
@@ -60,9 +64,9 @@
               <audio controls="" name="media" data-vscid="mipqfx065"><source src="<%= @track.preview_url %>" type="audio/mpeg"></audio>
             </div>
           <% end %>
-
         </div>
       </section>
+
       <section class="review-container">
         <div class="review-form-wrap">
           <%= form_with model: @review, url: track_reviews_path(@track), method: :post, local: true, class: "review-form" do |f| %>
@@ -80,9 +84,10 @@
           <% end %>
         </div>
       </section>
+
       <section class="review-container your-review-container">
+        <h3>あなたのレビュー</h3>
         <% if @your_review.present? %>
-          <h3>あなたのレビュー</h3>
           <div class="review-content">
             <div class="review-content-left">
               <%= link_to user_path(current_user.id) do %>
@@ -132,6 +137,10 @@
               <% end %>
             </div>
           </div>
+        <% else %>
+          <div class="no-review">
+            まだレビューは投稿されていません。
+          </div>
         <% end %>
       </section>
       <section class="review-container">
@@ -140,7 +149,7 @@
           <% @everyones_reviews.each do |review| %>
             <div class="review-content">
               <div class="review-content-left">
-                <% if review.user.present? && review.user.avatar.attached? %>
+                <% if review.user.present? %>
                   <%= link_to user_path(review.user.id) do %>
                     <% if review.user.avatar.attached? %>
                       <%= image_tag review.user.avatar, class: "review-user-image" %>
