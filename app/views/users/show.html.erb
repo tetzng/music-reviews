@@ -13,7 +13,11 @@
         <div class="album-left track-left">
           <div>
             <%= link_to user_path(@user.id) do %>
-              <%= image_tag @user.avatar, class: "track-image track-show-image mypage-image" %>
+              <% if @user.avatar.attached? %>
+                <%= image_tag @user.avatar, class: "track-image track-show-image mypage-image" %>
+              <% else %>
+                <%= image_tag "no_image.png", class: "track-image track-show-image mypage-image" %>
+              <% end %>
             <% end %>
           </div>
         </div>
@@ -49,7 +53,11 @@
               <div class="review-content-left">
                 <% track = RSpotify::Track.find(review.track.spotify_id) %>
                 <%= link_to album_path(track.album.id) do %>
-                  <%= image_tag "#{track.album.images[0]["url"]}", class: "review-user-image" %>
+                  <% if track.album.images.blank? %>
+                    <%= image_tag "no_image.png", class: "review-user-image" %>
+                  <% else %>
+                    <%= image_tag "#{track.album.images[0]["url"]}", class: "review-user-image" %>
+                  <% end %>
                 <% end %>
               </div>
               <div class="review-content-right">
