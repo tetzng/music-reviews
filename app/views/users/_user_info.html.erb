@@ -1,0 +1,35 @@
+<section class="album-container mypage-container">
+  <div class="album-left track-left">
+    <div>
+      <%= link_to user_path(@user.id) do %>
+        <% if @user.avatar.attached? %>
+          <%= image_tag @user.avatar, class: "track-image track-show-image mypage-image" %>
+        <% else %>
+          <%= image_tag "no_image.png", class: "track-image track-show-image mypage-image" %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+  <div class="album-right track-right">
+    <ol class="tracklist tracklist-large">
+      <li class="tracklist-row">
+        <div class="tracklist-col-left">
+          <div>
+            <%= link_to user_path(@user.id) do %>
+              <span><%= @user.name %></span>
+            <% end %>
+          </div>
+          <div>総レビュー : <%= @user.reviews.length %>件</div>
+          <% if user_signed_in? && @user.id == current_user.id %>
+            <div class="mypage-edit">
+              <%= link_to edit_user_registration_path do %>
+                <span class="mypage-edit-text">プロフィール編集</span>
+                <i class="fas fa-cog mypage-edit-icon"></i>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      </li>
+    </ol>
+  </div>
+</section>
