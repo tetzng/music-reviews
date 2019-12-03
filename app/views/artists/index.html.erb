@@ -13,22 +13,7 @@
       <h3><%= "#{@artists.length}件" %></h3>
 
       <section class="album-container artist-container">
-        <% @artists.each do |artist| %>
-          <%= link_to artist_path(artist.id) do %>
-            <div class="artist-wrap">
-              <div class="artist-image-wrap">
-                <% if artist.images.blank? %>
-                  <%= image_tag "no_image.png", class: "artist-image" %>
-                <% else %>
-                  <%= image_tag "#{artist.images[0]["url"]}", class: "artist-image" %>
-                <% end %>
-              </div>
-              <div class="artist-name-wrap">
-                <%= artist.name %>
-              </div>
-            </div>
-          <% end %>
-        <% end %>
+        <%= render partial: 'artist', collection: @artists %>
       </section>
     </div>
   </main>

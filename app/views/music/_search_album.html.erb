@@ -1,0 +1,12 @@
+<div>
+  <%= form_with url: albums_path, method: :get, local: true, class: "top-search-form" do |f| %>
+    <div class="form-group">
+      <%= f.label :keyword, "アルバム名", class: "name-label" %>
+      <%= f.text_field :keyword, placeholder: "アルバム名で検索" %>
+      <%= f.label :submit_album do %>
+        <i class="fas fa-search"></i>
+      <% end %>
+      <%= f.submit 'Search', id: "submit_album" %>
+    </div>
+  <% end %>
+</div>

@@ -1,0 +1,37 @@
+<section class="album-container">
+  <div class="album-left album-show-left">
+    <div>
+      <%= link_to album_path(@album.id) do %>
+        <% if @album.images.blank? %>
+          <%= image_tag "no_image.png", class: "album-image" %>
+        <% else %>
+          <%= image_tag "#{@album.images[0]["url"]}", class: "album-image" %>
+        <% end %>
+      <% end %>
+    </div>
+    <h2>
+      <%= link_to album_path(@album.id) do %>
+        <%= @album.name %>
+      <% end %>
+    </h2>
+    <p>
+      <%= @album.release_date %>
+    </p>
+  </div>
+  <div class="album-right album-show-right">
+    <ol class="tracklist">
+      <% @album.tracks.each do |track| %>
+        <li class="tracklist-row">
+          <div class="tracklist-col-left">
+            <%= link_to track_path(track.id) do %>
+              <%= "#{track.track_number}. #{track.name}" %>
+            <% end %>
+          </div>
+          <div class="tracklist-col-right">
+            <%= Time.at(track.duration_ms / 1000).strftime("%M:%S") %>
+          </div>
+        </li>
+      <% end %>
+    </ol>
+  </div>
+</section>

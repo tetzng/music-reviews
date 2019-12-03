@@ -1,0 +1,60 @@
+<% if user_signed_in? %>
+  <section class="review-container your-review-container">
+    <h3>あなたのレビュー</h3>
+    <% if @your_review.present? %>
+      <div class="review-content">
+        <div class="review-content-left">
+          <%= link_to user_path(current_user.id) do %>
+            <% if current_user.avatar.attached? %>
+              <%= image_tag current_user.avatar, class: "review-user-image" %>
+            <% else %>
+              <%= image_tag "no_image.png", class: "review-user-image" %>
+            <% end %>
+          <% end %>
+        </div>
+        <div class="review-content-right">
+          <div class="review-user-name">
+            <%= link_to user_path(current_user.id) do %>
+              <%= current_user.name %>
+            <% end %>
+          </div>
+          <div class="review-edit">
+            <%= link_to edit_track_review_path(@your_review.track_spotify_id, @your_review.id) do %>
+              <i class="far fa-edit"></i>
+            <% end %>
+          </div>
+          <div class="review-delete">
+            <%= link_to track_review_path(@your_review.track_spotify_id, @your_review.id), method: :delete do %>
+              <i class="far fa-trash-alt"></i>
+            <% end %>
+          </div>
+          <div class="review-date"><%= @your_review.created_at.strftime("%Y-%m-%d %H:%M") %></div>
+          <div class="star-rating star-rating-small">
+            <% if @your_review.rate.present? %>
+              <div class="star-rating-front" style="width: <%= @your_review.rate * 20 %>%">★★★★★</div>
+            <% end %>
+            <div class="star-rating-back">★★★★★</div>
+            <div class="rating-score rating-score-small">
+              <% if @your_review.rate.present? %>
+                <%= @your_review.rate %>
+              <% else %>
+                -
+              <% end %>
+            </div>
+          </div>
+        </div>
+        <div class="review-main-content">
+          <% if @your_review.review.present? %>
+            <%= simple_format(h(@your_review.review)) %>
+          <% else %>
+            -
+          <% end %>
+        </div>
+      </div>
+    <% else %>
+      <div class="no-review">
+        まだレビューを投稿していません。
+      </div>
+    <% end %>
+  </section>
+<% end %>
