@@ -1,0 +1,58 @@
+<section class="review-container">
+  <h3>みんなのレビュー</h3>
+  <% if @everyones_reviews.present? %>
+    <% @everyones_reviews.each do |review| %>
+      <div class="review-content">
+        <div class="review-content-left">
+          <% if review.user.present? %>
+            <%= link_to user_path(review.user.id) do %>
+              <% if review.user.avatar.attached? %>
+                <%= image_tag review.user.avatar, class: "review-user-image" %>
+              <% else %>
+                <%= image_tag "no_image.png", class: "review-user-image" %>
+              <% end %>
+            <% end %>
+          <% else %>
+            <%= image_tag "no_image.png", class: "review-user-image" %>
+          <% end %>
+        </div>
+        <div class="review-content-right">
+          <div class="review-user-name">
+            <% if review.user.present? %>
+              <%= link_to user_path(review.user.id) do %>
+                <%= review.user.name %>
+              <% end %>
+            <% else %>
+              ゲストさん
+            <% end %>
+          </div>
+          <div class="review-date"><%= review.created_at.strftime("%Y-%m-%d %H:%M") %></div>
+          <div class="star-rating star-rating-small">
+            <% if review.rate.present? %>
+              <div class="star-rating-front" style="width: <%= review.rate * 20 %>%">★★★★★</div>
+            <% end %>
+            <div class="star-rating-back">★★★★★</div>
+            <div class="rating-score rating-score-small">
+              <% if review.rate.present? %>
+                <%= review.rate %>
+              <% else %>
+                -
+              <% end %>
+            </div>
+          </div>
+        </div>
+        <div class="review-main-content">
+          <% if review.review.present? %>
+            <%= simple_format(h(review.review)) %>
+          <% else %>
+            -
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  <% else %>
+    <div class="no-review">
+      まだレビューは投稿されていません。
+    </div>
+  <% end %>
+</section>
