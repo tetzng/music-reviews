@@ -14,4 +14,22 @@
       </div>
     <% end %>
   </div>
+  <% if user_signed_in? %>
+    <div class="write_review">
+      <%= link_to new_user_session_path, class: "review-btn" do %>
+        レビューを投稿する
+      <% end %>
+    </div>
+  <% else %>
+    <div class="login_and_review">
+      <%= link_to new_user_session_path, class: "review-btn" do %>
+        ログインしてレビューを投稿する
+      <% end %>
+    </div>
+    <div class="guest_review">
+      <%= link_to new_user_session_path, class: "review-btn" do %>
+        ログインせずにレビューを投稿する
+      <% end %>
+    </div>
+  <% end %>
 </section>
