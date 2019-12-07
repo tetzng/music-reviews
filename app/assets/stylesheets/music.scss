@@ -768,7 +768,7 @@ textarea {
   }
 }
 .review-form-rate {
-  margin: 8px 0;
+  height: 32px;
   label {
     display: inline-block;
     font-weight: 800;
@@ -802,7 +802,7 @@ textarea {
       margin: 5px;
       font-size: 1.25em;
       display: inline-block;
-      font-family: FontAwesome;
+      font-family: "Font Awesome 5 Free";
       font-weight: 900;
       content: "\f005";
     }
