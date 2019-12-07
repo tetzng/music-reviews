@@ -1,15 +1,28 @@
 <section class="review-container write-review-container">
   <div class="review-form-wrap">
     <%= form_with model: @review, url: track_reviews_path(@track), method: :post, local: true, class: "review-form" do |f| %>
-    <div id="close-review-form" class="close-btn">
+      <div id="close-review-form" class="close-btn">
         <div>
           <span></span>
           <span></span>
         </div>
       </div>
       <div class="review-form-rate">
-      <%= f.label :rate, "評価：" %>
-      <%= f.number_field :rate, in: 0.0..5.0, step: 0.5 %>
+        <%= f.label :rate, "評価：" %>
+        <div class="rate" id="checked-rate">
+          <input type="radio" id="star5" name="rate" value="5.0" /><label class = "full last" for="star5" title="Awesome - 5 stars"></label>
+          <input type="radio" id="star4half" name="rate" value="4.5" /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
+          <input type="radio" id="star4" name="rate" value="4.0" /><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
+          <input type="radio" id="star3half" name="rate" value="3.5" /><label class="half" for="star3half" title="Meh - 3.5 stars"></label>
+          <input type="radio" id="star3" name="rate" value="3.0" /><label class = "full" for="star3" title="Meh - 3 stars"></label>
+          <input type="radio" id="star2half" name="rate" value="2.5" /><label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
+          <input type="radio" id="star2" name="rate" value="2.0" /><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
+          <input type="radio" id="star1half" name="rate" value="1.5" /><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
+          <input type="radio" id="star1" name="rate" value="1.0" /><label class = "full" for="star1" title="Sucks big time - 1 star"></label>
+          <input type="radio" id="starhalf" name="rate" value="0.5" /><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
+          <input type="radio" id="star0" name="rate" value="0.0" /><label class = "none" for="star0" title="0"></label>
+        </div>
+        <div class="review-rate-field" id="rate_view">-</div>
       </div>
       <div class="review-form-review">
       <%= f.label :review, "レビュー：" %>
