@@ -768,22 +768,106 @@ textarea {
   }
 }
 .review-form-rate {
-  margin: 8px 0;
+  height: 32px;
   label {
     display: inline-block;
-    width: 80px;
     font-weight: 800;
   }
-  input {
+  .review-rate-field {
     font-size: 16px;
     color: #ffcc33;
     font-weight: 700;
     background-color: #222;
     border-radius: 5px;
     line-height: 24px;
-    text-align: right;
+    text-align: center;
+    display: inline-block;
+    position: relative;
+    bottom: 26px;
+    left: 240px;
+    width: 48px;
+    margin: 2px;
+  }
+  .rate{
+    position: relative;
+    bottom: 28px;
+    right: calc(100% - 224px);
+    label {
+      cursor: pointer;
+    }
+    > input {
+      display: none;
+    }
+    & > label:before {
+      margin: 5px;
+      font-size: 1.25em;
+      display: inline-block;
+      font-family: "Font Awesome 5 Free";
+      font-weight: 900;
+      content: "\f005";
+    }
+    & > .half:before {
+      font-weight: 900;
+      content: "\f089";
+      position: absolute;
+    }
+    & > label {
+      color: #8c8c8c;
+      float: right;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+    & > input:checked ~ label,
+    &:not(:checked) > label:hover,
+    &:not(:checked) > label:hover ~ label {
+      color: #ffcc33;
+    }
+    & > input:checked + label:hover,
+    & > input:checked ~ label:hover,
+    & > label:hover ~ input:checked ~ label,
+    & > input:checked ~ label:hover ~ label {
+      color: #ffee11;
+    }
+    & > .none:before{
+      width: 8px;
+      opacity: 0;
+    }
+    & > .last:before{
+      padding-right: 4px;
+    }
   }
 }
+@media (max-width: 1067px) {
+  .review-form-rate {
+    .rate{
+      right: calc(100% - 224px);
+    }
+  }
+}
+@media (max-width: 767px) {
+  .review-form-rate {
+    .rate{
+      right: calc(100% - 216px);
+    }
+    .review-rate-field{
+      font-size: 16px;
+      color: #ffcc33;
+      font-weight: 700;
+      background-color: #222;
+      border-radius: 5px;
+      line-height: 24px;
+      text-align: center;
+      display: inline-block;
+      position: relative;
+      bottom: 26px;
+      left: 216px;
+      width: 32px;
+      padding: 0 4px;
+      margin: 2px;
+    }
+  }
+}
+
 .review-form-review {
   margin: 8px 0;
   label {
@@ -1306,7 +1390,7 @@ textarea {
   opacity: 0;
   transition: opacity 0.6s ease, visibility 0.6s ease;
   .close-btn{
-    display: block;
+    display: inline-block;
     position: relative;
     top: 0;
     left: 95%;
@@ -1341,6 +1425,13 @@ textarea {
     }
   }
 }
+@media (max-width: 767px) {
+  .review-form-wrap{
+    .close-btn{
+      left: 90%;
+  }
+}
+}
 .write{
   .review-form-wrap{
     visibility: visible;
@@ -1353,6 +1444,9 @@ textarea {
   padding: 5%;
   background: rgba(0, 0, 0, 0.75);
   border-radius: 24px;
+  &--edit{
+    background: initial;
+  }
 }
 @media (max-width: 1067px) {
   .review-form {

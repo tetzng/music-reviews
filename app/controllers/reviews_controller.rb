@@ -10,6 +10,7 @@ class ReviewsController < ApplicationController
   end
 
   def edit
+    redirect_to root_path unless @review.user_id == current_user.id
     @track = Track.find_by(spotify_id: params[:track_spotify_id])
     @spotify_track = RSpotify::Track.find(@track.spotify_id)
     @album = @spotify_track.album
