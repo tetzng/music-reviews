@@ -1248,6 +1248,20 @@ textarea {
     display: inline;
   }
 }
+.write-review-container{
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 8px;
+  margin-bottom: 24px;
+}
+@media (max-width: 767px) {
+  .write-review-container{
+    display: block;
+  }
+}
+.write-review{
+  margin-bottom: 32px;
+}
 .review-btn{
   margin: 0 auto;
   width: 320px;
@@ -1262,6 +1276,19 @@ textarea {
   vertical-align: middle;
   border: 2px solid #1d54b9;
   color: #eee;
+  cursor: pointer;
+  &:hover{
+    opacity: .8;
+  }
+  &--black{
+    background: #0f0f0f;
+  }
+}
+@media (max-width: 767px) {
+  .review-btn{
+    width: 100%;
+    margin-bottom: 24px;
+  }
 }
 .review-form-wrap{
   background: #0f0f0fb8;
@@ -1278,13 +1305,54 @@ textarea {
   justify-content: center;
   opacity: 0;
   transition: opacity 0.6s ease, visibility 0.6s ease;
-  visibility: visible;
-  opacity: 1;
+  .close-btn{
+    display: block;
+    position: relative;
+    top: 0;
+    left: 95%;
+    height: 32px;
+    cursor: pointer;
+    width: 36px;
+    span {
+      width: 100%;
+      height: 1px;
+      left: 0;
+      display: block;
+      background: #eee;
+      position: absolute;
+      transition: transform 0.6s ease-in-out, top 0.5s ease;
+      &:nth-child(1) {
+        top: 0;
+      }
+      &:nth-child(2) {
+        top: 28px;
+      }
+    }
+    span {
+      background: #fff;
+      &:nth-child(1) {
+        top: 15px;
+        transform: rotate(45deg);
+      }
+      &:nth-child(2) {
+        top: 15px;
+        transform: rotate(-45deg);
+      }
+    }
+  }
 }
-
+.write{
+  .review-form-wrap{
+    visibility: visible;
+    opacity: 1;
+  }
+}
 .review-form {
   width: 928px;
   margin: auto;
+  padding: 5%;
+  background: rgba(0, 0, 0, 0.75);
+  border-radius: 24px;
 }
 @media (max-width: 1067px) {
   .review-form {
