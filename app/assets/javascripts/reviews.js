@@ -10,4 +10,10 @@ $(document).on('turbolinks:load', function(){
   $('#close-review-form').on('click', function() {
     $('body').removeClass('write');
   });
+
+  $('#checked-rate input[name="rate"]').on('change', function(){
+    let rateNum = $(this).val();
+    console.log(rateNum);
+    $("#rate_view").html(rateNum);
+  });
 });
