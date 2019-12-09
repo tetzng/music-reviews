@@ -358,9 +358,6 @@ textarea {
     padding: 16px 0;
   }
 }
-.top-search-container {
-  min-height: 300px;
-}
 .single-inner {
   width: 1000px;
   margin: 0 auto;
@@ -660,6 +657,7 @@ textarea {
   margin-bottom: 48px;
 }
 .review-content {
+  width: 100%;
   margin: 8px 0px 24px;
   padding: 10px;
   border-radius: 5px;
@@ -1524,4 +1522,100 @@ textarea {
     font-size: 8px;
     padding-left: 4px;
   }
+}
+.ranking-container{
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+}
+.ranking-nav{
+  display: none;
+}
+@media (max-width: 1067px) {
+  .ranking-nav{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+}
+.ranking-nav-btn{
+  display: block;
+  font-size: 12px;
+  padding: 8px 24px;
+  border-radius: 20px;
+  border: 1px solid #1e70d7;
+  margin: 0 24px;
+}
+.rank_wrap{
+  width: 100%;
+  padding: 8px 8px;
+}
+@media (max-width: 767px){
+  .rank_wrap{
+    padding: 8px 0;
+  }
+}
+.rank{
+  display: inline-block;
+  background: #454545;
+  padding: 4px 12px;
+  border-radius: 20px;
+}
+.ranking-head{
+  width: 100%;
+  padding: 24px 8px 8px;
+}
+.new-reviews-head{
+  width: 100%;
+  padding: 24px 8px 8px;
+}
+@media (max-width: 1067px){
+  .new-reviews-head{
+    padding: 56px 8px 8px;
+  }
+}
+.top-review-content-right{
+  width: calc(100% - 70px);
+}
+@media (max-width: 767px){
+  .ranking-left{
+    width: 30%;
+  }
+  .ranking-image{
+    width: 90%;
+  }
+  .ranking-right{
+    width: 70%;
+    padding: 0;
+  }
+  .ranking-track-name{
+    span{
+      font-size: 16px;
+    }
+  }
+  .ranking-album-name{
+    font-size: 12px;
+  }
+  .ranking-album-release-date{
+    font-size: 12px;
+  }
+  .ranking-star-rating{
+    font-size: 16px;
+    width: 100%;
+  }
+}
+.top-user-image{
+  border-radius: 100%;
+}
+.half-inner{
+  width: 480px;
+}
+@media (max-width: 1067px){
+  .half-inner{
+    width: 700px;
+  }
+}
+.turbolinks-progress-bar{
+  height: 10px;
+  background-color: green;
 }
