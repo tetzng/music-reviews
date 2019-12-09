@@ -1,8 +1,8 @@
 <div>
   <%= form_with url: artists_path, method: :get, local: true, class: "top-search-form" do |f| %>
     <div class="form-group">
-      <%= f.label :keyword, "アーティスト名", class: "name-label" %>
-      <%= f.text_field :keyword, placeholder: "アーティスト名で検索" %>
+      <%= f.label :artist_name, "アーティスト名", class: "name-label" %>
+      <%= f.text_field :artist_name, placeholder: "アーティスト名で検索" %>
       <%= f.label :submit_artist do %>
         <i class="fas fa-search"></i>
       <% end %>
