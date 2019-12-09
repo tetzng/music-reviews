@@ -198,7 +198,7 @@ textarea {
   line-height: 70px;
   .search-field {
     border-radius: 20px;
-    font-size: 18px;
+    font-size: 16px;
     padding: 6px 45px 6px 20px;
     width: 450px;
     border-style: none;
@@ -211,11 +211,20 @@ textarea {
   }
   .fa-search {
     color: #0f0f0f;
-    font-size: 18px;
+    font-size: 16px;
     right: 22px;
     line-height: 70px;
     position: absolute;
     top: 0;
+  }
+}
+@media (max-width: 1067px) {
+  .search-form {
+    .search-field {
+      width: 320px;
+    }
+    .fa-search {
+    }
   }
 }
 @media (max-width: 767px) {
@@ -1457,5 +1466,44 @@ textarea {
   .review-form {
     width: 90%;
     margin: auto;
+  }
+}
+.artist-name-form-wrap{
+  display: none;
+}
+.album-name-form-wrap{
+  display: none;
+}
+.track-name-form-wrap{
+  display: none;
+}
+.search-type-inner{
+  line-height: 70px;
+}
+.search-type-select{
+  border-radius: 20px;
+  border-color: #1e70e7;
+  border-width: 1px;
+  box-shadow: 0 0 3px 1px #1e60d7;
+  font-size: 16px;
+  border-style: solid;
+  height: 30px;
+  outline: none;
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
+  background: #0f0f0f;
+  color: #eee;
+  &:focus{
+    box-shadow: 0 0 7px 2px #1e60d7;
+    border: 1px solid #1e60d7;
+  }
+}
+@media (max-width: 1067px) {
+  .search-type-select{
+
+  }
+}
+@media (max-width: 767px) {
+  .search-type-select{
   }
 }
