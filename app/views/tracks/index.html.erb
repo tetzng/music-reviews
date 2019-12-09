@@ -9,8 +9,8 @@
 <% content_for :cover do %>
   <main class="single-container">
     <div class="single-inner">
-      <h1><%= "\"#{@track_name}\"の検索結果" %></h1>
-      <h2><%= "#{@tracks.length}件" %></h2>
+      <h1 class="search-result-head"><%= "\"#{@track_name}\"の検索結果" %></h1>
+      <h2 class="search-result-count"><%= "#{@tracks.length}件" %></h2>
       <%= render partial: 'track', collection: @tracks %>
     </div>
   </main>
