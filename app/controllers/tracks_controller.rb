@@ -5,10 +5,11 @@ class TracksController < ApplicationController
 
   def index
     @track_name = params[:track_name]
+    @limit = 16
     if @track_name.blank?
       redirect_to root_path
     else
-      @tracks = RSpotify::Track.search(@track_name)
+      @tracks = RSpotify::Track.search(@track_name, limit: @limit)
     end
   end
 
@@ -17,8 +18,6 @@ class TracksController < ApplicationController
     if @track.new_record? || @track.album_id.blank?
       track_update_attr
     end
-    @album = @spotify_track.album
-    @artist = @spotify_track.artists[0]
     @reviews = @track.reviews.includes(:user)
     @your_review = @reviews.find_by(user_id: current_user.id) if user_signed_in?
     @everyones_reviews = if user_signed_in?
