@@ -174,7 +174,7 @@ textarea {
   padding: 0 10px;
   min-height: 70px;
   width: 100%;
-  z-index: 900;
+  z-index: 90;
   font-size: 14px;
   font-weight: 100;
   letter-spacing: 0.5px;
@@ -1131,7 +1131,7 @@ textarea {
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 990;
+  z-index: 100;
   text-align: center;
   display: flex;
   visibility: hidden;
@@ -1197,9 +1197,8 @@ textarea {
       }
     }
   }
-  /* z-index */
   #nav-toggle {
-    z-index: 1000;
+    z-index: 200;
   }
   #gloval-nav {
     a {
@@ -1382,7 +1381,7 @@ textarea {
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 1200;
+  z-index: 300;
   display: flex;
   visibility: hidden;
   flex-direction: column;
