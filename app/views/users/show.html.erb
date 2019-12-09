@@ -11,9 +11,9 @@
     <div class="single-inner">
       <%= render "user_info" %>
       <section class="review-container your-review-container">
-        <% if @user.reviews.present? %>
+        <% if @reviews.present? %>
           <h3><%= @user.name %>さんのレビュー・評価</h3>
-          <%= render partial: 'user_reviews', collection: @user.reviews, as: "review" %>
+          <%= render partial: 'user_reviews', collection: @reviews, as: "review" %>
         <% else %>
           <div class="no-review">
             まだレビューは投稿されていません。
