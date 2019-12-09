@@ -3,7 +3,7 @@
 class AlbumsController < ApplicationController
   def index
     @album_name = params[:album_name]
-    @limit = 20
+    @limit = 16
     @offset = if params[:page].nil?
                 0
               else
