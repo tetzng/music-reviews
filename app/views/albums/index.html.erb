@@ -1,4 +1,4 @@
-<% @page_title = "アルバム名\"#{@keyword}\"の検索結果" %>
+<% @page_title = "アルバム名\"#{@album_name}\"の検索結果" %>
 
 <% content_for :head do %>
   <meta property="og:title" content=<%= @page_title %> />
@@ -9,7 +9,7 @@
 <% content_for :cover do %>
   <main class="single-container">
     <div class="single-inner clearfix">
-      <h2><%= "\"#{@keyword}\"の検索結果" %></h2>
+      <h2><%= "\"#{@album_name}\"の検索結果" %></h2>
       <h3><%= "#{@albums.total}件" %></h3>
       <%= render partial: 'album', collection: @albums %>
     </div>
