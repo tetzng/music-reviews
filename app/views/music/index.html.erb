@@ -22,9 +22,58 @@
 
   <main class="single-container top-search-container">
     <div class="single-inner">
-      <%= render "search_artist" %>
-      <%= render "search_album" %>
-      <%= render "search_track" %>
+      <% @ranking.each.with_index(1) do |track, i| %>
+        <div class="box__cell w40 align-center">
+          <p class="label bgcolor-gray-lighter align-center">
+            <%= i %>
+          </p>
+        </div>
+        <section class="album-container">
+          <div class="album-left track-left">
+            <div>
+              <%= link_to album_path(album_id(track)) do %>
+                <%= image_tag "#{album_image(track)}", class: "album-image track-image track-show-image" %>
+              <% end %>
+            </div>
+          </div>
+          <div class="album-right track-right">
+            <ol class="tracklist tracklist-large">
+              <li class="tracklist-row">
+                <div class="tracklist-col-left">
+                  <div class="track-name-wrap">
+                    <%= link_to track_path(track.spotify_id) do %>
+                      <span><%= track.name %></span>
+                    <% end %>
+                    &nbsp;/&nbsp;
+                    <%= link_to artist_path(artist_id(track)) do %>
+                      <%= artist_name(track) %>
+                    <% end %>
+                  </div>
+                  <div class="album-name-wrap"><%= link_to album_path(album_id(track)) do %><%= album_name(track) %><% end %> - <%= album_type(track) %></div>
+                  <div><%= album_release_date(track) %></div>
+                </div>
+                <div class="tracklist-col-right">
+                  <%= Time.at(track.duration_ms / 1000).strftime("%M:%S") %>
+                </div>
+              </li>
+            </ol>
+            <div class="star-rating">
+              <% if track.average_score != "-" %>
+                <div class="star-rating-front" style="width: <%= track.average_score * 20 %>%">★★★★★</div>
+              <% end %>
+              <div class="star-rating-back">★★★★★</div>
+              <div class="rating-score">
+                <%= track.average_score %>
+              </div>
+            </div>
+            <% if track.preview_url.present? %>
+              <div class="track-preview">
+                <audio controls="" name="media" data-vscid="mipqfx065"><source src="<%= track.preview_url %>" type="audio/mpeg"></audio>
+              </div>
+            <% end %>
+          </div>
+        </section>
+      <% end %>
     </div>
   </main>
 <% end %>
