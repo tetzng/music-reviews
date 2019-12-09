@@ -2,8 +2,8 @@
   <% track = review.track %>
   <div class="album-left track-left ranking-left">
     <div>
-      <%= link_to album_path(album_id(track)) do %>
-        <%= image_tag "#{album_image(track)}", class: "album-image track-image track-show-image ranking-image" %>
+      <%= link_to album_path(track.album_id) do %>
+        <%= image_tag "#{track.album_image}", class: "album-image track-image track-show-image ranking-image" %>
       <% end %>
     </div>
   </div>
@@ -16,12 +16,12 @@
               <span><%= track.name %></span>
             <% end %>
             &nbsp;/&nbsp;
-            <%= link_to artist_path(artist_id(track)) do %>
-              <%= artist_name(track) %>
+            <%= link_to artist_path(track.artist_id) do %>
+              <%= track.artist_name %>
             <% end %>
           </div>
-          <div class="album-name-wrap ranking-album-name"><%= link_to album_path(album_id(track)) do %><%= album_name(track) %><% end %> - <%= album_type(track) %></div>
-          <div class="ranking-album-release-date"><%= album_release_date(track) %></div>
+          <div class="album-name-wrap ranking-album-name"><%= link_to album_path(track.album_id) do %><%= track.album_name %><% end %> - <%= track.album_type %></div>
+          <div class="ranking-album-release-date"><%= track.album_release_date %></div>
         </div>
         <div class="tracklist-col-right">
           <%= Time.at(track.duration_ms / 1000).strftime("%M:%S") %>
