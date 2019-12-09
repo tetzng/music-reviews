@@ -1,8 +1,8 @@
 <div class="review-content">
   <div class="review-content-left">
     <% track = review.track %>
-    <%= link_to album_path(album_id(track)) do %>
-      <%= image_tag "#{album_image(track)}", class: "review-user-image" %>
+    <%= link_to album_path(track.album_id) do %>
+      <%= image_tag "#{track.album_image}", class: "review-user-image" %>
     <% end %>
   </div>
   <div class="review-content-right">
@@ -11,8 +11,8 @@
         <span><%= track.name %></span>
       <% end %>
       &nbsp;/&nbsp;
-      <%= link_to artist_path(artist_id(track)) do %>
-        <%= artist_name(track) %>
+      <%= link_to artist_path(track.artist_id) do %>
+        <%= track.artist_name %>
       <% end %>
     </div>
     <% if user_signed_in? && @user.id == current_user.id %>
