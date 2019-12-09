@@ -4,9 +4,9 @@ require 'rails_helper'
 
 RSpec.describe AlbumsController, type: :controller do
   describe '#index' do
-    context 'with keyword' do
+    context 'with album_name' do
       before do
-        get :index, params: { keyword: 'keyword' }
+        get :index, params: { album_name: 'album_name' }
       end
 
       it 'redners index' do
@@ -14,9 +14,9 @@ RSpec.describe AlbumsController, type: :controller do
       end
     end
 
-    context 'without keyword' do
+    context 'without album_name' do
       before do
-        get :index, params: { keyword: '' }
+        get :index, params: { album_name: '' }
       end
 
       it 'redirects to root_path' do
