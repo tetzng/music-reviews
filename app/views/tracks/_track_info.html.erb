@@ -1,11 +1,11 @@
 <section class="album-container">
   <div class="album-left track-left">
     <div>
-      <%= link_to album_path(@album.id) do %>
-        <% if @album.images.blank? %>
+      <%= link_to album_path(@track.album_id) do %>
+        <% if @track.album_image.blank? %>
           <%= image_tag "no_image.png", class: "album-image track-image track-show-image" %>
         <% else %>
-          <%= image_tag "#{@album.images[0]["url"]}", class: "album-image track-image track-show-image" %>
+          <%= image_tag "#{@track.album_image}", class: "album-image track-image track-show-image" %>
         <% end %>
       <% end %>
     </div>
@@ -19,12 +19,12 @@
               <span><%= @track.name %></span>
             <% end %>
             &nbsp;/&nbsp;
-            <%= link_to artist_path(@artist.id) do %>
-              <%= @artist.name %>
+            <%= link_to artist_path(@track.artist_id) do %>
+              <%= @track.artist_name %>
             <% end %>
           </div>
-          <div class="album-name-wrap"><%= link_to album_path(@album.id) do %><%= @album.name %><% end %> - <%= @album.album_type %></div>
-          <div><%= @album.release_date %></div>
+          <div class="album-name-wrap"><%= link_to album_path(@track.album_id) do %><%= @track.album_name %><% end %> - <%= @track.album_type %></div>
+          <div><%= @track.album_release_date %></div>
         </div>
         <div class="tracklist-col-right">
           <%= Time.at(@track.duration_ms / 1000).strftime("%M:%S") %>
