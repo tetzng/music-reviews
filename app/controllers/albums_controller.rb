@@ -2,7 +2,7 @@
 
 class AlbumsController < ApplicationController
   def index
-    @keyword = params[:keyword]
+    @album_name = params[:album_name]
     @limit = 20
     @offset = if params[:page].nil?
                 0
@@ -10,10 +10,10 @@ class AlbumsController < ApplicationController
                 (params[:page].to_i - 1) * limit
               end
     # "#{@offset + 1}-#{@offset + @limit}件"
-    if @keyword.blank?
+    if @album_name.blank?
       redirect_to root_path
     else
-      @albums = RSpotify::Album.search(@keyword, limit: @limit, offset: @offset)
+      @albums = RSpotify::Album.search(@album_name, limit: @limit, offset: @offset)
     end
   end
 
