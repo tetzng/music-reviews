@@ -174,31 +174,26 @@ textarea {
   padding: 0 10px;
   min-height: 70px;
   width: 100%;
-  z-index: 900;
+  z-index: 90;
   font-size: 14px;
   font-weight: 100;
   letter-spacing: 0.5px;
   li {
     float: right;
     color: #eee;
-    margin-left: 16px;
   }
 }
 @media (max-width: 767px) {
   .navbar {
     padding: 0 5%;
-    min-height: 64px;
-    li {
-      float: none;
-      margin-left: 0px;
-    }
+    min-height: 56px;
   }
 }
 .search-form {
   line-height: 70px;
   .search-field {
     border-radius: 20px;
-    font-size: 18px;
+    font-size: 16px;
     padding: 6px 45px 6px 20px;
     width: 450px;
     border-style: none;
@@ -211,11 +206,20 @@ textarea {
   }
   .fa-search {
     color: #0f0f0f;
-    font-size: 18px;
+    font-size: 16px;
     right: 22px;
     line-height: 70px;
     position: absolute;
     top: 0;
+  }
+}
+@media (max-width: 1067px) {
+  .search-form {
+    .search-field {
+      width: 320px;
+    }
+    .fa-search {
+    }
   }
 }
 @media (max-width: 767px) {
@@ -223,10 +227,15 @@ textarea {
     line-height: 48px;
     .search-field {
       width: 100%;
+      font-size: 12px;
+      height: 30px;
+      padding: 6px 32px 6px 16px;
     }
     .fa-search {
       right: calc(5% + 12px);
       line-height: 48px;
+      font-size: 12px;
+      top: 4px;
     }
   }
 }
@@ -321,10 +330,33 @@ textarea {
     padding-top: 8px;
   }
 }
+@media (max-width: 767px) {
+  .top-container {
+    min-height: 224px;
+    h1 {
+      font-size: 24px;
+      line-height: 36px;
+    }
+    h2{
+      font-size: 16px;
+      line-height: 32px;
+    }
+    p{
+      font-size: 8px;
+      letter-spacing: 0;
+      line-height: 24px;
+    }
+  }
+}
 .top-bg-mask {
   padding: 56px 0;
   height: 100%;
   background: rgba(255, 255, 255, 0.3);
+}
+@media (max-width: 767px) {
+  .top-bg-mask {
+    padding: 16px 0;
+  }
 }
 .top-search-container {
   min-height: 300px;
@@ -332,6 +364,12 @@ textarea {
 .single-inner {
   width: 1000px;
   margin: 0 auto;
+  .search-result-head{
+    font-size: 24px;
+  }
+  .search-result-count{
+    font-size: 16px;
+  }
 }
 @media (max-width: 1067px) {
   .single-inner {
@@ -344,34 +382,9 @@ textarea {
     padding: 0 5%;
   }
 }
-// .btn {
-//   border-color: #1aa34a;
-//   font-size: 12px;
-//   line-height: 1;
-//   border-radius: 500px;
-//   padding: 11px 32px 9px;
-//   color: #fff;
-//   background-color: #1aa34a;
-//   box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1) inset;
-//   display: inline-block;
-//   margin-bottom: 0;
-//   font-weight: 700;
-//   text-align: center;
-//   vertical-align: middle;
-//   touch-action: manipulation;
-//   cursor: pointer;
-//   background-image: none;
-//   border: 1px solid transparent;
-//   user-select: none;
-// }
 .text-white {
   color: #fff;
 }
-// .btn-light {
-//   color: #fff;
-//   box-shadow: 0 0 0 2px #fff inset;
-//   background-color: transparent;
-// }
 .artist-image {
   width: 200px;
   height: 200px;
@@ -1131,7 +1144,7 @@ textarea {
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 990;
+  z-index: 100;
   text-align: center;
   display: flex;
   visibility: hidden;
@@ -1197,9 +1210,8 @@ textarea {
       }
     }
   }
-  /* z-index */
   #nav-toggle {
-    z-index: 1000;
+    z-index: 200;
   }
   #gloval-nav {
     a {
@@ -1382,7 +1394,7 @@ textarea {
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 1200;
+  z-index: 300;
   display: flex;
   visibility: hidden;
   flex-direction: column;
@@ -1458,5 +1470,58 @@ textarea {
   .review-form {
     width: 90%;
     margin: auto;
+  }
+}
+.search-form-wrap{
+  display: none;
+  margin-left: 16px;
+}
+@media (max-width: 767px) {
+  .search-form-wrap{
+    width: calc(100% - 112px);
+  }
+}
+@media (max-width: 767px) {
+  .search-type-wrap{
+    margin-left: 0;
+  }
+}
+.search-type-inner{
+  line-height: 70px;
+}
+@media (max-width: 767px) {
+  .search-type-inner{
+    line-height: 48px;
+  }
+}
+.search-type-select{
+  border-radius: 20px;
+  border-color: #1e70e7;
+  border-width: 1px;
+  box-shadow: 0 0 3px 1px #1e60d7;
+  font-size: 12px;
+  border-style: solid;
+  height: 30px;
+  outline: none;
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
+  background: #0f0f0f;
+  color: #eee;
+  padding-left: 8px;
+  &:focus{
+    box-shadow: 0 0 7px 2px #1e60d7;
+    border: 1px solid #1e60d7;
+  }
+}
+@media (max-width: 1067px) {
+  .search-type-select{
+
+  }
+}
+@media (max-width: 767px) {
+  .search-type-select{
+    width: 96px;
+    font-size: 8px;
+    padding-left: 4px;
   }
 }

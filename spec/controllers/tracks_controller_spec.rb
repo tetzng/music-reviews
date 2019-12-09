@@ -4,9 +4,9 @@ require 'rails_helper'
 
 RSpec.describe TracksController, type: :controller do
   describe '#index' do
-    context 'with keyword' do
+    context 'with track_name' do
       before do
-        get :index, params: { keyword: 'keyword' }
+        get :index, params: { track_name: 'track_name' }
       end
 
       it 'redners index' do
@@ -14,9 +14,9 @@ RSpec.describe TracksController, type: :controller do
       end
     end
 
-    context 'without keyword' do
+    context 'without track_name' do
       before do
-        get :index, params: { keyword: '' }
+        get :index, params: { track_name: '' }
       end
 
       it 'redirects to root_path' do

@@ -1,4 +1,4 @@
-<% @page_title = "\"#{@keyword}\"のアーティスト名での検索結果" %>
+<% @page_title = "\"#{@artist_name}\"のアーティスト名での検索結果" %>
 
 <% content_for :head do %>
   <meta property="og:title" content=<%= @page_title %> />
@@ -9,8 +9,8 @@
 <% content_for :cover do %>
   <main class="single-container">
     <div class="single-inner">
-      <h2><%= "\"#{@keyword}\"の検索結果" %></h2>
-      <h3><%= "#{@artists.length}件" %></h3>
+      <h1 class="search-result-head"><%= "\"#{@artist_name}\"の検索結果" %></h1>
+      <h2 class="search-result-count"><%= "#{@artists.length}件" %></h2>
 
       <section class="album-container artist-container">
         <%= render partial: 'artist', collection: @artists %>

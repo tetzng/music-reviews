@@ -4,11 +4,11 @@ class TracksController < ApplicationController
   before_action :set_track, only: :show
 
   def index
-    @keyword = params[:keyword]
-    if @keyword.blank?
+    @track_name = params[:track_name]
+    if @track_name.blank?
       redirect_to root_path
     else
-      @tracks = RSpotify::Track.search(@keyword)
+      @tracks = RSpotify::Track.search(@track_name)
     end
   end
 
