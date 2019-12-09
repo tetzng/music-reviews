@@ -1,0 +1,93 @@
+<div class="album-container">
+  <% track = review.track %>
+  <div class="album-left track-left ranking-left">
+    <div>
+      <%= link_to album_path(album_id(track)) do %>
+        <%= image_tag "#{album_image(track)}", class: "album-image track-image track-show-image ranking-image" %>
+      <% end %>
+    </div>
+  </div>
+  <div class="album-right track-right ranking-right">
+    <ol class="tracklist tracklist-large">
+      <li class="tracklist-row">
+        <div class="tracklist-col-left">
+          <div class="track-name-wrap ranking-track-name">
+            <%= link_to track_path(track.spotify_id) do %>
+              <span><%= track.name %></span>
+            <% end %>
+            &nbsp;/&nbsp;
+            <%= link_to artist_path(artist_id(track)) do %>
+              <%= artist_name(track) %>
+            <% end %>
+          </div>
+          <div class="album-name-wrap ranking-album-name"><%= link_to album_path(album_id(track)) do %><%= album_name(track) %><% end %> - <%= album_type(track) %></div>
+          <div class="ranking-album-release-date"><%= album_release_date(track) %></div>
+        </div>
+        <div class="tracklist-col-right">
+          <%= Time.at(track.duration_ms / 1000).strftime("%M:%S") %>
+        </div>
+      </li>
+    </ol>
+    <div class="star-rating ranking-star-rating">
+      <% if track.average_score != "-" %>
+        <div class="star-rating-front" style="width: <%= track.average_score * 20 %>%">★★★★★</div>
+      <% end %>
+      <div class="star-rating-back">★★★★★</div>
+      <div class="rating-score">
+        <%= track.average_score %>
+      </div>
+    </div>
+    <% if track.preview_url.present? %>
+      <div class="track-preview">
+        <audio controls="" name="media" data-vscid="mipqfx065"><source src="<%= track.preview_url %>" type="audio/mpeg"></audio>
+      </div>
+    <% end %>
+  </div>
+  <div class="review-content">
+    <div class="review-content-left">
+      <% if review.user.present? %>
+        <%= link_to user_path(review.user.id) do %>
+          <% if review.user.avatar.attached? %>
+            <%= image_tag review.user.avatar, class: "review-user-image top-user-image" %>
+          <% else %>
+            <%= image_tag "no_image.png", class: "review-user-image top-user-image" %>
+          <% end %>
+        <% end %>
+      <% else %>
+        <%= image_tag "no_image.png", class: "review-user-image top-user-image" %>
+      <% end %>
+    </div>
+    <div class="review-content-right top-review-content-right">
+      <div class="review-user-name">
+        <% if review.user.present? %>
+          <%= link_to user_path(review.user.id) do %>
+            <%= review.user.name %>
+          <% end %>
+        <% else %>
+          ゲストさん
+        <% end %>
+      </div>
+      <div class="review-date"><%= review.created_at.strftime("%Y-%m-%d %H:%M") %></div>
+      <div class="star-rating star-rating-small">
+        <% if review.rate.present? %>
+          <div class="star-rating-front" style="width: <%= review.rate * 20 %>%">★★★★★</div>
+        <% end %>
+        <div class="star-rating-back">★★★★★</div>
+        <div class="rating-score rating-score-small">
+          <% if review.rate.present? %>
+            <%= review.rate %>
+          <% else %>
+            -
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="review-main-content">
+      <% if review.review.present? %>
+        <%= simple_format(h(review.review)) %>
+      <% else %>
+        -
+      <% end %>
+    </div>
+  </div>
+</div>
