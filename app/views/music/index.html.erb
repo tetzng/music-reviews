@@ -20,11 +20,20 @@
     </div>
   </main>
 
-  <main class="single-container top-search-container">
-    <div class="single-inner">
-      <%= render "search_artist" %>
-      <%= render "search_album" %>
-      <%= render "search_track" %>
+  <main class="single-container ranking-container">
+    <div class="ranking-nav">
+      <a href="#ranking" class="ranking-nav-btn">ランキング</a>
+      <a href="#new_reviews" class="ranking-nav-btn">新着レビュー</a>
+    </div>
+    <div class="single-inner half-inner" id="ranking">
+      <h3 class="ranking-head">ランキング</h3>
+      <%= render partial: 'ranking', collection: @ranking, as: "track" %>
+    </div>
+    <div class="single-inner half-inner" id="new_reviews">
+      <section class="review-container">
+        <h3 class="new-reviews-head">新着レビュー</h3>
+        <%= render partial: 'new_reviews', collection: @new_reviews, as: "review" %>
+      </section>
     </div>
   </main>
 <% end %>

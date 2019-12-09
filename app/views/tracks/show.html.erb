@@ -9,8 +9,8 @@
 <% content_for :head do %>
   <meta property="og:audio" content="<%= @track.preview_url %>" />
   <meta property="og:audio:title" content="<%= @track.name %>" />
-  <meta property="og:audio:artist" content="<%= @artist.name %>" />
-  <meta property="og:audio:album" content="<%= @album.name %>" />
+  <meta property="og:audio:artist" content="<%= @track.artist_name %>" />
+  <meta property="og:audio:album" content="<%= @track.album_name %>" />
   <meta property="og:audio:type" content="mp3" />
 <% end %>
 

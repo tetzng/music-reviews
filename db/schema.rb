@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_11_161933) do
+ActiveRecord::Schema.define(version: 2019_12_09_214026) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -65,6 +65,13 @@ ActiveRecord::Schema.define(version: 2019_11_11_161933) do
     t.string "preview_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "album_id"
+    t.string "album_name"
+    t.string "album_image"
+    t.string "album_type"
+    t.string "album_release_date"
+    t.string "artist_id"
+    t.string "artist_name"
     t.index ["spotify_id"], name: "index_tracks_on_spotify_id"
   end
 

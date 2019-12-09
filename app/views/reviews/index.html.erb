@@ -1,0 +1,19 @@
+<% @page_title = "レビュー一覧" %>
+
+<% content_for :head do %>
+  <meta property="og:title" content=<%= @page_title %> />
+  <meta property="og:type" content="article">
+  <meta property="og:description" content=<%= @page_title %> />
+<% end %>
+
+<% content_for :cover do %>
+  <main class="single-container">
+    <div class="single-inner">
+      <% @reviews.each do |review| %>
+        <div>
+          <%= link_to  "#{review.track.name}", track_path(review.track.id) %>
+        </div>
+      <% end %>
+    </div>
+  </main>
+<% end %>

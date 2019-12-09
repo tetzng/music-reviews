@@ -10,4 +10,12 @@ class Track < ApplicationRecord
   def to_param
     spotify_id
   end
+
+  def average_score
+    if self.reviews.find { |arr| !arr.rate.nil? }.present?
+      self.reviews.average(:rate).round(1)
+    else
+      '-'
+    end
+  end
 end
