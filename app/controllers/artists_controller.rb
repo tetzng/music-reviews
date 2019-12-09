@@ -2,11 +2,11 @@
 
 class ArtistsController < ApplicationController
   def index
-    @keyword = params[:keyword]
-    if @keyword.blank?
+    @artist_name = params[:artist_name]
+    if @artist_name.blank?
       redirect_to root_path
     else
-      @artists = RSpotify::Artist.search(@keyword)
+      @artists = RSpotify::Artist.search(@artist_name)
     end
   end
 
