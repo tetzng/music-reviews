@@ -6,5 +6,5 @@ class Review < ApplicationRecord
 
   validates :rate, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 5 }, allow_blank: true
   validates :rate, presence: true, unless: %i[review? user_id?]
-  validates :user_id, uniqueness: { scope: :track_spotify_id }
+  validates :user_id, uniqueness: { scope: :track_spotify_id }, if: :user_id
 end
