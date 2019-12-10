@@ -1,11 +1,8 @@
 # frozen_string_literal: true
 
 class ReviewsController < ApplicationController
-  before_action :authenticate_user!, except: %i[index create]
+  before_action :authenticate_user!, except: :create
   before_action :set_review, only: %i[edit update destroy]
-  def index
-    @reviews = Review.all
-  end
   def create
     @review = Review.create(create_params)
     redirect_to track_path(params[:track_spotify_id])
