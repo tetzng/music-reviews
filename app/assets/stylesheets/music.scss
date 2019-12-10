@@ -1493,7 +1493,6 @@ textarea {
   }
 }
 .search-type-select{
-  border-radius: 20px;
   border-color: #1e70e7;
   border-width: 1px;
   box-shadow: 0 0 3px 1px #1e60d7;
@@ -1509,11 +1508,6 @@ textarea {
   &:focus{
     box-shadow: 0 0 7px 2px #1e60d7;
     border: 1px solid #1e60d7;
-  }
-}
-@media (max-width: 1067px) {
-  .search-type-select{
-
   }
 }
 @media (max-width: 767px) {
