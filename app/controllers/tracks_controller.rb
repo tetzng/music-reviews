@@ -20,8 +20,8 @@ class TracksController < ApplicationController
     end
     @reviews = @track.reviews.includes(:user)
     @your_review = @reviews.find_by(user_id: current_user.id) if user_signed_in?
-    @everyones_reviews = if user_signed_in?
-                           @reviews.where.not(user_id: current_user.id)
+    @everyones_reviews = if user_signed_in? && @your_review.present?
+                           @reviews.reject{|review| review == @your_review}
                          else
                            @reviews
                          end
