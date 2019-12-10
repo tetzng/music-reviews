@@ -71,5 +71,6 @@ end
 gem 'aws-sdk-s3', require: false
 gem 'devise'
 gem 'jquery-rails'
+gem 'kaminari'
 gem 'mini_magick'
 gem 'rspotify'
