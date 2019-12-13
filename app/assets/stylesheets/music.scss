@@ -1613,3 +1613,21 @@ textarea {
   height: 10px;
   background-color: #b9a11d;
 }
+
+.pagination{
+  text-align: center;
+  background-color: #222;
+  padding: 8px;
+  border-radius: 20px;
+  margin: 40px auto;
+  span{
+    margin: 0 4px;
+    font-size: 16px;
+    line-height: 24px;
+    padding: 0 8px;
+  }
+  .current{
+    font-weight: bold;
+    color: #1e70e7;
+  }
+}
