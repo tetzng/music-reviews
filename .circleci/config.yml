@@ -40,9 +40,9 @@ jobs:
         environment:
           RAILS_ENV: test
           MYSQL_HOST: 127.0.0.1
-          MYSQL_USER: user
-          MYSQL_ROOT_PASSWORD: password
-          MYSQL_PASSWORD: password
+          MYSQL_USER: 'user'
+          MYSQL_ROOT_PASSWORD: 'password'
+          MYSQL_PASSWORD: 'password'
           MYSQL_DATABASE: app_test
       - image: circleci/mysql:5.7
     working_directory: ~/repo
