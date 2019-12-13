@@ -18,25 +18,25 @@ RSpec.describe Track, type: :model do
       it 'is invalid without spotify_id' do
         track = build(:track, spotify_id: nil)
         track.valid?
-        expect(track.errors[:spotify_id]).to include("を入力してください")
+        expect(track.errors[:spotify_id]).to include('を入力してください')
       end
 
       it 'is invalid without name' do
         track = build(:track, name: nil)
         track.valid?
-        expect(track.errors[:name]).to include("を入力してください")
+        expect(track.errors[:name]).to include('を入力してください')
       end
 
       it 'is invalid without track_number' do
         track = build(:track, track_number: nil)
         track.valid?
-        expect(track.errors[:track_number]).to include("を入力してください")
+        expect(track.errors[:track_number]).to include('を入力してください')
       end
 
       it 'is invalid without duration_ms' do
         track = build(:track, duration_ms: nil)
         track.valid?
-        expect(track.errors[:duration_ms]).to include("を入力してください")
+        expect(track.errors[:duration_ms]).to include('を入力してください')
       end
 
       it 'is invalid with a duplicate spotify_id' do

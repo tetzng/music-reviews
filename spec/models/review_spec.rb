@@ -54,7 +54,7 @@ RSpec.describe Review, type: :model do
       it 'is invalid without rate, review, user_id' do
         review = build(:review, rate: nil, review: nil, user_id: nil)
         review.valid?
-        expect(review.errors[:rate]).to include("を入力してください")
+        expect(review.errors[:rate]).to include('を入力してください')
       end
 
       it 'is invalid with rate that is greater than 5' do
