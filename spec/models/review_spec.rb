@@ -48,25 +48,25 @@ RSpec.describe Review, type: :model do
       it 'is invalid without track_spotify_id' do
         review = build(:review, track_spotify_id: nil)
         review.valid?
-        expect(review.errors[:track]).to include('must exist')
+        expect(review.errors[:track]).to include('を入力してください')
       end
 
       it 'is invalid without rate, review, user_id' do
         review = build(:review, rate: nil, review: nil, user_id: nil)
         review.valid?
-        expect(review.errors[:rate]).to include("can't be blank")
+        expect(review.errors[:rate]).to include("を入力してください")
       end
 
       it 'is invalid with rate that is greater than 5' do
         review = build(:review, rate: 5.1)
         review.valid?
-        expect(review.errors[:rate]).to include('must be less than or equal to 5')
+        expect(review.errors[:rate]).to include('は5以下の値にしてください')
       end
 
       it 'is invalid with rate that is less than 0' do
         review = build(:review, rate: -0.1)
         review.valid?
-        expect(review.errors[:rate]).to include('must be greater than or equal to 0')
+        expect(review.errors[:rate]).to include('は0以上の値にしてください')
       end
     end
   end
