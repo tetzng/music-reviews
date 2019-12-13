@@ -11,7 +11,7 @@ RSpec.describe TracksController, type: :controller do
 
       # it 'redners index' do
       #   expect(response).to render_template :index
-      end
+      # end
     end
 
     context 'without track_name' do
