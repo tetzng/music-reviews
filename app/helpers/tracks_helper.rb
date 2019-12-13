@@ -15,7 +15,7 @@ module TracksHelper
 
   def album_image(track)
     images = RSpotify::Track.find(track.spotify_id).album.images
-    images.blank? ? "no_image.png" : images[0]["url"]
+    images.blank? ? 'no_image.png' : images[0]['url']
   end
 
   def album_type(track)
