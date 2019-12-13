@@ -6,7 +6,7 @@ version: 2
 jobs:
   rubocop:
     docker:
-      - image: circleci/ruby:2.6.5
+      - image: circleci/ruby:2.6.5-stretch-node-browsers-legacy
         environment:
           RAILS_ENV: test
           MYSQL_HOST: 127.0.0.1
@@ -24,7 +24,6 @@ jobs:
             - v1-dependencies-
       - run: gem install bundler:2.0.2
       - run: bundle install --jobs=4 --retry=3 --path vendor/bundle
-      - run: npm install -g yarn
       - run: yarn install
       - save_cache:
           paths:
@@ -37,7 +36,7 @@ jobs:
 
   rspec:
     docker:
-      - image: circleci/ruby:2.6.5
+      - image: circleci/ruby:2.6.5-stretch-node-browsers-legacy
         environment:
           RAILS_ENV: test
           MYSQL_HOST: 127.0.0.1
@@ -55,7 +54,6 @@ jobs:
             - v1-dependencies-
       - run: gem install bundler:2.0.2
       - run: bundle install --jobs=4 --retry=3 --path vendor/bundle
-      - run: npm install -g yarn
       - run: yarn install
       - save_cache:
           paths:
