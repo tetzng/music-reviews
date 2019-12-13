@@ -12,8 +12,8 @@ class Track < ApplicationRecord
   end
 
   def average_score
-    if self.reviews.find { |arr| !arr.rate.nil? }.present?
-      self.reviews.average(:rate).round(1)
+    if reviews.find { |arr| !arr.rate.nil? }.present?
+      reviews.average(:rate).round(1)
     else
       '-'
     end
