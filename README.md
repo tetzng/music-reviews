@@ -22,7 +22,12 @@ SpotifyAPIを使用した音楽レビューサイト。
 - RSpecを使った単体テスト
 - CircleCIによる自動テスト
 
-## Docker images
+
+## Architecture Diagram
+![architecture-diagram](https://user-images.githubusercontent.com/52838441/70861427-0b535e80-1f71-11ea-8df6-2d0ba985e054.png)
+
+
+## Docker Images
 
 - ruby:2.6.5-alpine3.10
 - mariadb
