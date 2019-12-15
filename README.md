@@ -11,6 +11,7 @@ SpotifyAPIを使用した音楽レビューサイト。
 環境構築にDockerを使用し、AWS ECS / Fargateでデプロイ
 
 ***DEMO:***
+<img width="1440" alt="MusicReviews TOP Page" src="https://user-images.githubusercontent.com/52838441/70861518-58840000-1f72-11ea-96b3-301e6be6e614.png">
 
 
 ## Features
