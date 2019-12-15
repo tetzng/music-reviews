@@ -1,5 +1,6 @@
 # MusicReviews
 [![CircleCI](https://circleci.com/gh/tetzng/music-reviews/tree/master.svg?style=shield)](https://circleci.com/gh/tetzng/music-reviews/tree/master)
+[![codecov](https://codecov.io/gh/tetzng/music-reviews/branch/master/graph/badge.svg)](https://codecov.io/gh/tetzng/music-reviews)
 [![MIT License](http://img.shields.io/badge/license-MIT-blue.svg?style=flat)](LICENSE)
 
 
