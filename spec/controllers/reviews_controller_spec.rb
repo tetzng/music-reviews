@@ -10,7 +10,7 @@ describe ReviewsController, type: :controller do
 
   describe '#create' do
     context 'can save' do
-      let(:params) { { rate: 2.5, review: 'hoge', track_spotify_id: '7BUBM2XnhnWnYZhGDU1Mvm', user_id: user.id } }
+      let(:params) { { rate: 2.5, review: 'hoge', track_spotify_id: track.spotify_id, user_id: user.id } }
 
       subject do
         post :create,
@@ -28,7 +28,7 @@ describe ReviewsController, type: :controller do
     end
 
     context 'can not save' do
-      let(:invalid_params) { { rate: nil, review: nil, track_spotify_id: '7BUBM2XnhnWnYZhGDU1Mvm', user_id: nil } }
+      let(:invalid_params) { { rate: nil, review: nil, track_spotify_id: track.spotify_id, user_id: nil } }
 
       subject do
         post :create,
@@ -50,7 +50,7 @@ describe ReviewsController, type: :controller do
     context 'log in' do
       before do
         login user
-        get :edit, params: { track_spotify_id: '7BUBM2XnhnWnYZhGDU1Mvm', id: review.id }
+        get :edit, params: { track_spotify_id: track.spotify_id, id: review.id }
       end
 
       it 'assigns @review' do
@@ -65,7 +65,7 @@ describe ReviewsController, type: :controller do
     context 'log in by another user' do
       before do
         login another_user
-        get :edit, params: { track_spotify_id: '7BUBM2XnhnWnYZhGDU1Mvm', id: review.id }
+        get :edit, params: { track_spotify_id: track.spotify_id, id: review.id }
       end
 
       it 'redirects to root_path' do
@@ -75,7 +75,7 @@ describe ReviewsController, type: :controller do
 
     context 'not log in' do
       before do
-        get :edit, params: { track_spotify_id: '7BUBM2XnhnWnYZhGDU1Mvm', id: review.id }
+        get :edit, params: { track_spotify_id: track.spotify_id, id: review.id }
       end
 
       it 'redirects to new_user_session_path' do
