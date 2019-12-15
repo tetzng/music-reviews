@@ -5,6 +5,8 @@ require 'rails_helper'
 describe ReviewsController, type: :controller do
   let(:track) { create(:track) }
   let(:user) { create(:user) }
+  let(:another_user) { create(:another_user) }
+  let(:review) { create(:review, user_id: user.id, track_spotify_id: '7BUBM2XnhnWnYZhGDU1Mvm') }
 
   describe '#create' do
     context 'can save' do
@@ -40,6 +42,44 @@ describe ReviewsController, type: :controller do
       it 'redirects to track_path' do
         subject
         expect(response).to redirect_to(track_path(track.spotify_id))
+      end
+    end
+  end
+
+  describe '#edit' do
+    context 'log in' do
+      before do
+        login user
+        get :edit, params: { track_spotify_id: '7BUBM2XnhnWnYZhGDU1Mvm', id: review.id }
+      end
+
+      it 'assigns @review' do
+        expect(assigns(:review)).to eq review
+      end
+
+      it 'renders the :edit template' do
+        expect(response).to render_template :edit
+      end
+    end
+
+    context 'log in by another user' do
+      before do
+        login another_user
+        get :edit, params: { track_spotify_id: '7BUBM2XnhnWnYZhGDU1Mvm', id: review.id }
+      end
+
+      it 'redirects to root_path' do
+        expect(response).to redirect_to(root_path)
+      end
+    end
+
+    context 'not log in' do
+      before do
+        get :edit, params: { track_spotify_id: '7BUBM2XnhnWnYZhGDU1Mvm', id: review.id }
+      end
+
+      it 'redirects to new_user_session_path' do
+        expect(response).to redirect_to(new_user_session_path)
       end
     end
   end
