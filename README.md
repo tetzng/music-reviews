@@ -14,11 +14,12 @@ SpotifyAPIを使用した音楽レビューサイト。
 
 ## Features
 - Dockerを使用した環境構築
-- AWS ECS / Fargateデプロイ
+- AWS ECS / Fargateにデプロイ
 - データベースにRDSを使用
 - ActiveStorageを使用しAWS S3への画像アップロード
 - SpotifyAPIを使用
 - RSpecを使った単体テスト
+- CircleCIによる自動テスト
 
 ## Docker images
 
