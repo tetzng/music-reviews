@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 describe ReviewsController, type: :controller do
-  let(:track) { create(:track) }
+  let(:track) { create(:track, spotify_id: '7BUBM2XnhnWnYZhGDU1Mvm') }
   let(:user) { create(:user) }
   let(:another_user) { create(:another_user) }
   let(:review) { create(:review, user_id: user.id, track_spotify_id: '7BUBM2XnhnWnYZhGDU1Mvm') }
