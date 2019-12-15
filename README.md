@@ -1,5 +1,7 @@
 # MusicReviews
 [![CircleCI](https://circleci.com/gh/tetzng/music-reviews/tree/master.svg?style=shield)](https://circleci.com/gh/tetzng/music-reviews/tree/master)
+[![MIT License](http://img.shields.io/badge/license-MIT-blue.svg?style=flat)](LICENSE)
+
 
 音楽を聴いてレビューするサイト
 
