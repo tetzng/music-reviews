@@ -1,4 +1,5 @@
 # MusicReviews
+[![CircleCI](https://circleci.com/gh/tetzng/music-reviews/tree/master.svg?style=shield)](https://circleci.com/gh/tetzng/music-reviews/tree/master)
 音楽を聴いてレビューするサイト
 
 ## Description
