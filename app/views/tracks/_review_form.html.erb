@@ -34,12 +34,14 @@
     <% end %>
   </div>
   <% if user_signed_in? %>
-    <div class="write-review">
-      <span class="review-btn", id="write-review">
-        レビューを投稿する
-      <i class="fas fa-pen"></i>
-      </span>
-    </div>
+    <% unless @your_review.present? %>
+      <div class="write-review">
+        <span class="review-btn", id="write-review">
+          レビューを投稿する
+          <i class="fas fa-pen"></i>
+        </span>
+      </div>
+    <% end %>
   <% else %>
     <div class="login_and_review">
       <%= link_to new_user_session_path, class: "review-btn" do %>
