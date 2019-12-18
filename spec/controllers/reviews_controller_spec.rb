@@ -8,6 +8,20 @@ describe ReviewsController, type: :controller do
   let(:another_user) { create(:another_user) }
   let(:review) { create(:review, user_id: user.id, track_spotify_id: '7BUBM2XnhnWnYZhGDU1Mvm') }
 
+  describe '#show' do
+    before do
+      get :show, params: { track_spotify_id: track.spotify_id, id: review.id }
+    end
+
+    it 'assigns @review' do
+      expect(assigns(:review)).to eq review
+    end
+
+    it 'renders the :show template' do
+      expect(response).to render_template :show
+    end
+  end
+
   describe '#create' do
     context 'log in' do
       before do
