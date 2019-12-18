@@ -17,6 +17,14 @@ describe ReviewsController, type: :controller do
       expect(assigns(:review)).to eq review
     end
 
+    it 'assigns @average_score' do
+      expect(assigns(:review)).to eq review
+    end
+
+    # create(:review, rate: nil, user_id: user.id, track_spotify_id: '7BUBM2XnhnWnYZhGDU1Mvm')
+    # create(:review, rate: nil, user_id: another_user.id, track_spotify_id: '7BUBM2XnhnWnYZhGDU1Mvm')
+    # create(:review, rate: nil, user_id: nil, track_spotify_id: '7BUBM2XnhnWnYZhGDU1Mvm')
+
     it 'renders the :show template' do
       expect(response).to render_template :show
     end
@@ -204,6 +212,54 @@ describe ReviewsController, type: :controller do
     context 'not log in' do
       before do
         patch :update, params: { track_spotify_id: track.spotify_id, id: review.id }
+      end
+
+      it 'redirects to new_user_session_path' do
+        expect(response).to redirect_to(new_user_session_path)
+      end
+    end
+  end
+
+  describe '#destroy' do
+    context 'log in' do
+      before do
+        login user
+        track
+        review
+      end
+
+      context 'can destroy' do
+        subject do
+          delete :destroy, params: { track_spotify_id: track.spotify_id, id: review.id }
+        end
+
+        it 'destroy review' do
+          expect{ subject }.to change(Review, :count).by(-1)
+        end
+
+        it 'redirects to track_path' do
+          subject
+          expect(response).to redirect_to(track_path('7BUBM2XnhnWnYZhGDU1Mvm'))
+        end
+      end
+    end
+
+    context 'log in by another user' do
+      before do
+        login another_user
+        delete :destroy, params: { track_spotify_id: track.spotify_id, id: review.id }
+      end
+
+      it 'redirects to root_path' do
+        expect(response).to redirect_to(root_path)
+      end
+    end
+
+    context 'not log in' do
+      before do
+        track
+        review
+        delete :destroy, params: { track_spotify_id: track.spotify_id, id: review.id }
       end
 
       it 'redirects to new_user_session_path' do
