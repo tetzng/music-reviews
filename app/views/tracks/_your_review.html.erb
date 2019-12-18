@@ -44,10 +44,12 @@
           </div>
         </div>
         <div class="review-main-content">
-          <% if @your_review.review.present? %>
-            <%= simple_format(h(@your_review.review)) %>
-          <% else %>
-            -
+          <%= link_to track_review_path(@your_review.track_spotify_id, @your_review.id) do %>
+            <% if @your_review.review.present? %>
+              <%= simple_format(h(@your_review.review)) %>
+            <% else %>
+              -
+            <% end %>
           <% end %>
         </div>
       </div>
