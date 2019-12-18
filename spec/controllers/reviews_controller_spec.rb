@@ -234,7 +234,7 @@ describe ReviewsController, type: :controller do
         end
 
         it 'destroy review' do
-          expect{ subject }.to change(Review, :count).by(-1)
+          expect { subject }.to change(Review, :count).by(-1)
         end
 
         it 'redirects to track_path' do
